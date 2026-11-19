@@ -1,0 +1,405 @@
+\section{次数付き形式量子化と中心的超曲面}
+\label{sec:quantization}
+
+この節では、前節で分類した各 Poisson 構造について、標準重み付き多項式環を
+量子化し、定義式を中心元に持ち上げる。
+外部入力は Kontsevich の affine formality とその twisted 接写像である
+\cite[\S\S 4.6.2, 6, 8]{Kontsevich}。
+特異な超曲面 cone に直接 formality を適用するのではなく、滑らかな affine
+空間 $\operatorname{Spec}S$ に適用する。
+
+\subsection{重みと中心的線型座標を保つ積}
+
+$R=\mathbb C[[\hbar]]$ とおき、内部次数を $\deg\hbar=0$ とする。
+$S$ は標準 ambient の重み付き多項式環、$F\in S_m$ は定義式であり、
+$m=6$（次数 $1$）または $m=4$（次数 $2$）である。
+前節の $F$-Casimir 代表を $\widetilde\pi$ と書く。
+
+\begin{theorem}[中心的超曲面による形式量子化]
+\label{thm:formal-quantization}
+各 Poisson 構造 $\pi$ に対し、次数付き $R$-代数 $\mathcal S_\hbar$ と
+斉次中心元 $\Omega_\hbar\in Z(\mathcal S_\hbar)_m$ で、次を満たすものが存在する。
+\begin{enumerate}
+\item 各内部次数 $\ell$ の成分 $(\mathcal S_\hbar)_\ell$ は有限自由
+      $R$-加群であり、$\mathcal S_\hbar/\hbar\mathcal S_\hbar\simeq S$ である。
+\item $\Omega_\hbar\bmod\hbar=F$ であり、$\Omega_\hbar$ は両側非零因子である。
+\item $\mathcal R_\hbar:=\mathcal S_\hbar/(\Omega_\hbar)$ も各内部次数で有限自由で、
+      $\mathcal R_\hbar/\hbar\mathcal R_\hbar\simeq S/(F)$ である。
+      この商の半古典括弧は $\pi$ を誘導する。
+\item 非零 $\pi$ に対し、前節の $n-1$ 個の中心的線型座標 $s_i$ は
+      補正なしに中心的に保てる。さらに積は $\mathbb C[s_1,\ldots,s_{n-1}]$-双線型に選べる。
+\end{enumerate}
+これは存在定理であり、量子化の同型類や gauge 同値類の一意性を主張しない。
+\end{theorem}
+
+\begin{proof}
+Affine formality の座標公式によって
+\begin{equation}
+ a\star b=ab+\frac{\hbar}{2}\{a,b\}+O(\hbar^2),
+ \qquad a\star b-b\star a=\hbar\{a,b\}+O(\hbar^2)
+ \label{eq:star-first-order}
+\end{equation}
+という結合積を取る。各 $\hbar$ 係数は有限個のグラフから得られる
+多項式係数の有限階双微分作用素である。
+複素多項式に対する同じ公式は、実係数の普遍的グラフ定数を複素数体に移して用いる。
+$\widetilde\pi$ の重みが $0$ なので、各微分の重みとその添字に対応する
+多重ベクトル係数の重みが相殺し、全項が内部次数を保つ。
+従って
+\begin{equation}
+ \mathcal S_\hbar=\bigoplus_{\ell\geq0}S_\ell[[\hbar]]
+ \label{eq:graded-formal-ambient}
+\end{equation}
+は $\star$ で閉じる。ここでは内部次数について直和を取り、各成分だけを
+$\hbar$ 進完備化する。$\hbar$ の次数とともに内部次数が無限に増大する元を含む
+$S[[\hbar]]$ 全体とは区別する。
+
+非零構造については、活性な三変数を $u,v,w$、残りの線型座標を $s_i$ と取ると、
+$\widetilde\pi$ に $\partial_{s_i}$ 成分はない。
+従ってグラフ公式の各矢印は活性変数の方向にのみ微分する。
+正規化した unital な公式では
+\begin{equation}
+ s_i\star a=s_i a=a\star s_i,
+ \qquad
+ (g(s)a)\star b=g(s)(a\star b)=a\star(g(s)b)
+ \label{eq:exact-central-parameters}
+\end{equation}
+となる。ここで係数として現れる $s_i$ を微分する矢印もないことを用いた。
+
+次に $\gamma=\hbar\widetilde\pi$ とし、formality 写像を $\mathcal U$ と書く。
+その twist の関数成分は
+\begin{equation}
+ Q_\gamma(f)=\sum_{r\geq0}\frac{1}{r!}
+   \mathcal U_{r+1}(f,\underbrace{\gamma,\ldots,\gamma}_{r\text{ 個}})
+ =f+O(\hbar)
+ \label{eq:twisted-central-map}
+\end{equation}
+である。Twisted chain map の性質により $[\widetilde\pi,f]=0$ ならば
+$Q_\gamma(f)$ は Hochschild の $0$-cocycle、すなわち $\star$ 積の中心元になる。
+この次数では coboundary を法とすることによる曖昧さはなく、実際の中心元が得られる。
+従って
+\begin{equation}
+ \Omega_\hbar=Q_\gamma(F)\in Z(\mathcal S_\hbar)_m,
+ \qquad \Omega_\hbar=F+O(\hbar)
+ \label{eq:central-equation}
+\end{equation}
+を取れる。重みの保存により内部次数は $m$ のままである。
+一般に $F$ 自体が量子化後も中心的とは限らず、高次補正は省略できない。
+非零因子性と商の平坦性は次の補題から従う。
+零 Poisson 構造には可換積と $\Omega_\hbar=F$ を用いる。
+\end{proof}
+
+\begin{lemma}[中心元を持ち上げた商の平坦性]
+\label{prop:central-flatness}
+$A=\bigoplus_{\ell\geq0}A_\ell$ は各 $A_\ell$ が有限自由 $R$-加群である
+次数付き $R$-代数とする。斉次中心元 $\Omega\in A_m$ の還元
+$f\in A/\hbar A$ が非零因子ならば、$\Omega$ は両側非零因子であり、
+$A/(\Omega)$ は各内部次数で有限自由 $R$-加群である。
+\end{lemma}
+
+\begin{proof}
+$\Omega a=0$ を $\hbar$ で還元すると $fa_0=0$ なので $a\in\hbar A$ となる。
+これを反復し、各内部次数の $\hbar$ 進分離性を用いると $a=0$ である。
+中心性により右側も同様である。
+また $\hbar a=\Omega b$ なら、還元して $fb_0=0$ だから $b=\hbar b_1$ と書ける。
+$A$ の $\hbar$-torsion freeness により $a=\Omega b_1$ となるので、
+$A/(\Omega)$ に $\hbar$-torsion はない。
+各内部次数の商は有限生成 $R$-加群であり、DVR 上の有限生成 torsion free
+加群は自由である。還元と商が交換することは表示から従う。
+\end{proof}
+
+\subsection{Hilbert 級数、有限段階の射影化、中心的切断}
+
+$R$ 上の rank を用いた Hilbert 級数は
+\begin{equation}
+ H_{\mathcal R_\hbar}(t)=
+ \begin{cases}
+ \displaystyle\frac{1-t^6}{(1-t)^n(1-t^2)(1-t^3)}&d=1,\\[6pt]
+ \displaystyle\frac{1-t^4}{(1-t)^{n+1}(1-t^2)}&d=2.
+ \end{cases}
+ \label{eq:quantized-hilbert}
+\end{equation}
+実際、$\Omega_\hbar$ による掛け算の完全列
+$0\to\mathcal S_\hbar(-m)\to\mathcal S_\hbar\to\mathcal R_\hbar\to0$
+を各内部次数で取ればよい。
+
+各 $r\geq1$ に対し、有限段階の射影的対象を
+\begin{equation}
+ \operatorname{qgr}(\mathcal R_\hbar/\hbar^r\mathcal R_\hbar)
+ \label{eq:formal-qgr-tower}
+\end{equation}
+で表す。ここで $\operatorname{qgr}$ は有限生成次数付き右加群の圏を
+右有界加群の Serre 部分圏で割ったものである。
+各有限段階は左右 noetherian である。実際、有限の $\hbar$ 進 filtration の
+随伴次数環は $(S/(F))\otimes_\mathbb C\mathbb C[\hbar]/(\hbar^r)$ と同型であり、
+noetherian 性を有限 filtration に沿って持ち上げられる。
+$r=1$ では、$H$ の section ring と Serre の対応から
+$\operatorname{qgr}(S/(F))\simeq\operatorname{coh}(X)$ である。
+式\eqref{eq:formal-qgr-tower}は還元に関する整合的な系を与えるが、
+この記述だけで任意の基底上の Abel 圏変形の普遍性を主張するものではない。
+
+式\eqref{eq:exact-central-parameters}により、$s_i$ の斉次線型関係による切断を
+量子化後にも取れる。関係を課した可換極限で $F$ が非零多項式のままであるなら、
+補題\ref{prop:central-flatness}をその多項式環に適用し、平坦な量子化を得る。
+特に、射影的な共通 level に対応する線型関係を課すことで、
+前節の二次元 leaf の閉包に対応する曲面切断を量子化できる。
+この操作は中心的線型関係を先に課した後の多項式環に対する議論であり、
+一般の非平坦な基底変換との交換を無条件に述べているわけではない。
+
+\section{曲面の cyclic potential と Rees コンパクト化}
+\label{sec:surface-potential}
+
+以下では $n=2$ とし、非零構造に対応する中心的線型座標を $s$ とする。
+活性変数 $u,v,w$ の重みを
+\[
+ (a,b,c)=
+ \begin{cases}(1,2,3)&d=1,\\(1,1,2)&d=2,\end{cases}
+ \qquad m=a+b+c
+\]
+と書く。$s\ne0$ 上の座標を $u/s^a,v/s^b,w/s^c$ とし、同じ文字で略記すると
+\begin{equation}
+ U=X\setminus(s=0)=\operatorname{Spec}\bigl(\mathbb C[u,v,w]/(\phi)\bigr),
+ \qquad \phi(u,v,w)=F(1,u,v,w),\qquad \deg\phi\leq m.
+ \label{eq:affine-surface}
+\end{equation}
+括弧の向きを
+$\{u,v\}=\phi_w$, $\{v,w\}=\phi_u$, $\{w,u\}=\phi_v$ に固定する。
+
+\subsection{Potential 表示と中心元}
+
+自由結合代数 $T=\mathbb C\langle u,v,w\rangle$ の cyclic quotient を
+$T_{\mathrm{cyc}}=T/[T,T]$ とする。語に対する cyclic derivative の規約は
+\begin{equation}
+ \partial_u^{\mathrm{cyc}}[a_1\cdots a_r]
+ =\sum_{i:a_i=u}a_{i+1}\cdots a_r a_1\cdots a_{i-1}
+ \label{eq:cyclic-derivative}
+\end{equation}
+である。$\phi$ の重み $m$ 以下の cyclic lift $\widehat\phi$ を選び、
+\begin{equation}
+ \Phi_\hbar=[uvw-vuw]-\hbar\widehat\phi,
+ \qquad
+ \mathcal A_\hbar=
+ \frac{\mathbb C\langle u,v,w\rangle[[\hbar]]}
+ {\overline{(\partial_u^{\mathrm{cyc}}\Phi_\hbar,
+             \partial_v^{\mathrm{cyc}}\Phi_\hbar,
+             \partial_w^{\mathrm{cyc}}\Phi_\hbar)}}
+ \label{eq:potential-algebra}
+\end{equation}
+と定める。上線は $\hbar$ 進閉包を表し、語長については完備化しない。
+直接微分すると、関係式は
+\begin{equation}
+ [u,v]=\hbar\partial_w^{\mathrm{cyc}}\widehat\phi,
+ \quad[v,w]=\hbar\partial_u^{\mathrm{cyc}}\widehat\phi,
+ \quad[w,u]=\hbar\partial_v^{\mathrm{cyc}}\widehat\phi
+ \label{eq:potential-relations}
+\end{equation}
+となり、半古典括弧の符号が上の規約に一致する。
+
+\begin{proposition}[Etingof--Ginzburg の結果の適用]
+\label{prop:eg-potential}
+$\mathcal A_\hbar$ は $\mathbb C[u,v,w]$ の平坦な形式変形である。
+重み filtration が $m$ 以下の中心元 $\Psi_\hbar$ で
+$\Psi_\hbar\bmod\hbar=\phi$ を満たすものが存在する。
+従って $\mathcal B_\hbar=\mathcal A_\hbar/(\Psi_\hbar)$ は
+$\mathbb C[U]$ の平坦な形式量子化である。
+\end{proposition}
+
+\begin{proof}
+平坦性には \cite[Lemma 7.4.2]{EG2010} を適用する。
+必要なのは potential の定数項が $uvw-vuw$ で、残りが $\hbar$ で割れることである。
+中心元には \cite[Proposition 8.1.1(i)]{EG2010} を適用する。
+その仮定は三つの重みが正であり、potential の重みがその和 $m$ 以下であることなので、
+本件で満たされる。同命題の中心元の還元は potential の $\hbar$ 一次項の
+abelianization である。本稿ではその一次項が $-\widehat\phi$ なので、
+得られた中心元の負を $\Psi_\hbar$ と取る。
+商の平坦性は、$\phi$ が多項式環の非零因子であることと
+補題\ref{prop:central-flatness}の $\hbar$ 進分離性による議論から従う。
+Filtered な各重み成分でも、同文献の Rees 構成によりこの議論を行える。
+\end{proof}
+
+\begin{remark}
+Proposition 8.1.1(i) 自体には $\phi$ の最高重み部分の孤立特異点という仮定はない。
+同命題の追加の中心・Hochschild コホモロジーの結論 (ii), (iii) には
+斉次性と孤立特異点の仮定がある。
+従って上の中心元の存在は反標準境界が特異な場合にも適用できるが、
+その場合に中心全体が一元で生成されるとは結論しない。
+また、この potential による量子化と定理\ref{thm:formal-quantization}で選んだ
+量子化が同じ gauge 同値類に属することも、ここでは主張しない。
+\end{remark}
+
+\subsection{Rees 代数と二種類の中心元}
+
+重み filtration を $\mathcal F_\ell\mathcal A_\hbar$ と書く。
+各 filtration 成分を $\hbar$ 進完備化した上で、内部次数について直和を取り、
+\begin{equation}
+ A_\hbar=\bigoplus_{\ell\geq0}
+       (\mathcal F_\ell\mathcal A_\hbar)s^\ell,
+ \qquad\deg s=1
+ \label{eq:rees-algebra}
+\end{equation}
+とする。Rees 生成元 $us^a,vs^b,ws^c$ を再び $u,v,w$ と書く。
+$\widehat\phi$ の重み $m$ への斉次化を $\widehat F$ とすれば、この代数は
+$s$ を中心とする $\mathbb C[s]$ 上の相対的三変数 potential
+\[
+ \Phi^{\mathrm{hom}}_\hbar=[uvw-vuw]-\hbar\widehat F(s,u,v,w)
+\]
+により表示される。課すのは $u,v,w$ の cyclic derivative だけであり、
+$s$ に関する cyclic derivative は課さない。
+\cite[Proposition 8.1.1(i) の証明、pp.~1407--1408]{EG2010}の相対的 Rees 構成により、
+$A_\hbar$ は $\mathbb C[s,u,v,w]$ の次数付き平坦変形である。
+
+$\Psi_\hbar$ を次数 $m$ に斉次化した中心元を $\Omega_\hbar$ とすると
+\begin{equation}
+ B_\hbar=A_\hbar/(\Omega_\hbar),
+ \qquad B_\hbar/\hbar B_\hbar\simeq\mathbb C[s,u,v,w]/(F)
+ \label{eq:rees-hypersurface}
+\end{equation}
+を得る。ここには役割の異なる二種類の中心元がある。
+$s$ は反標準境界を指定し、$s=1$ はその affine 補集合を与える。
+$\Omega_\hbar$ は非可換 ambient 内の超曲面そのものを定義する。
+
+$s$ は Rees 代数 $A_\hbar$ 上の非零因子であり、
+$A_\hbar/(s-1)$ の $\hbar$ 進完備化は $\mathcal A_\hbar$ である。
+また、$\Omega_\hbar\bmod s$ のさらに $\hbar$ による還元は非零多項式
+$F(0,u,v,w)$ である。従って $A_\hbar/(s)$ で $\Omega_\hbar\bmod s$ は
+非零因子となる。$sa=\Omega_\hbar b$ を $s$ で還元すると $b\in sA_\hbar$ なので、
+$s$ を消去して $a\in\Omega_\hbar A_\hbar$ を得る。
+従って $s$ は $B_\hbar$ 上でも非零因子である。
+
+\subsection{具体的な関係式}
+
+次数 $1$ では
+\[
+ F=w^2-v^3-A_4(s,u)v-A_6(s,u),
+ \qquad (\deg s,\deg u,\deg v,\deg w)=(1,1,2,3)
+\]
+と書く。$A_4(s,u)=\sum_{k=0}^4a_k s^{4-k}u^k$ とし、$A_4(s,u)v$ を
+この順序の cyclic 語で持ち上げると
+\begin{align}
+ [u,v]&=2\hbar w,\label{eq:degree1-uv}\\
+ [w,u]&=-\hbar\bigl(3v^2+A_4(s,u)\bigr),\label{eq:degree1-wu}\\
+ [v,w]&=-\hbar\left(
+    \sum_{k=1}^4 a_k s^{4-k}\sum_{j=0}^{k-1}u^{k-1-j}vu^j
+    +\frac{\partial A_6}{\partial u}(s,u)\right),\label{eq:degree1-vw}\\
+ [s,u]&=[s,v]=[s,w]=0.\nonumber
+\end{align}
+実際、$\partial_u^{\mathrm{cyc}}(u^kv)
+=\sum_{j=0}^{k-1}u^{k-1-j}vu^j$ である。
+非可換代数内ではこの和を $ku^{k-1}v$ に置き換えられない。
+超曲面にはさらに次数 $6$ の中心元 $\Omega_\hbar=F+O(\hbar)$ を課す。
+
+次数 $2$ では
+\[
+ F=w^2-f_4(s,u,v),
+ \qquad(\deg s,\deg u,\deg v,\deg w)=(1,1,1,2)
+\]
+と書く。$\widehat f_4$ を重み $4$ の cyclic lift とすれば
+\begin{equation}
+ \begin{gathered}
+ [u,v]=2\hbar w,\qquad
+ [v,w]=-\hbar\partial_u^{\mathrm{cyc}}\widehat f_4,\qquad
+ [w,u]=-\hbar\partial_v^{\mathrm{cyc}}\widehat f_4,\\
+ [s,u]=[s,v]=[s,w]=0
+ \end{gathered}
+ \label{eq:degree2-potential-relations}
+\end{equation}
+となる。超曲面の方程式は次数 $4$ の中心元 $\Omega_\hbar=F+O(\hbar)$ である。
+これらの表示は中心元の高次補正そのものの閉じた公式を与えるものではない。
+
+\section{AS 正則性、型の呼称、分類の限界}
+\label{sec:quantization-limits}
+
+\subsection{中心拡大に関する条件付き結論}
+
+体 $k$ 上の connected な正次数付き代数に対し、AS 正則性には有限大域次元、
+多項式増大度、左右の AS--Gorenstein 条件を要求する。
+$R=\mathbb C[[\hbar]]$ 上の形式平坦性とは別の性質である。
+
+\begin{proposition}[中心拡大]
+\label{prop:central-as-extension}
+$A$ を connected、局所有限、左右 noetherian な次数付き $k$-代数とし、
+$s\in A_1$ を中心的非零因子とする。
+$C=A/(s)$ が大域次元 $3$ の AS 正則代数ならば、$A$ は大域次元 $4$ の
+AS 正則代数である。さらに $\Omega\in Z(A)_m$ が非零因子ならば
+$A/(\Omega)$ はこの AS 正則 ambient の中心的超曲面環である。
+\end{proposition}
+
+\begin{proof}
+完全列 $0\to A(-1)\xrightarrow{s}A\to C\to0$ により、
+$C$ は左右の $A$-加群として射影次元 $1$ を持つ。
+$k$ の長さ $3$ の $C$-自由分解の各項を $A$ 上で長さ $1$ の分解に置き換えれば、
+$\operatorname{pd}_A k\leq4$ である。
+ここから全加群の大域次元の上界を得る議論も記しておく。
+$A^e=A\otimes_k A^{\mathrm{op}}$ 上の $A$ の graded minimal 自由分解を取る。
+二側 bar 分解に augmentation 加群 $k$ をテンソルすると、通常の reduced bar
+複体を得るので
+$\operatorname{Tor}^{A^e}_i(k,A)\simeq\operatorname{Tor}^A_i(k,k)$ である。
+右辺は $i>4$ で消え、minimal 性と graded Nakayama により上の
+$A^e$-自由分解の第 $i$ 項も消える。
+その分解を右 $A$-加群の分解と見れば、終項 $A$ が射影的なので分裂完全である。
+従って任意の左 $A$-加群との右側テンソルは完全性を保ち、長さ $4$ 以下の
+左自由分解を与える。左右を入れ替えた議論も同様であり、
+$\operatorname{gldim}A\leq4$ を得る。
+一方、同じ完全列に $\operatorname{Hom}_A(-,A)$ を適用すると
+$\operatorname{Ext}_A^q(C,A)=0$（$q\ne1$）、
+$\operatorname{Ext}_A^1(C,A)\simeq C(1)$ である。
+環の変更の Ext スペクトル系列は一行に退化し、
+\[
+ \operatorname{Ext}_A^{p+1}(k,A)
+ \simeq \operatorname{Ext}_C^p(k,C)(1)
+\]
+を与える。$C$ の AS--Gorenstein 条件から、この群は次数 $4$ だけで一次元となる。
+左加群側も同様なので、左右の AS--Gorenstein 条件と大域次元 $4$ を得る。
+最後に $H_A(t)=H_C(t)/(1-t)$ から多項式増大度も従う。
+\end{proof}
+
+この命題を特定の複素代数または $\mathbb C((\hbar))$ 上の代数に適用するには、
+その係数体上で $A/(s)$ の AS 正則性と $A$ の noetherian 性などの仮定を確認する。
+形式平坦性や Hilbert 級数の一致だけで、全ての複素パラメータの特殊化の
+AS 正則性が得られるわけではない。
+上の条件が満たされ、可換模型と同じ Hilbert 級数を持つ場合の ambient は
+\[
+ H_A(t)=
+ \begin{cases}
+ ((1-t)^2(1-t^2)(1-t^3))^{-1}&d=1,\\
+ ((1-t)^3(1-t^2))^{-1}&d=2,
+ \end{cases}
+\]
+であり、曲面をそれぞれ $\operatorname{qgr}(A/(\Omega_6))$、
+$\operatorname{qgr}(A/(\Omega_4))$ と表す。
+AS 正則性は ambient の $A$ に対する主張であり、超曲面環 $A/(\Omega)$ の
+AS 正則性を述べているのではない。
+
+境界側 $C=A/(s)$ で $\hbar$ が可逆ならば、両次数で
+$w=[u,v]/(2\hbar)$ を消去できる。
+次数 $2$ は重み $1$ の二生成元と二個の三次関係式の表示、
+次数 $1$ は重み $(1,2)$ の二生成元と重み $4,5$ の関係式の表示になる。
+これは cubic 型および Stephenson 型の正則代数との接点を示すが、
+生成元・関係式の重みだけによって正則性を判定することはできない。
+
+\subsection{\texorpdfstring{$E_7,E_8$}{E7, E8} 型と非形式的な族}
+
+活性変数の重み $(1,1,2)$（次数 $2$）と $(1,2,3)$（次数 $1$）は、
+\cite[\S\S2.3, 3.4]{EG2010}の $E_7,E_8$ 型に対応する。
+反標準境界 $(s=0)$ が滑らかな楕円曲線なら、
+$F(0,u,v,w)=0$ はそれぞれ simple elliptic 型 $\widetilde E_7,\widetilde E_8$
+の重み付き cone である。滑らかな曲面 $X$ 自身にその型の特異点があるという意味ではない。
+境界が特異なら、その cone に孤立特異点の結果をそのまま適用できない。
+
+Etingof--Ginzburg は適切な正規形の potential
+\[
+ [uvw-qvuw]-\lambda\bigl(P(u)+Q(v)+R(w)\bigr)
+\]
+を扱う。最高次数の組は $E_7$ 型で $(4,4,2)$、$E_8$ 型で $(6,3,2)$ である。
+\cite[Theorem 3.3.2]{EG2010} は最高重みの斉次 potential が三次元 CY であることを
+仮定して、低重み項を加えた filtered 代数について結論する。
+同論文の Theorems 3.4.4--3.4.5 による正規形、semiuniversal な族、中心の記述には
+genericity がある。これらを全パラメータでの正則性に読み替えない。
+
+形式級数を任意の非零複素数 $\hbar$ に代入することは、収束または代数化を
+別に示さない限り定義されない。
+Poisson 構造は変形の一次反対称部分を指定するのであり、
+高次の potential、中心元の高次補正、座標変換および gauge 同値まで固定するわけではない。
+従って、本稿が与える全 Poisson 構造の中心的超曲面量子化の存在から、
+$\operatorname{coh}(X)$ の全ての非可換変形の網羅性や intrinsic なモジュライの
+同定は従わない。この逆向きの認識、相対的下降、代数化、特殊化の正則性は
+それぞれ独立した研究課題である。

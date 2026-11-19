@@ -1,0 +1,148 @@
+\section{内在的な分類と symplectic leaf}
+\label{sec:geometry}
+\subsection{基本線束の部分線型系}
+次数1の非零定数ベクトル $D$、次数2の非零可分解二重ベクトル $P$ に対し、
+それぞれ
+\[
+ W=\ker(D:H^0(X,H)\longrightarrow\C),\qquad
+ W=\{s\in H^0(X,H)\mid\iota_{\mathrm ds}P=0\}
+\]
+とおく。いずれも $\dim W=n-1$ である。
+逆にこの次元の部分空間 $W$ から、次数1では $D$ の直線、次数2では
+2次元 annihilator の最高外積 $P$ の直線が一意に回収される。
+
+この対応の内在性を記す。$r=n-1$、$W=\langle s_1,\ldots,s_r\rangle$ とし、
+$H$ の局所自明化 $s_i=f_ie$ を用いて
+\begin{equation}
+ \theta_W=\left(\sum_{i=1}^{r}(-1)^{i-1}f_i\,
+ \mathrm df_1\wedge\cdots\wedge\widehat{\mathrm df_i}\wedge\cdots\wedge\mathrm df_r
+ \right)\otimes e^{\otimes r}
+ \in H^0(X,\Omega_X^{n-2}\otimes H^{\otimes(n-1)})
+ \label{eq:intrinsic-form}
+\end{equation}
+を定める。$f_r\neq0$ 上で括弧内は
+\[
+ (-1)^{r-1}f_r^r\,
+ \mathrm d(f_1/f_r)\wedge\cdots\wedge\mathrm d(f_{r-1}/f_r)
+\]
+なので、これは局所自明化によらず貼り合う。
+基底変更では行列式倍される。
+$H^{\otimes(n-1)}\simeq K_X^{-1}$ と
+$\Omega_X^{n-2}\otimes K_X^{-1}\simeq\bigwedge^2T_X$ により二重ベクトルの直線を得る。
+
+これが先に分類した構造であることを局所的に確かめる。
+$s_r\neq0$ 上で $t_i=s_i/s_r$ とし、活性な3変数の重みを $(a,b,c)$ とする。
+重みを打ち消して得た座標を $U,V,Z$ と書けば、$X$ の局所方程式は
+$G(t,U,V,Z)=0$ となる。
+$G_Z\neq0$ 上で随伴公式による体積形式は、符号を除いて
+\[
+ \eta=\frac{\mathrm dt_1\wedge\cdots\wedge\mathrm dt_{r-1}
+                    \wedge\mathrm dU\wedge\mathrm dV}{G_Z}
+\]
+である。Jacobian 括弧の $\{U,V\}=G_Z$ を用いると
+$\iota_\pi\eta=\pm\mathrm dt_1\wedge\cdots\wedge\mathrm dt_{r-1}$ となり、
+\eqref{eq:intrinsic-form} と同じ直線を与える。
+両者は大域切断なので稠密開集合での一致から全体で一致する。
+以上で定理\ref{thm:main}(3)の Grassmann 表示を得る。
+
+\subsection{葉と一般階数}
+$n\geq3$ で非零構造に対応する $W$ を固定する。有理写像
+\begin{equation}
+ \rho_W:X\dashrightarrow\mathbb P(W^*)\simeq\mathbb P^{n-2},\qquad
+ p\longmapsto[s_1(p):\cdots:s_{n-1}(p)]
+ \label{eq:leaf-map}
+\end{equation}
+を考える。比 $s_i/s_{n-1}$ は定義される開集合上の Casimir である。
+cone 上の非零 Jacobian 括弧は一般点で階数2を持つ。
+実際、活性方向の偏微分が全て零ならその括弧も零であり、
+それが恒等的に起きないことは前節の Casimir 代表の単射性から従う。
+$s_i\neq0$ 上では Euler 場 $E$ は $E(s_i)=s_i\neq0$ を満たす一方、
+Hamiltonian 方向は $s_i$ を消す。従って $E$ は括弧の像に入らず、
+射影化後の一般階数も2のままである。
+
+\eqref{eq:leaf-map} のファイバーで、写像が正則であり
+ファイバーが滑らかで括弧の階数が2となる部分の連結成分が symplectic leaf である。
+実際、この部分では Hamiltonian 分布とファイバーの接空間が一致する。
+基底集合では \eqref{eq:intrinsic-form} が零なので、階数2の葉が有理写像の未定義部分を通って延長されることはない。
+一般の $W$ と一般のファイバーについて、その閉包 $Y$ は
+$H$ に属する $n-2$ 個の線型切断で得られる滑らかな曲面である。
+次数2では $|H|$ は基点を持たないので Bertini の定理を適用する。
+次数1の唯一の基点では $x_0,\ldots,x_{n-1}$ が局所座標であるため、
+独立な線型切断はそこで滑らかである。他の点では同じく Bertini を用いる。
+随伴公式と交点数は
+\[
+ K_Y=(K_X+(n-2)H)|_Y=-H|_Y,\qquad (H|_Y)^2=H^n=d
+\]
+を与える。従って $Y$ は同じ次数の del Pezzo 曲面である。
+特殊な $W$ で全てのファイバー閉包が滑らかになるとは主張しない。
+$n=2$ では $\mathbb P(W^*)$ は点であり、次節の記述になる。
+
+\section{曲面の退化因子}
+\label{sec:surfaces}
+$n=2$ では $\bigwedge^2T_X\simeq-K_X=H$ であり、全ての切断が Poisson である。
+非零切断 $s$ の零因子 $D_s=(s=0)$ は反標準因子である。
+$X\setminus D_s$ は連結な2次元 symplectic leaf であり、$D_s$ の各点は0次元 leaf である。
+連結性は、既約な滑らかな複素多様体から複素余次元1の閉部分を除いた開部分が
+連結であることによる。
+
+\subsection{次数1}
+反標準系は1個の基点を持つ pencil である。
+標準方程式では基点は $x_0=x_1=0$、$z^2=y^3$ で与えられる。
+$y,z$ は非零で stabilizer は自明であり、$x_0,x_1$ が局所座標となる。
+従って全ての反標準メンバーは基点で滑らかである。
+
+\begin{proposition}
+次数1の非零反標準因子は被約かつ既約であり、
+滑らかな楕円曲線、1個の node を持つ有理曲線、1個の cusp を持つ有理曲線の
+いずれかである。
+\end{proposition}
+\begin{proof}
+$D_s=\sum m_iC_i$ と分解すると
+$1=H\cdot D_s=\sum m_i(H\cdot C_i)$ は正整数の和である。
+よって成分は1個、重複度も1である。
+随伴公式より $p_a(D_s)=1$。特異なら正規化の種数は0で全 $\delta$ 不変量は1となる。
+滑らかな曲面の被約 Cartier 因子の特異点は平面曲線特異点であり、
+$\delta=1$ の場合は node または cusp である。
+具体的には、$s=0$ 上の残る重み1の座標を $u$ と取ると
+$z^2=y^3+au^4y+bu^6$ となる。
+$u=0$ での点は滑らかで、$u\neq0$ 上では三次式の重根を調べればよい。
+$4a^3+27b^2\neq0$ なら滑らか、判別式が零で $(a,b)\neq(0,0)$ なら node、
+$a=b=0$ なら cusp である。これにより特異点の分類も直接確認できる。
+\end{proof}
+
+\subsection{次数2}
+反標準写像 $p:X\to\mathbb P^2$ は滑らかな四次曲線
+$B=(f_4=0)$ に分岐する二重被覆である。
+$D_s=p^{-1}(L)$、$L=(s=0)$ である。
+\begin{center}
+\begin{tabular}{lp{10cm}}
+\toprule
+$L\cap B$ の重複度 & $D_s$ の型\\
+\midrule
+$1+1+1+1$ & 滑らかな楕円曲線\\
+$2+1+1$ & 既約な nodal rational curve\\
+$3+1$ & 既約な cuspidal rational curve\\
+$2+2$ & 2本の $(-1)$ 曲線が2点で横断的に交わる\\
+$4$ & 2本の $(-1)$ 曲線が1点で接する\\
+\bottomrule
+\end{tabular}
+\end{center}
+この表を証明する。重複度 $r$ の交点近くでは解析的な単元の平方根を吸収して
+$z^2=t^r$ と書ける。$r=2$ は node、$r=3$ は cusp、$r=4$ は接する2枝を与える。
+$f_4|_L$ が平方になるのは全ての根の重複度が偶数のときであり、
+この場合に限って逆像は2成分に分解する。
+各成分は $L\simeq\mathbb P^1$ と同型で $H$ との交点数は1である。
+随伴公式より自己交点は $-1$。成分間の交点数は2であり、
+$2+2$ の場合は2点に、$4$ の場合は1点に集中する。
+固定した曲面で表の全ての型が現れると主張するものではない。
+
+\subsection{Jacobian 表示の符号}
+中心的な重み1の座標を $s$ とし、残る変数を $(u,v,w)$ とする。
+重みは次数1で $(1,2,3)$、次数2で $(1,1,2)$ であり、$m=a+b+c$ である。
+座標の向きを $(s,u,v,w)$ と固定すれば
+\[
+ \{g,h\}=\det\frac{\partial(s,F,g,h)}{\partial(s,u,v,w)}
+\]
+は $\{u,v\}=F_w$、$\{v,w\}=F_u$、$\{w,u\}=F_v$ を満たす。
+行を $(F,s,g,h)$ の順にすると全体の符号が逆になる。
+この規約を次の量子化の関係式でも用いる。

@@ -1,0 +1,176 @@
+\RequirePackage{fix-cm}
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage[margin=25mm]{geometry}
+\usepackage{booktabs,longtable,array}
+\usepackage[unicode,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{luatexja-fontspec}
+\setmainjfont{Noto Serif CJK JP}
+\setsansjfont{Noto Sans CJK JP}
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{remark}[theorem]{注意}
+\renewcommand{\proofname}{証明}
+\newcommand{\C}{\mathbb C}
+\newcommand{\A}{\mathbb A}
+\newcommand{\Pj}{\mathbb P}
+\newcommand{\Gr}{\operatorname{Gr}}
+\newcommand{\Pois}{\operatorname{Pois}}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\Version}{1.0}
+\title{次数1・2の del Pezzo manifold の\texorpdfstring{\\}{ }Poisson スキームと中心的超曲面量子化}
+\author{}
+\date{2026年11月20日\quad v\Version\quad 研究原稿}
+\begin{document}
+\maketitle
+\begin{abstract}
+滑らかな複素 $n$ 次元 del Pezzo manifold $X$、$n\geq2$、
+$-K_X=(n-1)H$、$H^n\in\{1,2\}$ の大域 Poisson 構造を扱う。
+重み付き Euler 列と偏微分列の Koszul 完全性から全ての二重ベクトルを記述し、
+Jacobi 方程式の零スキームが次数1では $\mathbb A^n$、次数2では
+$\operatorname{Gr}(2,n+1)$ の Pl\"ucker affine cone に等しいことを証明する。
+次数2ではイデアルそのものの一致を示すので、非被約な基底上の係数族も含まれる。
+非零構造の一般階数は2であり、射影化は
+$\operatorname{Gr}(n-1,H^0(X,H))$ に内在的に同定される。
+標準 ambient stack への一意な Poisson lift、葉の記述、曲面での退化因子、
+中心元による次数付き形式量子化を併せて示す。
+3次元の場合の分類は既知であり、高次元およびスキーム論的記述の新規性の包括的確認は未了である。
+量子化の代数化、任意の非形式的特殊化での AS 正則性、全非可換変形の網羅性は主張しない。
+\end{abstract}
+\tableofcontents
+
+\section{問題と主結果}
+\label{sec:introduction}
+本稿の対象は、滑らかな連結複素射影多様体 $X$ と ample Cartier 因子 $H$ で
+\[
+ n=\dim X\geq2,\qquad -K_X\simeq(n-1)H,\qquad d=H^n\in\{1,2\}
+\]
+を満たすものである。$X$ 自体は固定する。
+$V_X=H^0(X,\bigwedge^2T_X)$、$W_X=H^0(X,\bigwedge^3T_X)$ とおき、
+二次写像 $Q_X:V_X\to W_X$、$Q_X(\pi)=\frac12[\pi,\pi]$ の零スキームを
+\[
+ \Pois_{\mathrm{sch}}(X)=
+ \operatorname{Spec}\!\left(\operatorname{Sym}(V_X^*)/
+       (Q_X^*(W_X^*))\right)
+\]
+と書く。ここで括弧は Schouten 括弧であり、右辺のイデアルは
+$Q_X$ の全ての係数で生成する。自己同型群による商は取らない。
+
+\begin{theorem}[固定多様体上の Poisson スキーム]
+\label{thm:main}
+上の仮定の下で、次が成り立つ。
+\begin{enumerate}
+\item $d=1$ なら $\dim V_X=n$ であり、$Q_X$ は恒等的に零である。
+従って $\Pois_{\mathrm{sch}}(X)\simeq\mathbb A^n$。
+\item $d=2$ なら $\dim V_X=\binom{n+1}{2}$ であり、適切な線型座標の下で
+Jacobi イデアルは Pl\"ucker イデアルに等しい。
+従って $\Pois_{\mathrm{sch}}(X)$ は
+$\Gr(2,n+1)\subset\mathbb P^{\binom{n+1}{2}-1}$ の affine cone である。
+これらは被約かつ既約なスキームである。
+\item 全ての非零複素 Poisson 構造は一般点で階数2を持ち、スカラーによる射影化は
+\[
+ \mathbb P\Pois(X)\simeq\Gr(n-1,H^0(X,H))
+\]
+に内在的に同定される。
+\item 標準埋め込み $X\subset\mathcal P$、
+$\mathcal P=\mathbb P(1^n,2,3)$ または $\mathbb P(1^{n+1},2)$ を
+重み付き射影スタックとして解釈すると、各 Poisson 構造は
+$X$ を Poisson 部分多様体とする $\mathcal P$ 上の Poisson 構造に一意に延長する。
+定義式 $F$ を固定すれば、cone の多項式環上で $F$ を Casimir とする
+重み0の代表も一意である。
+\end{enumerate}
+\end{theorem}
+
+ここで $\mathbb A^n$ や affine cone との線型同定には座標の選択が入る。
+一方、射影 Grassmann 多様体による記述は、$K_X^{-1}\simeq H^{\otimes(n-1)}$
+の定数倍の選択を除けば内在的である。
+スキームとしての主張は、任意の可換 $\C$ 代数 $B$ に対し、
+$V_X\otimes B$ 内で Jacobi 恒等式を満たす元が同じ方程式で分類されることを意味する。
+$X$ 自体を動かす変形問題とは区別する。
+
+\subsection{先行研究との関係と到達範囲}
+標準重み付きモデルは del Pezzo 多様体の既知の分類による。
+$n\geq3$ では Kuznetsov--Prokhorov \cite[Theorem 1.2(i),(ii)]{KP2023}、
+曲面では Cheltsov--Prokhorov \cite[Theorem 2.5]{CP2021} の滑らかな場合を用いる。
+以下の大域二重ベクトルの計算は、これらのモデルを入力として直接行う。
+
+3次元 Fano 多様体上の Poisson 構造は Loray--Pereira--Touzet
+\cite[Theorems 7.1, 9.1]{LPT2013} により研究されている。
+次数1・2の del Pezzo threefold に現れる成分は基本線束 $H$ の pencil に由来し、
+本稿の射影パラメータ空間はそれぞれ $\mathbb P^2$、$\Gr(2,4)$ である。
+この3次元の集合論的分類を本稿の新しい結果として扱わない。
+Mayanskiy \cite[Introduction, Theorem 1]{Mayanskiy2015} は cubic threefold について
+Pl\"ucker 関係と Poisson スキームを明示的に計算している。
+従って本稿で比較すべき点は、次数1・2、任意次元での大域計算と、
+次数2における Jacobi イデアル自体の回収である。
+これらの主張の優先権を確定する文献調査は継続中である。
+
+形式量子化の存在には Kontsevich の affine formality \cite{Kontsevich} を用いる。
+曲面での cyclic potential と中心元は
+Etingof--Ginzburg \cite[Lemma 7.4.2, Proposition 8.1.1(i)]{EG2010} に基づく。
+本稿の中心的超曲面表示はこれら既知の定理の適用であり、
+量子化の一意性や非可換 del Pezzo 多様体全体の分類を意味しない。
+
+\subsection{構成}
+まず全ての二重ベクトルを重み付き多項式の Casimir 代表に直し、
+Jacobi イデアルを決定する。続いて内在的な Grassmann 表示、
+symplectic leaf、曲面の反標準零因子を調べる。
+後半では形式量子化と曲面の具体表示を扱い、条件付き AS 正則性を分けて述べる。
+次数3・4の詳細な分類は本稿に含めず、関連する構成と障害を研究ノートに置く。
+
+\input{papers/sections/classification}
+\input{papers/sections/geometry}
+\input{papers/sections/quantization}
+
+\section{零 Poisson 構造の無限小変形}
+\label{sec:infinitesimal}
+スキームとしての分類は、複素点の分類だけでは見えない差を明示する。
+次数1では全ての変形方向が可換なベクトル空間をなし、任意の階数の Artin 基底上でも
+Jacobi 方程式による制約はない。次数2では零点で二次の障害が現れる。
+
+\begin{corollary}
+\label{cor:second-order}
+次数2の座標同定 $V_X\simeq\bigwedge^2\C^{n+1}$ を固定する。
+任意の $Q\in V_X$ に対し $\varepsilon Q$ は
+$\C[\varepsilon]/(\varepsilon^2)$ 上の零 Poisson 構造の変形である。
+これが $\C[\varepsilon]/(\varepsilon^3)$ 上へ持ち上がる必要十分条件は
+$Q\wedge Q=0$ である。この条件の下では $tQ$ により全次数へ持ち上がる。
+\end{corollary}
+\begin{proof}
+Pl\"ucker 方程式は斉次二次なので、双対数上では自動的に消える。
+任意の二次の持ち上げは $\varepsilon Q+\varepsilon^2R$ と書け、
+その外積二乗は $\varepsilon^2Q\wedge Q\pmod{\varepsilon^3}$ である。
+従って $R$ の選び方では障害を除けない。
+$Q\wedge Q=0$ なら $tQ$ が Jacobi 方程式を恒等的に満たす。
+\end{proof}
+
+例えば $n\geq3$ で
+$Q=\partial_{x_0}\wedge\partial_{x_1}+\partial_{x_2}\wedge\partial_{x_3}$
+とすると、これは一次変形を与えるが二次へ持ち上がらない。
+$Q\wedge Q=2\partial_{x_0}\wedge\partial_{x_1}\wedge
+\partial_{x_2}\wedge\partial_{x_3}\neq0$ だからである。
+この例は、$\dim T_0\Pois_{\mathrm{sch}}(X)=\binom{n+1}{2}$ が
+実際の次元 $2n-1$ より大きいことを具体化する。
+曲面の場合には $\bigwedge^4\C^3=0$ なのでこの障害はない。
+
+\section{今後の数学的課題}
+\label{sec:open}
+主定理は固定した滑らかな $X$ 上の Poisson スキームを決定するが、
+動く $X$ 上の相対分類、$\operatorname{Aut}(X)$ による商、
+全 Poisson 係数空間上の量子化の選択と降下、代数化を決定しない。
+次の段階では、滑らかな重み付き方程式のパラメータ空間上で
+Euler--Koszul の計算と Jacobi イデアルの線型回収を相対化し、
+方程式の変換に伴う行列式の twist を明示する。
+曲面の非形式的な量子化では、中心元の補正、Rees algebra、
+genericity と AS 正則性の仮定を独立に検証する必要がある。
+これらを本稿で証明済みの結果と混同しない。
+
+\bibliographystyle{alpha}
+\bibliography{references}
+\end{document}

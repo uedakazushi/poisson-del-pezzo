@@ -1,0 +1,478 @@
+\section{重み付きモデルと大域的多重ベクトル}
+\label{sec:models}
+
+以下，基礎体は $\mathbb C$ とする．$X$ は滑らかな連結射影多様体，
+$\dim X=n\geq 2$，$H$ は ample Cartier 因子であり，
+$-K_X\simeq (n-1)H$ および $d=H^n\in\{1,2\}$ を満たすとする．
+ここでのすべての Poisson 構造は代数的なものを指す．
+$n\geq3$ では del Pezzo 多様体の重み付きモデル
+\cite[Theorem 1.2]{KP2023}，$n=2$ では反標準モデル
+\cite[Theorem 2.5]{CP2021} により，次の方程式を取れる．
+\begin{align}
+ d=1:\quad
+ S&=\mathbb C[x_0,\ldots,x_{n-1},y,z],
+ &F&=z^2-y^3-A_4(x)y-A_6(x),
+ &\deg(x_i,y,z)&=(1,2,3),
+ \label{eq:degree-one-model}\\
+ d=2:\quad
+ S&=\mathbb C[x_0,\ldots,x_n,z],
+ &F&=z^2-f_4(x),
+ &\deg(x_i,z)&=(1,2).
+ \label{eq:degree-two-model}
+\end{align}
+添字は多項式の次数を表す．$F$ の重み付き次数を $m$ と書くと，
+それぞれ $m=6,4$ である．平方完成と $y$ の平行移動は標数 $0$ で許される．
+$R=S/(F)$ は $H$ に関する全切断環であり，$H=\mathcal O_X(1)$ である．
+
+変数を一括して $q_0,\ldots,q_{N-1}$，その重みを $w_i$ と書く．
+ここで $N=n+2$ である．ambient は重み付き射影\emph{スタック}
+\[
+ \mathcal P=[(\mathbb A^N\setminus\{0\})/\mathbb G_m]
+\]
+とする．次数 $1$ の非自明な stabilizer は $y$ 軸と $z$ 軸に，
+次数 $2$ のそれは $z$ 軸にのみ現れ，\eqref{eq:degree-one-model}，
+\eqref{eq:degree-two-model} の $X$ はこれらを避ける．
+したがって $\mathcal P$ 内の $X$ は元の滑らかなスキームである．
+次数 $2$ では $X$ の滑らかさから分岐四次超曲面
+$(f_4=0)\subset\mathbb P^n$ も滑らかである．
+
+$\partial_{q_i}$ に重み $-w_i$ を与え，
+$\operatorname{Der}S=\operatorname{Der}_{\mathbb C}S$ と略記する．
+Euler ベクトル場と縮約の規約を
+\[
+ E=\sum_i w_iq_i\partial_{q_i},\qquad
+ \iota_\alpha(v_1\wedge\cdots\wedge v_r)
+ =\sum_{j=1}^r(-1)^{j-1}\alpha(v_j)
+ v_1\wedge\cdots\wedge\widehat v_j\wedge\cdots\wedge v_r
+\]
+で定める．重み $0$ の二重ベクトル $B$ は $\mathcal P$ 上に降下し，
+$B$ と $B+E\wedge V$ は同じ切断を表す．ここで $V\in(\operatorname{Der}S)_0$ である．
+括弧は $\{a,b\}=B(\mathrm da,\mathrm db)$ とする．
+$F$ が Casimir である条件 $\iota_{\mathrm dF}B=0$ は，
+単に $(F)$ が Poisson ideal となる条件より強い．
+
+\begin{lemma}[必要な消滅]
+\label{lemma:weighted-vanishing}
+任意の整数 $t$ に対して
+\[
+ H^0(\mathcal P,\mathcal O_{\mathcal P}(t))=S_t,
+ \qquad
+ H^i(\mathcal P,\mathcal O_{\mathcal P}(t))=0
+ \quad(0<i<N-1),
+\]
+および
+\[
+ H^{N-1}(\mathcal P,\mathcal O_{\mathcal P}(t))
+ \simeq S_{-t-\sum_iw_i}^{\vee}
+\]
+が成り立つ．したがって
+\[
+ H^0(X,\mathcal O_X(t))=R_t,\qquad
+ H^1(X,\mathcal O_X(t))=0,\qquad H^2(X,\mathcal O_X)=0.
+\]
+\end{lemma}
+
+\begin{proof}
+開集合 $q_i\ne0$ による \v Cech 複体を Laurent 単項式ごとに分解する．
+負指数を持つ変数の集合が空でも全体でもない場合，対応する部分複体は完全である．
+負指数を持つ変数がない場合が次数 $0$ に，すべての変数の指数が負の場合が
+次数 $N-1$ に寄与する．後者の単項式を $(q_0\cdots q_{N-1})^{-1}$ と比較すれば
+表示した双対性を得る．$\mathbb G_m$ の重み成分を取る操作は完全である．
+
+超曲面の完全列
+\[
+ 0\longrightarrow\mathcal O_{\mathcal P}(t-m)
+ \xrightarrow{\ F\ }\mathcal O_{\mathcal P}(t)
+ \longrightarrow\mathcal O_X(t)\longrightarrow0
+\]
+と $N-1=n+1\geq3$ から $H^0$ の記述と $H^1$ の消滅を得る．
+$n\geq3$ では同じ列から $H^2(X,\mathcal O_X)=0$ も従う．
+$n=2$ で問題となる ambient の最上コホモロジーは
+$S_{m-\sum_iw_i}^{\vee}=S_{-1}^{\vee}=0$ である．
+\end{proof}
+
+\begin{lemma}[ambient への一意な延長]
+\label{lemma:ambient-restriction}
+制限写像
+\[
+ H^0(\mathcal P,\wedge^2T_{\mathcal P})
+ \longrightarrow H^0(X,\wedge^2(T_{\mathcal P}|_X))
+\]
+は同型である．したがって $X$ 上の大域的二重ベクトルは
+$\mathcal P$ 上の二重ベクトルへ一意に延長する．
+この段階では Jacobi 恒等式は主張しない．
+\end{lemma}
+
+\begin{proof}
+$Y=\mathcal P$ または $X$ とし，
+$\mathcal V_Y=\bigoplus_i\mathcal O_Y(w_i)$，$T=T_{\mathcal P}|_Y$ とおく．
+Euler 列とその外積から
+\[
+ 0\longrightarrow\mathcal O_Y\xrightarrow{E}\mathcal V_Y
+ \longrightarrow T\longrightarrow0,
+ \qquad
+ 0\longrightarrow T\longrightarrow\wedge^2\mathcal V_Y
+ \longrightarrow\wedge^2T\longrightarrow0
+\]
+を得る．補題~\ref{lemma:weighted-vanishing} より $H^1(Y,T)=0$ である．
+また両方の重み系で $w_i<m$ および $w_i+w_j<m$（$i\ne j$）が成り立つ．
+よって $\mathcal V_Y$ と $\wedge^2\mathcal V_Y$ の大域切断は，
+$Y=\mathcal P,X$ で同じ多項式空間になる．$H^1(Y,\mathcal O_Y)=0$ も用いると，
+両辺はともに
+\[
+ \frac{(\wedge^2\operatorname{Der}S)_0}
+ {E\wedge(\operatorname{Der}S)_0}
+\]
+と同一視され，制限写像は恒等写像に対応する．
+最後に $\wedge^2T_X\hookrightarrow\wedge^2(T_{\mathcal P}|_X)$ を用いる．
+\end{proof}
+
+\begin{proposition}[Casimir 代表の存在と一意性]
+\label{prop:casimir-representative}
+各 $\pi\in H^0(X,\wedge^2T_X)$ は，重み $0$ かつ
+$\iota_{\mathrm dF}\widetilde B=0$ を満たす多項式二重ベクトル
+$\widetilde B$ によって一意に表される．さらに
+$\widetilde B=\iota_{\mathrm dF}C$ と書け，$C$ は次の形に一意に定まる．
+\begin{align}
+ d=1:\quad C&=D\wedge\partial_y\wedge\partial_z,
+ &D&=\sum_{i=0}^{n-1}c_i\partial_{x_i},\quad c_i\in\mathbb C,
+ \label{eq:degree-one-trivector}\\
+ d=2:\quad C&=P\wedge\partial_z,
+ &P&=\sum_{0\leq i<j\leq n}a_{ij}\partial_{x_i}\wedge\partial_{x_j},
+ \quad a_{ij}\in\mathbb C.
+ \label{eq:degree-two-trivector}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+補題~\ref{lemma:ambient-restriction} により $\pi$ を
+$B\in(\wedge^2\operatorname{Der}S)_0$ で表す．
+$\pi$ が $X$ に接することは，$\iota_{\mathrm dF}B$ が $X$ 上で Euler 方向に入ることを意味する．
+Euler 列の核と補題~\ref{lemma:weighted-vanishing} の $H^0$ の記述から
+\[
+ \iota_{\mathrm dF}B=gE+FV,
+ \qquad g\in S_m,\quad V\in(\operatorname{Der}S)_0
+\]
+と書ける．もう一度 $\mathrm dF$ で縮約し，$E(F)=mF$ を用いると
+$V(F)=-mg$ である．したがって
+\begin{equation}
+ \widetilde B=B-\frac1mE\wedge V
+ \label{eq:casimir-correction}
+\end{equation}
+は同じ射影的二重ベクトルを表し，
+$\iota_{\mathrm dF}\widetilde B=0$ を満たす．
+$g$ の多項式への持ち上げを定数倍の $F$ だけ変えても，
+$V$ の変化は Euler 方向なので \eqref{eq:casimir-correction} は変わらない．
+
+$\operatorname{Spec}R\setminus\{0\}$ は $X$ 上の $\mathbb G_m$-torsor であり滑らかである．
+また $\mathrm dF=0$ なら Euler 公式から $F=0$ である．
+したがって $F_{q_0},\ldots,F_{q_{N-1}}$ の共通零点は原点のみである．
+これらは Cohen--Macaulay 環 $S$ の $N$ 個の斉次パラメータなので正則列をなす．
+その Koszul 複体の完全性から
+\[
+ \widetilde B=\iota_{\mathrm dF}C,
+ \qquad C\in(\wedge^3\operatorname{Der}S)_{-m}
+\]
+を得る．$\partial_{q_i}\wedge\partial_{q_j}\wedge\partial_{q_k}$ の係数の次数は
+$w_i+w_j+w_k-m$ である．次数 $1$ ではこれが非負となる重みの組は
+$(1,2,3)$ のみ，次数 $2$ では $(1,1,2)$ のみであり，係数は定数である．
+これが \eqref{eq:degree-one-trivector} と \eqref{eq:degree-two-trivector} を与える．
+
+二つの Casimir 代表の差は $E\wedge V$ である．縮約が消えることから
+$mFV=V(F)E$ を得る．$E$ の係数の最大公約数は $1$ なので $F\mid V(F)$ である．
+重みから $V(F)=aF$（$a\in\mathbb C$）となり，$V=(a/m)E$，したがって
+$E\wedge V=0$ である．これで $\widetilde B$ の一意性が分かる．
+
+最後に $\iota_{\mathrm dF}C=0$ なら Koszul 完全性により
+$C=\iota_{\mathrm dF}Q$，$Q\in(\wedge^4\operatorname{Der}S)_{-2m}$ と書ける．
+異なる四個の重みの和は次数 $1$ で高々 $7$，次数 $2$ で高々 $5$ であり，
+それぞれ $2m=12,8$ より小さい．ゆえに $Q=0$，したがって $C=0$ である．
+\end{proof}
+
+特に，選んだ重み付き座標に関して
+\[
+ h^0(X,\wedge^2T_X)=
+ \begin{cases}
+ n&d=1,\\
+ \binom{n+1}{2}&d=2
+ \end{cases}
+\]
+である．ここまでの議論は Jacobi 恒等式を一切仮定していない．
+
+\section{Jacobi 方程式と Poisson スキーム}
+\label{sec:classification}
+
+\subsection{次数 \texorpdfstring{$1$}{1} の Jacobian 括弧}
+
+\eqref{eq:degree-one-trivector} に対応する Casimir 代表は
+\begin{equation}
+ \widetilde\pi_D
+ =F_zD\wedge\partial_y+D(F)\partial_y\wedge\partial_z
+ +F_y\partial_z\wedge D.
+ \label{eq:degree-one-bivector}
+\end{equation}
+したがって
+\[
+ \{x_i,x_j\}=0,\qquad
+ \{x_i,y\}=2c_iz,\qquad
+ \{y,z\}=D(F),\qquad
+ \{z,x_i\}=c_iF_y.
+\]
+$D\ne0$ のとき $D(u)=1$ となる線型座標 $u$ と，
+$D(s_i)=0$ となる独立な $n-1$ 個の線型座標 $s_i$ を取る．
+$s_i$ は中心的で，残る括弧は
+\[
+ \{u,y\}=F_z,\qquad \{y,z\}=F_u,\qquad \{z,u\}=F_y
+\]
+である．
+
+\begin{lemma}[三変数 Jacobian 括弧]
+\label{lemma:jacobian-bracket}
+任意の可換 $\mathbb C$-代数 $B$ と任意の $G\in B[u,v,w]$ に対し，
+$B$ を中心的とし
+\[
+ \{u,v\}=G_w,\qquad\{v,w\}=G_u,\qquad\{w,u\}=G_v
+\]
+で定めた括弧は Poisson 括弧である．また $G$ は Casimir である．
+\end{lemma}
+
+\begin{proof}
+Jacobiator は各引数について導分なので，$(u,v,w)$ について調べればよい．その値は
+\[
+ G_wG_{uv}-G_vG_{uw}-G_wG_{uv}+G_uG_{vw}
+ +G_vG_{uw}-G_uG_{vw}=0
+\]
+である．また $\{G,u\}=G_v\{v,u\}+G_w\{w,u\}=0$ であり，
+残る二つの座標も同様である．
+\end{proof}
+
+これにより，次数 $1$ ではすべての二重ベクトルが Poisson であり，
+その Casimir 代表も $S$ 上で Poisson である．
+$D=0$ の場合は零括弧である．
+
+\subsection{次数 \texorpdfstring{$2$}{2} の Jacobiator}
+
+$a_{ji}=-a_{ij}$，$a_{ii}=0$ とし，$f_i=\partial f_4/\partial x_i$，
+$V_i=\sum_j a_{ij}f_j$，$V=\sum_iV_i\partial_{x_i}$ とおく．
+\eqref{eq:degree-two-trivector} の Casimir 代表は
+\begin{equation}
+ \widetilde\pi_A=2zP+V\wedge\partial_z,
+ \qquad
+ \{x_i,x_j\}=2za_{ij},\quad\{x_i,z\}=V_i.
+ \label{eq:degree-two-bivector}
+\end{equation}
+Jacobiator の規約を
+\[
+ J(a,b,c)=\{a,\{b,c\}\}+\{b,\{c,a\}\}+\{c,\{a,b\}\}
+\]
+とし，反対称な四添字の式
+\begin{equation}
+ q_{ijk\ell}=a_{ij}a_{k\ell}-a_{ik}a_{j\ell}+a_{i\ell}a_{jk}
+ \label{eq:plucker-equation}
+\end{equation}
+を定める．添字が重複するとこの式は $0$ である．直接計算により
+\begin{equation}
+ J(x_i,x_j,z)=0,\qquad
+ J_{ijk}:=J(x_i,x_j,x_k)=2\sum_{\ell=0}^n q_{ijk\ell}f_\ell.
+ \label{eq:jacobi-plucker-identity}
+\end{equation}
+第一の等式は Hessian $(f_{ij})$ の対称性による．第二の等式は
+$2(a_{jk}V_i+a_{ki}V_j+a_{ij}V_k)$ を展開すれば得られる．
+したがって $J$ は $x$ 方向のみの三重ベクトルであり，その係数は $z$ に依存しない．
+
+\begin{lemma}[分岐方程式の偏微分の独立性]
+\label{lemma:gradient-independence}
+$f_0,\ldots,f_n\in\mathbb C[x_0,\ldots,x_n]_3$ は線型独立である．
+\end{lemma}
+
+\begin{proof}
+非零の定数ベクトル場 $D$ が $D(f_4)=0$ を満たすなら，線型座標変換後，
+$f_4$ は一変数に依存しなくなる．その変数に対応する座標点では $f_4$ とすべての偏微分が消え，
+分岐四次超曲面の滑らかさに矛盾する．
+\end{proof}
+
+\subsection{集合としての消滅から理想の一致へ}
+
+\begin{definition}[固定多様体の Poisson スキーム]
+\label{def:poisson-scheme}
+$V_X=H^0(X,\wedge^2T_X)$，$W_X=H^0(X,\wedge^3T_X)$ とする．
+二次写像
+\[
+ Q_X:V_X\longrightarrow W_X,\qquad
+ Q_X(\pi)=\tfrac12[\pi,\pi]
+\]
+の零スキームを $\operatorname{Pois}_{\mathrm{sch}}(X)$ と書く．
+具体的には $\operatorname{Sym}(V_X^\vee)$ において
+$Q_X$ の全座標関数で生成される理想で定義する．
+この定義では被約化も $\operatorname{Aut}(X)$ による商も取らない．
+\end{definition}
+
+\begin{theorem}[Jacobi ideal と Pl\"ucker ideal の一致]
+\label{thm:jacobi-scheme}
+固定した滑らかな $X$ と上の重み付きモデルについて次が成り立つ．
+\begin{enumerate}
+ \item 次数 $1$ では Jacobi ideal は零理想であり，
+ $\operatorname{Pois}_{\mathrm{sch}}(X)\simeq\mathbb A^n$ である．
+ \item 次数 $2$ では座標 $a_{ij}$ に関する Jacobi ideal は，
+ \eqref{eq:plucker-equation} で生成される Pl\"ucker ideal と等しい．したがって
+ \[
+ \operatorname{Pois}_{\mathrm{sch}}(X)
+ \simeq\operatorname{Spec}
+ \mathbb C[a_{ij}\mid0\leq i<j\leq n]/(q_{ijk\ell})
+ \]
+ は $\operatorname{Gr}(2,n+1)$ の Pl\"ucker 埋め込みのアフィン錐である．
+ 特にこのスキームは被約かつ既約である．
+\end{enumerate}
+これらの同型は任意の可換 $\mathbb C$-代数上の係数族にも適用される．
+多様体 $X$ 自体の変形についての主張ではない．
+\end{theorem}
+
+\begin{proof}
+次数 $1$ の $Q_X$ は，前小節により $V_X(\mathbb C)$ のすべての点で消える．
+係数体が無限体なので二次多項式写像として恒等的に $0$ である．
+
+次数 $2$ で $\mathcal A=\mathbb C[a_{ij}]$ とおき，
+Jacobi ideal を $I_J$，Pl\"ucker ideal を $I_P$ と書く．
+式~\eqref{eq:jacobi-plucker-identity} から，普遍 Jacobiator のすべての多項式係数は
+$I_P$ に属する．$X$ 上への制限と射影化は線型なので，$I_J\subset I_P$ である．
+
+逆向きを\emph{線型な係数回収}により示す．Euler 列
+$0\to\mathcal O_X\xrightarrow E\mathcal V_X\to T_{\mathcal P}|_X\to0$
+から，自然な単射
+\begin{equation}
+ \wedge^3T_X\hookrightarrow\wedge^3(T_{\mathcal P}|_X)
+ \xrightarrow{\ E\wedge\ }\wedge^4\mathcal V_X
+ \label{eq:euler-jacobi-injection}
+\end{equation}
+を得る．第二の写像は局所的な持ち上げの選び方によらず，
+Euler 方向の差を外積すると $0$ になるため well-defined である．
+局所的に Euler 列を分裂すればその単射性も分かる．
+普遍 Jacobiator にこの写像を適用すると，
+$\partial_{x_i}\wedge\partial_{x_j}\wedge\partial_{x_k}\wedge\partial_z$
+の成分は符号を除き $2zJ_{ijk}$ である．
+これは $R_5\otimes\mathcal A$ の元であり，
+$Q_X$ の座標関数の $\mathbb C$-線型結合を係数として持つ．
+
+$F=z^2-f_4(x)$ が $z$ に関して monic であることから，次数付きベクトル空間として
+\begin{equation}
+ R_5=\mathbb C[x]_5\oplus z\mathbb C[x]_3
+ \label{eq:degree-five-splitting}
+\end{equation}
+である．第二成分の $z$ の係数を取る線型写像を適用すると，
+$2J_{ijk}=4\sum_\ell q_{ijk\ell}f_\ell$ を回収できる．
+補題~\ref{lemma:gradient-independence} により，
+$\mathbb C[x]_3$ 上の線型汎関数 $\lambda_\ell$ を
+$\lambda_\ell(f_j)=\delta_{\ell j}$ となるよう選べる．
+さらに $\lambda_\ell/4$ を適用すると，符号を除き $q_{ijk\ell}$ そのものを得る．
+よって各 $q_{ijk\ell}$ は $Q_X$ の座標関数の線型結合であり，
+$I_P\subset I_J$ である．ここでは零点集合や根基を取る議論を用いていない．
+$n=2$ の場合は四つの異なる $x$ 添字が存在せず，両方の理想は零理想となる．
+
+Pl\"ucker ideal の素性とアフィン錐の同定は
+補題~\ref{lemma:plucker-prime} による．
+最後に，各同型は $\mathbb C$ 上の座標環の同型なので，任意の可換
+$\mathbb C$-代数 $B$ について $B$ 値点の同型を与える．
+固定した $X$ の基底拡大では大域切断と Schouten 括弧が係数拡大と両立する．
+\end{proof}
+
+\begin{lemma}[二次 Pl\"ucker ideal の素性]
+\label{lemma:plucker-prime}
+$M\geq3$ とし，$\mathcal B=\mathbb C[p_{ij}\mid1\leq i<j\leq M]$ とする．
+二次 Pl\"ucker 関係で生成される理想 $I$ は素理想であり，
+$\operatorname{Spec}(\mathcal B/I)$ は二次元部分空間の Grassmann 多様体の
+Pl\"ucker アフィン錐である．
+\end{lemma}
+
+\begin{proof}
+写像
+\[
+ \varphi:\mathcal B\longrightarrow
+ \mathbb C[u_1,\ldots,u_M,v_1,\ldots,v_M],
+ \qquad p_{ij}\longmapsto u_iv_j-u_jv_i
+\]
+を考える．Pl\"ucker 関係は右辺で消えるので $I\subset\ker\varphi$ である．
+単項式 $\prod_{s=1}^r p_{i_sj_s}$ を，
+$i_1\leq\cdots\leq i_r$ かつ $j_1\leq\cdots\leq j_r$
+となるよう並べられるとき標準と呼ぶ．
+非標準な二列は，列を辞書式に並べた後，$i<k<\ell<j$ に対する
+$p_{ij}p_{k\ell}$ と書ける．関係
+\[
+ p_{ij}p_{k\ell}=p_{i\ell}p_{kj}-p_{ik}p_{\ell j}
+\]
+でこれを書き換える．右辺第一項では上段の添字列を保ったまま下段の反転数が減り，
+第二項では昇順に並べた上段の添字列が辞書式に増える．
+同次数の単項式は有限個なので，この操作は停止し，すべての剰余類は標準単項式の線型結合になる．
+
+多項式環の辞書式単項式順序を
+$u_1>\cdots>u_M>v_1>\cdots>v_M$ とすると，
+$\varphi(p_{ij})$ の先頭単項式は $u_iv_j$ である．
+標準単項式の像の先頭単項式は
+$\prod_su_{i_s}\prod_sv_{j_s}$ であり，異なる標準単項式に対して異なる．
+実際，昇順の二つの添字列が一意に復元されるからである．
+よってこれらの像は線型独立であり，$\ker\varphi=I$ を得る．
+$\mathcal B/I$ は整域に埋め込まれるので整域である．
+
+非零点で $p_{ij}\ne0$ とすると，残る $p_{k\ell}$ は
+$p_{ij}$ および $p_{ik},p_{jk}$（$k\ne i,j$）から Pl\"ucker 関係で一意に定まる．
+これは階数 $2$ の二行行列の minors の標準座標表示であり，
+射影化した開集合は二次元部分空間の通常の Grassmann 座標 chart となる．
+これらが非零点を覆うので，射影化は $\operatorname{Gr}(2,M)$ であり，
+その同次座標環が $\mathcal B/I$ である．
+\end{proof}
+
+\begin{corollary}[大きさと特異点]
+\label{cor:poisson-scheme-dimension}
+次数 $2$ の Poisson スキームは次元 $2n-1$ である．
+$n=2$ では $\mathbb A^3$，$n\geq3$ では非零部分が滑らかで頂点のみが特異である．
+頂点での Zariski 接空間の次元は $\binom{n+1}{2}$ である．
+\end{corollary}
+
+\begin{proof}
+補題~\ref{lemma:plucker-prime} の $p_{ij}\ne0$ の開集合は
+一つの可逆座標と $2(n-1)$ 個の自由座標を持つので滑らかで次元 $2n-1$ である．
+頂点では定義式が二次式のみなので接空間は全二重ベクトル空間である．
+$n\geq3$ では
+$\binom{n+1}{2}-(2n-1)=(n-1)(n-2)/2>0$ である．
+\end{proof}
+
+\subsection{持ち上げ，階数，compatibility}
+
+次数 $2$ では $P\wedge P=0$ と $\operatorname{rank}(a_{ij})\leq2$ は同値である．
+これは反対称行列を二次の交代ブロックの直和に直して確認できる．
+$P\ne0$ なら線型座標を選んで $P=\partial_u\wedge\partial_v$ とでき，
+残る $n-1$ 個の独立な線型座標 $s_i$ は中心的である．
+括弧は
+\[
+ \{u,v\}=F_z,\qquad\{v,z\}=F_u,\qquad\{z,u\}=F_v
+\]
+となる．したがって両次数の非零構造は，中心的な $n-1$ 個の線型パラメータを持つ
+三変数 Jacobian 括弧として表される．
+
+Poisson 条件を満たすパラメータに対応する Casimir 代表は，すべて $S$ 上で Poisson なので，$\mathcal P$ 上の Poisson 構造に降下する．
+$F$ が Casimir であることから $X$ も Poisson 部分多様体となる．
+ambient 上の一意性は補題~\ref{lemma:ambient-restriction} による．
+cone 上では $F$-Casimir という正規化を課した場合の一意性であり，
+正規化なしの任意の代表についての主張ではない．
+
+非零構造の一般階数は $2$ である．実際，三次元空間の分解可能な三重ベクトルを
+一形式で縮約した二重ベクトルは階数高々 $2$ であり，射影化しても階数は増えない．
+命題~\ref{prop:casimir-representative} の単射性により，非零パラメータから得た切断は非零なので，
+整な $X$ の一般点での階数はちょうど $2$ である．
+
+\begin{corollary}[二つの括弧の compatibility]
+\label{cor:compatibility}
+次数 $1$ の任意の二つの Poisson 構造は compatible である．
+次数 $2$ の $P,Q$ に対応する二つの Poisson 構造は，
+$P\wedge Q=0$ のとき，かつそのときに限り compatible である．
+非零の $P,Q$ が定める二次元部分空間を $U_P,U_Q$ とすれば，
+この条件は $U_P\cap U_Q\ne0$ と同値である．
+\end{corollary}
+
+\begin{proof}
+次数 $1$ ではすべての線型結合が Poisson なので Schouten 括弧を偏極すればよい．
+次数 $2$ では定理~\ref{thm:jacobi-scheme} により
+$\pi_P+t\pi_Q$ がすべての $t$ で Poisson となることと
+$(P+tQ)\wedge(P+tQ)=0$ が同値である．
+$P\wedge P=Q\wedge Q=0$ なので残る条件は $P\wedge Q=0$ である．
+最後の主張は四つのベクトルの線型従属性である．
+\end{proof}
