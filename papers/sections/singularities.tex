@@ -1,0 +1,180 @@
+% !TeX root = ../../poisson-del-pezzo.tex
+\section{零 Poisson 構造の特異性と標準的な解消}
+\label{sec:singularities}
+
+次数2の相対 Jacobi 錐には，非零部分の滑らかさより強い幾何学的構造がある．
+本節では，零 Poisson 構造を保つ座標変換に関して標準的な blow-up を構成し，
+モジュライスタックに降下させる．以下では $n\geq2$，$m=n+1$ とし，
+$C_m=\operatorname{Cone}(\Gr(2,m))\subset\bigwedge^2\C^m$ と書く．
+Grassmann 多様体の Pl\"ucker 埋め込みが射影正規で arithmetically
+Cohen--Macaulay であることは標準単項式理論の既知の結果として使う
+\cite{Svanes1973,DeConciniProcesi1981}．
+
+\begin{lemma}[Pl\"ucker 錐の局所完全交叉性]
+\label{lemma:cone-lci}
+$C_m$ の頂点 $0$ において
+\[
+ \operatorname{edim}_0 C_m=\binom m2,\qquad
+ \dim_0 C_m=2m-3,\qquad
+ \operatorname{codim}_0 C_m=\frac{(m-2)(m-3)}2.
+\]
+頂点の定義イデアルの最小生成元数は $\binom m4$ である．
+従って $m=3$ では $C_m=\mathbb A^3$，$m=4$ では非退化な二次超曲面の錐，
+$m\geq5$ では $C_m$ は頂点で局所完全交叉でない．
+\end{lemma}
+\begin{proof}
+錐の座標環を $R=\C[a_{ij}]/I$ とする．$I$ は斉次二次の Pl\"ucker 式
+\[
+ q_{ijkl}=a_{ij}a_{kl}-a_{ik}a_{jl}+a_{il}a_{jk}
+ \qquad (i<j<k<l)
+\]
+で生成される．これらは相異なる四つの添字集合ごとに，互いに共有しない
+二次単項式を含むので一次独立であり，$I/\mathfrak m I$ の基底をなす．
+ゆえに最小生成元数は $\binom m4$ である．
+$I$ に一次式がないので，接空間次元は $\binom m2$ である．
+$\dim\Gr(2,m)=2(m-2)$ から錐の次元は $2m-3$ となる．
+$m=3$ の場合は $I=0$，$m=4$ では唯一の Pl\"ucker 式は
+六変数の非退化二次形式である．$m\geq5$ の場合には
+\[
+ \binom m4>\binom m2-(2m-3)
+ =\frac{(m-2)(m-3)}2
+\]
+が成り立つので，正則局所環における完全交叉の生成元数の必要条件に反する．
+\end{proof}
+
+\begin{lemma}[頂点の blow-up]
+\label{lemma:cone-blowup}
+$Y_m=\Gr(2,m)$，$L=\mathcal O_{Y_m}(-1)$ とおく．
+$C_m$ の頂点の blow-up は，標準的に
+\[
+ \operatorname{Bl}_0(C_m)\simeq\operatorname{Tot}_{Y_m}(L)
+\]
+である．例外因子は零切断 $Y_m$ であり，その法線束は $L$ である．
+この同型は $\operatorname{GL}_m$ および錐のスカラー作用に関して同変である．
+\end{lemma}
+\begin{proof}
+$C_m\setminus\{0\}$ の点は，Pl\"ucker 直線 $[v]\in Y_m$ と
+その直線の非零ベクトル $v$ の組に一意に対応する．
+従って閉部分スキーム
+\[
+ \{(v,[\ell])\in C_m\times Y_m\mid v\in\ell\}
+\]
+は $\operatorname{Tot}(L)$ である．一方，頂点のイデアルは一次座標
+$a_{ij}$ 全体で生成され，その blow-up は $C_m$ 上のこれらの座標による
+有理写像 $C_m\dashrightarrow\mathbb P(\bigwedge^2\C^m)$ のグラフの閉包である．
+$C_m\setminus\{0\}$ ではこの写像の像は $Y_m$ に入り，閉包を取っても
+$Y_m$ の斉次 Pl\"ucker 方程式が保たれる．上の閉部分スキームは各
+Pl\"ucker チャート上で「一つの座標が自由なスカラー，残りはその座標に
+Grassmann チャート座標を掛けたもの」という形だから，グラフ閉包に等しい．
+すべての構成が線型作用に関して自然である．
+\end{proof}
+
+\begin{theorem}[相対零切断の blow-up による解消]
+\label{thm:poisson-resolution}
+次数2のモジュライの零切断を
+$s:\mathcal D_{n,2}\hookrightarrow\mathcal P_{n,2}$ とおく．
+$\mathcal R_{n,2}=\operatorname{Bl}_{s(\mathcal D_{n,2})}\mathcal P_{n,2}$
+とすると，次が成り立つ．
+\begin{enumerate}
+\item $\mathcal R_{n,2}$ は有限型の滑らかな Deligne--Mumford スタックであり，
+$\mathcal R_{n,2}\to\mathcal P_{n,2}$ は representable，射影的かつ固有で，
+零切断の補集合では同型である．$n\geq3$ のときこれは特異性の解消を与える．
+\item 例外因子 $\mathcal E_{n,2}$ は $\mathcal D_{n,2}$ 上の滑らかな相対
+Grassmann 族
+\[
+ \mathcal E_{n,2}\simeq
+ [\mathcal P_{n,2}^{\times}/\mathbb G_m]
+\longrightarrow\mathcal D_{n,2}
+\]
+に標準的に同型である．相対 Poisson パラメータのベクトル束を
+$\mathcal V$，その射影 Grassmann 部分を $\mathcal G\subset\mathbb P(\mathcal V)$
+と書けば，解消は $\mathcal G$ 上の tautological line bundle
+$\mathcal O_{\mathcal G}(-1)$ の全空間に一致する．
+例外因子の法線束は $\mathcal O_{\mathcal G}(-1)$ である．
+\item 任意の $S\to\mathcal D_{n,2}$ に対して，この解消は対応する
+相対 Pl\"ucker 錐の零切断の blow-up と可換である．
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+命題~\ref{prop:intrinsic-bivector-bundle} と
+系~\ref{cor:projective-moduli} により，$\mathcal V$ と $\mathcal G$ は
+偏極線束を基底から捻る操作に対して不変であり，$\mathcal D_{n,2}$ 上に降下する．
+$\mathcal D_{n,2}$ の標準方程式 atlas $U_2$ 上では，
+$\mathcal P_{n,2}$ は $U_2\times C_m$，零切断は $U_2\times\{0\}$ である．
+blow-up は平坦基底変換と可換なので，補題~\ref{lemma:cone-blowup} から
+\[
+ \mathcal R_{n,2}\times_{\mathcal D_{n,2}}U_2
+ \simeq U_2\times\operatorname{Tot}_{Y_m}\mathcal O_{Y_m}(-1)
+\]
+を得る．同型は式~\eqref{eq:moduli-action-two} の $G_2$ の作用と同変である．
+従って商スタックへ降下し，滑らかさ，例外因子と法線束の記述を得る．
+blow-up の射影性・固有性と零切断外での同型性も atlas 上で確認して降下する．
+記載した基底変換は各 atlas 上での自明な積表示と blow-up の構成から従う．
+\end{proof}
+
+\begin{proposition}[Pl\"ucker 錐の標準特異性]
+\label{prop:plucker-terminal}
+$m\geq4$ のとき $C_m$ は頂点のみで特異であり，その特異点は
+Gorenstein terminal（従って rational）である．
+補題~\ref{lemma:cone-blowup} の解消 $\rho:\widetilde C_m\to C_m$ の例外因子を
+$E$ とすると
+\[
+ K_{\widetilde C_m}=\rho^*K_{C_m}+(m-1)E
+\]
+という discrepancy 等式が成立する．特に $m=n+1$ では例外因子の
+discrepancy は $n$ である．これは Poisson モジュライの滑らかな
+標準方程式 atlas に関する主張であって，coarse moduli space の
+商特異点についての主張ではない．
+\end{proposition}
+\begin{proof}
+Grassmann 多様体の普遍部分束 $\mathcal S$ と商束 $\mathcal Q$ から
+$T_{Y_m}=\mathcal S^*\otimes\mathcal Q$，従って
+$\omega_{Y_m}\simeq\mathcal O_{Y_m}(-m)$ である．
+Pl\"ucker 座標環 $R$ は射影正規かつ Cohen--Macaulay であり，
+その次数付き canonical module は
+\[
+ \omega_R\simeq
+ \bigoplus_{k\in\mathbb Z}H^0(Y_m,\omega_{Y_m}(k))
+ \simeq R(-m)
+\]
+である．ここで最後の等式では $\omega_{Y_m}=\mathcal O(-m)$ と
+Pl\"ucker 線束の切断環の記述を用いた．従って $C_m$ は Gorenstein であり，
+$K_{C_m}$ は（非斉次な意味で）自明である．
+
+$\widetilde C_m=\operatorname{Tot}_{Y_m}(L)$ に対して
+$\omega_{\widetilde C_m}\simeq
+p^*(\omega_{Y_m}\otimes L^{-1})=p^*\mathcal O_{Y_m}(-(m-1))$ である．
+零切断 $E$ の法線束が $L=\mathcal O(-1)$ なので
+$\mathcal O_{\widetilde C_m}(E)=p^*\mathcal O(-1)$ であり，
+discrepancy は $m-1$ である．頂点以外の錐は滑らかだから，
+他の例外因子についても滑らかな解消の上でさらに吹き上げれば
+discrepancy が正になる．従って terminal である．
+標数0で terminal は klt，klt は rational である
+\cite[Chapter 5]{KollarMori1998}．
+\end{proof}
+
+\begin{corollary}[相対モジュライの特異性の次元別分類]
+\label{cor:moduli-singularity-types}
+次数2の $\mathcal P_{n,2}\to\mathcal D_{n,2}$ は，
+$n=2$ では滑らか，$n=3$ では零切断に沿い相対的に通常の
+五次元二次錐特異点を持つ hypersurface 型，
+$n\geq4$ では零切断に沿い非局所完全交叉である．
+$n\geq3$ の零点における相対 Zariski 接空間の次元超過は
+\[
+ \binom{n+1}{2}-(2n-1)=\frac{(n-1)(n-2)}2
+\]
+である．どの $n\geq3$ でも滑らかな atlas の特異性は terminal であり，
+その零切断 blow-up は定理~\ref{thm:poisson-resolution} の滑らかな解消となる．
+\end{corollary}
+\begin{proof}
+相対分類，補題~\ref{lemma:cone-lci}，
+定理~\ref{thm:poisson-resolution}，命題~\ref{prop:plucker-terminal} を合わせる．
+\end{proof}
+
+\begin{remark}[既知の Grassmann 幾何と本稿の寄与]
+錐の blow-up と Gorenstein 性，標準単項式理論に基づく局所環の性質は
+既知の代数幾何である．ここでの寄与は，次数2の相対 Jacobi スキームとの
+スキーム論的同定を経由し，零 Poisson 切断とその解消を
+$G_2$-同変に具体化して，Poisson del Pezzo のモジュライスタックに
+降下させた点にある．この降下による新規性の優先権は未確認である．
+\end{remark}

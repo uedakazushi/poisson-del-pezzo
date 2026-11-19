@@ -1,0 +1,268 @@
+% !TeX root = ../../poisson-del-pezzo.tex
+\section{滑らかな族と相対 Poisson スキーム}
+\label{sec:families}
+
+本節では多様体の定義式も動かす。まず重み付き座標を固定した族を扱い、
+次節で座標変換に関する降下を行う。基底スキームは $\C$ 上の任意のスキームとし、
+被約性を仮定しない。微分、接束、Schouten 括弧はすべて基底に相対的に取る。
+
+\subsection{係数空間上の普遍族}
+
+次数1では $x_0,\ldots,x_{n-1}$、次数2では $x_0,\ldots,x_n$ を固定する。
+それぞれの斉次多項式空間を用いて
+\begin{align*}
+ U_1&=\{(A_4,A_6)\in\C[x]_4\oplus\C[x]_6
+       \mid z^2-y^3-A_4(x)y-A_6(x)=0\text{ が滑らか}\},\\
+ U_2&=\{f_4\in\C[x]_4\mid (f_4=0)\subset\Pj^n\text{ が滑らか}\}
+\end{align*}
+とおく。これらは係数 affine 空間の非空な開部分であり、
+それぞれの標準方程式で定まる普遍族を
+\[
+ p_d:\mathcal X_d\longrightarrow U_d
+\]
+と書く。これは滑らかな射影射である。
+次数1の開集合の非空性は
+$F=z^2-y^3-\sum_i x_i^6$、次数2では $f_4=\sum_i x_i^4$ から分かる。
+次数1の普遍超曲面も ambient stack の非自明な stabilizer を避けるので、
+$\mathcal X_d$ はスキームである。
+
+定数テンソルの空間を
+\[
+ C_1=\bigoplus_{i=0}^{n-1}\C\partial_{x_i},\qquad
+ C_2=\bigwedge^2\left(\bigoplus_{i=0}^{n}\C\partial_{x_i}\right)
+\]
+とする。$D\in C_1$、$P\in C_2$ から
+\begin{equation}
+ D\longmapsto\iota_{\dd F}(D\wedge\partial_y\wedge\partial_z),\qquad
+ P\longmapsto\iota_{\dd F}(P\wedge\partial_z)
+ \label{eq:universal-casimir-map}
+\end{equation}
+により、普遍超曲面上の相対二重ベクトルを得る。
+これらは係数空間上で正則に定義される。
+
+\subsection{大域切断の任意基底変換}
+
+ファイバー上の次元が一定であるという事実だけを、非被約基底上の同型の代用にはしない。
+ここでは、普遍的に定義された切断が各ファイバーの基底を与えることを使う。
+
+\begin{lemma}[一様な切断による基底変換]
+\label{lemma:universal-sections-base-change}
+$p:Y\to S$ を平坦かつ有限表示の固有射、$\mathcal E$ を $Y$ 上の有限局所自由層、
+$\mathcal V$ を $S$ 上の有限局所自由層とする。
+写像 $p^*\mathcal V\to\mathcal E$ がすべての幾何学的点 $s$ で同型
+\[
+ \mathcal V_s\xrightarrow{\sim}H^0(Y_s,\mathcal E_s)
+\]
+を誘導すると仮定する。このとき随伴写像
+$\mathcal V\to p_*\mathcal E$ は同型であり、任意の $g:T\to S$ に対し
+\[
+ g^*\mathcal V\xrightarrow{\sim}(p_T)_*\mathcal E_T
+\]
+である。特に $p_*\mathcal E$ の形成は任意の基底変換と可換である。
+\end{lemma}
+
+\begin{proof}
+固有平坦射に対する perfect base change
+\cite[Tag 0B91]{StacksProject} により、$Rp_*\mathcal E$ は perfect であり、
+その導来引き戻しは任意の基底変換後の $R(p_T)_*\mathcal E_T$ に等しい。
+これらの複体には負次数のコホモロジーがないので、$S$ 上局所的に
+$Rp_*\mathcal E$ を非負次数の有限自由複体
+\[
+ K^0\xrightarrow{d^0}K^1\longrightarrow\cdots\longrightarrow K^b
+\]
+で表せる。実際、任意の bounded finite free 代表の負の最低次数から始め、
+ファイバーで完全な直和因子を小行列式の可逆化によって順に消去すればよい。
+
+$\mathcal V$ を自明化し、その基底の像を $K^0$ の cycle
+$s_1,\ldots,s_r$ で表す。固定した点 $s$ でこれらは
+$\ker(d^0\otimes\kappa(s))$ の基底である。
+従って近傍を縮めれば、$s_i$ を $K^0$ の基底の一部に延長して
+\[
+ K^0=\langle s_1,\ldots,s_r\rangle\oplus L
+\]
+と書ける。$d^0|_L$ は $s$ の剰余体上で単射なので、さらに小行列式を可逆化すれば
+分裂単射になる。これは任意の基底変換後も単射である。
+一方 $d^0(s_i)=0$ なので、任意の $T\to S$ について
+\[
+ \ker(d^0\otimes\mathcal O_T)
+ =\langle s_1,\ldots,s_r\rangle\otimes\mathcal O_T
+\]
+を得る。導来基底変換の次数0を取れば結論となる。
+この議論では $S$ や $T$ の被約性を用いていない。
+\end{proof}
+
+\begin{proposition}[相対二重ベクトル束]
+\label{prop:relative-bivectors}
+式~\eqref{eq:universal-casimir-map} は同型
+\begin{equation}
+ \mathcal O_{U_d}\otimes C_d
+ \xrightarrow{\sim}(p_d)_*\bigwedge^2T_{\mathcal X_d/U_d}
+ \label{eq:relative-bivector-bundle}
+\end{equation}
+を与え、その形成は任意の基底変換と可換である。
+従って任意の $T\to U_d$ 上の相対大域二重ベクトルは、
+$C_d\otimes\mathcal O_T$ の切断に一意に対応する。
+\end{proposition}
+
+\begin{proof}
+命題~\ref{prop:casimir-representative} の証明は任意の代数閉な標数0の拡大体上で同じなので、
+式~\eqref{eq:universal-casimir-map} は各幾何学的ファイバーで大域切断の同型を与える。
+$\mathcal X_d\to U_d$ は滑らかな射影射であり、$\bigwedge^2T_{\mathcal X_d/U_d}$ は
+有限局所自由である。したがって補題~\ref{lemma:universal-sections-base-change} を適用できる。
+\end{proof}
+
+ここで必要なのは $\bigwedge^2T$ の大域切断の同定であり、
+$(p_d)_*\bigwedge^3T_{\mathcal X_d/U_d}$ が局所自由であるとの仮定は置かない。
+次の構成では相対 Euler 列を用いて Jacobiator の消滅を有限個の係数で検出する。
+
+\subsection{相対 Jacobi イデアル}
+
+各 $T\to U_d$ に対し
+\[
+ \underline{\Pois}_{\mathcal X_d/U_d}(T)=
+ \left\{\pi\in H^0(\mathcal X_d\times_{U_d}T,
+                 \bigwedge^2T_{\mathcal X_d\times_{U_d}T/T})
+                \ \middle|\ [\pi,\pi]=0\right\}
+\]
+と定める。この等式は $T$ 上の切断としての等式であり、
+幾何学的ファイバー上でのみ Jacobi 恒等式を要求するものではない。
+$\mathfrak C_{2,n}$ を二次 Pl\"ucker 関係で定義される affine cone
+\[
+ \mathfrak C_{2,n}=
+ \operatorname{Spec}\C[a_{ij}\mid0\leq i<j\leq n]/(q_{ijk\ell})
+\]
+と書き、$\mathfrak C_{1,n}=\A^n$ とおく。
+ここで錐は Pl\"ucker 方程式で定義したスキームを意味する。
+任意の係数環上の点を必ず二つのベクトルの外積として書ける，という意味ではない。
+例えば $n\geq3$ の双対数上では，
+$\varepsilon(e_0\wedge e_1+e_2\wedge e_3)$ もこの錐の点となる。
+このような無限小点を含めることが，以下の基底変換と二次障害の記述に必要である。
+
+\begin{theorem}[相対 Poisson スキーム]
+\label{thm:relative-poisson}
+上の関手は $U_d$ 上の閉 affine スキームで表現され、
+標準座標の下で同型
+\begin{equation}
+ \mathcal Z_{d,n}:=\underline{\Pois}_{\mathcal X_d/U_d}
+ \simeq U_d\times\mathfrak C_{d,n}
+ \label{eq:relative-poisson-product}
+\end{equation}
+がある。この同型は非被約基底を含む任意の基底変換と両立する。
+特に次数2の相対 Jacobi イデアルそのものが、
+定義式の係数に依存しない Pl\"ucker イデアルに等しい。
+\end{theorem}
+
+\begin{proof}
+命題~\ref{prop:relative-bivectors} により相対二重ベクトル全体は
+$U_d\times C_d$ で表される。
+次数1では $D,\partial_y,\partial_z$ は互いに可換な導分であり、
+式~\eqref{eq:degree-one-bivector} はこれらに関する Jacobian 括弧である。
+補題~\ref{lemma:jacobian-bracket} と同じ混合偏微分の相殺は、
+三つの可換導分に対してもそのまま成り立つ。
+従って任意の係数環で Jacobiator が零となる。
+ここでは $D$ のいずれの係数も可逆化していない。
+
+次数2では $U_2$ の affine 開部分 $\operatorname{Spec}A$ で考える。
+普遍方程式を $F=z^2-f_4(x)$ とし、$B=A[a_{ij}]$ とおく。
+相対 Euler 列と法線束列は局所分裂するベクトル束の完全列なので、
+式~\eqref{eq:euler-jacobi-injection} の相対版
+\begin{equation}
+ \bigwedge^3T_{\mathcal X_2/U_2}
+ \hookrightarrow\bigwedge^4
+       \left(\bigoplus_i\mathcal O_{\mathcal X_2}(w_i)\right)
+ \label{eq:relative-jacobi-injection}
+\end{equation}
+は任意の基底変換後も単射である。
+また monic な式 $F=z^2-f_4$ により、任意の係数 $A$-代数 $B'$ に対し
+\[
+ \bigl(B'[x,z]/(F)\bigr)_t
+   =B'[x]_t\oplus zB'[x]_{t-2}
+\]
+が成り立つ。これらは有限自由 $B'$-加群である。
+補題~\ref{lemma:weighted-vanishing} の \v Cech 計算は任意の係数環で有効なので、
+この次数付き加群は $\mathcal O_{\mathcal X_{2,B'}}(t)$ の大域切断と一致する。
+従って普遍 Jacobiator の
+\eqref{eq:relative-jacobi-injection} による像の全単項式係数は
+$B$ の有限個の二次多項式を与え、その零スキームが求める関手を表す。
+それらの生成するイデアルを $I_J$ とする。
+
+式~\eqref{eq:jacobi-plucker-identity} は $B[x,z]$ でも成立するので、
+Pl\"ucker イデアルを $I_P$ とすると $I_J\subset I_P$ である。
+逆向きは係数回収を相対化して示す。
+普遍偏微分 $f_j=\partial f_4/\partial x_j$ の三次単項式係数を列に持つ行列を
+$M(f)$ とする。補題~\ref{lemma:gradient-independence} により
+すべての幾何学的点で $M(f)$ の階数は $n+1$ である。
+従って $(n+1)\times(n+1)$ 小行列式 $\Delta$ が可逆な開集合が $U_2$ を覆う。
+その上では可逆小行列の逆行列から $A$-線型写像
+\[
+ \lambda_\ell:A[x]_3\longrightarrow A,
+ \qquad\lambda_\ell(f_j)=\delta_{\ell j}
+\]
+を作れる。この写像は任意の $A$-代数への基底変換後も同じ性質を持つ。
+
+$E\wedge J$ の
+$\partial_{x_i}\wedge\partial_{x_j}\wedge\partial_{x_k}\wedge\partial_z$
+成分は、成分を並べる符号を除き $2zJ_{ijk}$ である。
+その $zA[x]_3$ 成分から $z$ を除き、$\lambda_\ell/4$ を適用すると、
+式~\eqref{eq:jacobi-plucker-identity} によって $q_{ijk\ell}$ が得られる。
+したがって各 $q_{ijk\ell}$ は Jacobiator の係数の $A$-線型結合であり、
+$I_P\subset I_J$ となる。
+この回収は $\Delta$ を可逆化した開集合ごとに成立し、イデアルの等式として貼り合う。
+任意の基底変換にも同じ左逆を引き戻せるので、非被約基底でも等式は保たれる。
+$n=2$ では四つの異なる $x$ 添字がなく、両イデアルは零である。
+\end{proof}
+
+\begin{corollary}[平坦性と相対的な特異点]
+\label{cor:relative-flatness}
+$\mathcal Z_{d,n}\to U_d$ は affine、有限表示、平坦であり、
+幾何学的ファイバーは被約かつ既約である。
+次数1では相対次元 $n$ の滑らかな射である。
+次数2では相対次元 $2n-1$ であり、$n=2$ なら滑らかである。
+$n\geq3$ の次数2では非零部分上で滑らかで、
+非滑らか点の集合は零切断に一致する。
+\end{corollary}
+
+\begin{proof}
+積表示~\eqref{eq:relative-poisson-product} と
+補題~\ref{lemma:plucker-prime}、系~\ref{cor:poisson-scheme-dimension} を用いる。
+平坦性は $\mathcal Z_{d,n}\to U_d$ が $\mathfrak C_{d,n}\to\operatorname{Spec}\C$
+の基底変換であることによる。
+非滑らか点についての主張は点集合について述べており、
+Jacobian イデアルで定めた特異部分スキームが被約であるとの主張ではない。
+\end{proof}
+
+\subsection{多様体を動かしたときの二次障害}
+
+\begin{corollary}
+\label{cor:relative-deformations}
+次数2で $u\in U_2(\C)$ を固定する。
+零 Poisson 構造における座標付き同時変形の一次空間は
+\[
+ T_uU_2\oplus\bigwedge^2\C^{n+1}
+\]
+である。$\varepsilon^2=0$ 上の一次変形を $(\dot f,Q)$ と書くと、
+これを $\varepsilon^3=0$ 上へ持ち上げられる必要十分条件は
+\[
+ Q\wedge Q=0
+\]
+である。この条件は定義式の一次変形 $\dot f$ に依存せず、
+多様体の変形を加えても非零の二次障害を相殺できない。
+条件が成立すれば、この一次変形は $\C[[t]]$ 上へ持ち上がる。
+\end{corollary}
+
+\begin{proof}
+積表示により、二重ベクトルパラメータを
+$P=\varepsilon Q+\varepsilon^2R$ と書くと
+\[
+ P\wedge P=\varepsilon^2Q\wedge Q\pmod{\varepsilon^3}.
+\]
+定義式の係数はこの式に現れない。
+$U_2$ は affine 空間の開部分なので、定義式の任意の一次方向を
+$f(t)=f_4+t\dot f$ で形式的に延長できる。
+$Q\wedge Q=0$ の場合、$P(t)=tQ$ と組み合わせれば全次数への延長を得る。
+\end{proof}
+
+この系は座標付きの同時変形についての主張である。
+座標変換による商の接空間、安定化群、極性の線束のスカラー自己同型は次節で扱う。
+また、相対 Poisson スキームの積表示は選んだ標準座標上の表示であり、
+座標を忘れたモジュライ上で自明な積になることを意味しない。

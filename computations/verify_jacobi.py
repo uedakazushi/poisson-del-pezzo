@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact checks of the formulas in dp12_poisson.tex; no numerical sampling.
+"""Exact checks of the formulas in poisson-del-pezzo.tex; no numerical sampling.
 
 The polynomial ring has independent gradient symbols g_i and symmetric Hessian
 symbols h_ij.  This checks the signs and all coordinate Jacobi identities in the

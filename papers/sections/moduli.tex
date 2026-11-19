@@ -1,0 +1,428 @@
+% !TeX root = ../../poisson-del-pezzo.tex
+\section{座標変換と Poisson モジュライ}
+\label{sec:moduli}
+
+前節の積表示は，方程式と重み付き座標を選んだ上での表示である．
+この節では座標変換の作用を計算し，次数 $1,2$ の滑らかな del Pezzo manifold と
+Poisson 構造の族を分類する代数的スタックを構成する．
+偏極線束のスカラー自己同型と Poisson 構造のスカラー倍は，異なる操作として扱う．
+
+\subsection{偏極を持つ族と相対切断環}
+
+$T$ を $\C$ 上のスキームとする．\emph{線束を指定した del Pezzo 族}とは，
+滑らかで射影的な相対次元 $n$ の射 $p:\mathcal X\to T$ と相対 ample 線束
+$\mathcal H$ の組で，各幾何学的ファイバーが連結であり，
+\[
+ \omega_{X_t}^{-1}\simeq H_t^{\otimes(n-1)},\qquad H_t^n=d
+\]
+を満たすものをいう．ここでは反標準線束との同型そのものは指定しない．
+射は族の同型と偏極線束の同型の組であり，線束のスカラー自己同型を含む．
+このスタックを $\widetilde{\mathcal D}_{n,d}$ と書く．
+相対 Poisson 二重ベクトル $\pi\in\Gamma(\mathcal X,\wedge^2T_{\mathcal X/T})$
+をさらに指定したスタックを $\widetilde{\mathcal P}_{n,d}$ と書く．
+
+一方，\emph{偏極類を指定した族}のスタック
+$\mathcal D_{n,d}$ は，このスカラー $\mathbb G_m$ を自己同型群から除いた
+fppf スタックとする．より具体的には，線束を局所的に選び，
+基底からの線束による $\mathcal H\mapsto\mathcal H\otimes p^*M$ を許して
+降下させた偏極類を指定する．対応する Poisson スタックを $\mathcal P_{n,d}$ と書く．
+従って $\mathcal D_{n,d}$ 上に基本線束そのものが大域的に存在することは，定義に含めない．
+この区別は，任意の基底上の族と自己同型群を正しく記述するために必要である．
+
+\begin{lemma}[基本偏極類の一意性と無標識の族]
+\label{lemma:fundamental-polarization-class}
+$p:\mathcal X\to T$ を滑らかで射影的な族とし，各幾何学的ファイバーが
+$n$ 次元，次数 $d$ の del Pezzo manifold であるとする．
+このとき相対 Picard 層 $\operatorname{Pic}_{\mathcal X/T}$ に
+\[
+ (n-1)h=[\omega_{\mathcal X/T}^{-1}]
+\]
+を満たす切断 $h$ がただ一つ存在する．これは fppf 局所的に基本線束で表される．
+従って $\mathcal D_{n,d}$ は，基本偏極を別途指定しない滑らかな del Pezzo 族の
+スタックとも同値である．Poisson 構造を付けても同じ結論が成り立つ．
+\end{lemma}
+
+\begin{proof}
+Fano ファイバーの Kodaira 消滅から，任意基底変換と両立する
+$Rp_*\mathcal O_{\mathcal X}\simeq\mathcal O_T$ がある．
+相対 Picard 層は $T$ 上局所有限表示の代数空間である
+\cite[Tags 0D2C, 0DNI]{StacksProject}．ここではさらに，それが $T$ 上 \'{e}tale であることを示す．
+アフィン基底の平方零拡大 $T_0\subset T_1$ とそのイデアル $J$ に対し，
+$p_{T_1}$ は滑らかな全射なので，$T_1$ の \'{e}tale 被覆上で切断 $\sigma$ を持つ．
+必要ならその被覆を affine 開集合に細分する．
+切断を持つ Picard 関手では，$T_0$ 上の Picard 類を
+$\sigma$ に沿って自明化した実際の線束で表せる
+\cite[Tag 0D28]{StacksProject}．そこで
+単元の完全列
+\[
+ 1\longrightarrow1+p^*J\longrightarrow
+ \mathcal O_{\mathcal X_{T_1}}^\times\longrightarrow
+ \mathcal O_{\mathcal X_{T_0}}^\times\longrightarrow1
+\]
+を用いる．$1+p^*J\simeq p^*J$ であり，導来射影公式から
+$H^1(\mathcal X_{T_0},p^*J)=H^2(\mathcal X_{T_0},p^*J)=0$ である．
+従って線束の持ち上げは存在し，その同型類は一意である．
+この一意性によって上の \'{e}tale 被覆上の Picard 類の持ち上げが降下し，
+相対 Picard 層の形式的 \'{e}tale 性を得る．
+局所有限表示性と合わせて \'{e}tale 性を得る．
+
+幾何学的ファイバーの Picard 群は torsion-free である．
+実際，torsion 線束 $M$ に対し $M\otimes\omega_X^{-1}$ は ample なので
+Kodaira 消滅が $H^i(X,M)=0$ ($i>0$) を与え，
+Riemann--Roch によって $\chi(M)=\chi(\mathcal O_X)=1$ となる．
+従って $M$ は非零切断を持つが，その零因子は数値的に自明であるため
+ample 因子との交点数から空であり，$M\simeq\mathcal O_X$ である．
+
+$r=n-1$ とし，$[r]:\operatorname{Pic}_{\mathcal X/T}\to
+\operatorname{Pic}_{\mathcal X/T}$ を考える．
+これは $T$ 上 \'{e}tale な代数空間の間の $T$-射なので \'{e}tale である．
+$[\omega^{-1}]$ に沿って引き戻した根の空間は，各幾何学的ファイバーに
+仮定から少なくとも一点を持ち，torsion-free 性からちょうど一点を持つ．
+従ってこの根の空間は $T$ への全射かつ radicial な \'{e}tale 射であり，同型である．
+これが求める切断 $h$ である．
+その fppf 局所的な線束表示は Picard 層の定義
+\cite[Tag 0DME]{StacksProject} により存在し，ファイバー上で ample であるから相対 ample である．
+一意性により，族のすべての同型はこの偏極類を保つ．
+線束そのものを大域的に選べるとは結論していない．
+\end{proof}
+
+\begin{lemma}[族の標準形]
+\label{lemma:family-normal-form}
+線束を指定した del Pezzo 族は，基底の fppf 被覆上で
+\eqref{eq:degree-one-model} または \eqref{eq:degree-two-model} の族に同型である．
+その際，$\mathcal H$ は $\mathcal O_{\mathcal X}(1)$ に対応する．
+この主張は非被約基底にも成り立つ．
+\end{lemma}
+
+\begin{proof}
+各ファイバーの標準モデルと Kodaira 消滅から，$r\geq0$ に対し
+$H^i(X_t,H_t^r)=0$ ($i>0$) であり，$h^0(X_t,H_t^r)$ は $n,d,r$ のみで決まる．
+従って相対切断環
+\[
+ \mathcal R=\bigoplus_{r\geq0}p_*\mathcal H^r
+\]
+の各次数部分は局所自由で，任意の基底変換と両立する．
+ここでは高次コホモロジーが消える形の cohomology and base change を使っており，
+基底の被約性は仮定していない．
+
+次数 $2$ では $\mathcal R_1$ の基底を $x_0,\ldots,x_n$ とし，
+$\mathcal R_2/\operatorname{Sym}^2\mathcal R_1$ の局所的な生成元を $z$ に持ち上げる．
+この商は線束である．実際，$\operatorname{Sym}^2\mathcal R_1\to\mathcal R_2$
+は各ファイバーで単射なので，局所的に分裂単射になる．
+次数 $1$ では $\mathcal R_1$ の基底 $x_0,\ldots,x_{n-1}$ を選び，
+\[
+ \mathcal R_2/\operatorname{Sym}^2\mathcal R_1,
+ \qquad
+ \mathcal R_3/(\mathcal R_1\mathcal R_2)
+\]
+という二つの線束の生成元をそれぞれ $y,z$ に持ち上げる．
+第二の商については，$y$ を選んだ後の
+$\operatorname{Sym}^3\mathcal R_1\oplus\mathcal R_1y\to\mathcal R_3$ が
+各ファイバーで単射なので分裂単射であることを使う．
+これらは重み付き多項式環から $\mathcal R$ への次数付き全射を与える．
+実際，各次数の余核は有限型で，すべての幾何学的ファイバー上で零なので零である．
+
+最初の関係は次数 $m=4$ または $6$ の線束をなし，
+局所的な生成元 $F$ の $z^2$ 係数は可逆である．
+その係数を $1$ とし，$z$ の平方完成を行う．
+次数 $1$ では $y^3$ 係数も可逆であるため，fppf 局所的に単元の三乗根を取り，
+さらに $y$ の平行移動で $y^2$ 項を消すと所定の標準形を得る．
+次数 $2$ では平方完成だけで標準形になる．
+標準形の $F$ は $z$ に関して monic なので，$S/(F)$ の各次数部分は局所自由であり，
+その階数は $\mathcal R$ の対応する部分と一致する．
+上の全射 $S/(F)\to\mathcal R$ は各次数で同階数の局所自由加群の全射なので同型である．
+相対 ample 線束の切断環から $\mathcal X$ を $\operatorname{Proj}_T\mathcal R$ として回収すればよい．
+\end{proof}
+
+\subsection{正規形を保つ群と二重ベクトルの作用}
+
+次数 $1$ では
+\[
+ \widetilde G_1=\operatorname{GL}_n\times\mathbb G_m,
+ \qquad
+ (A,t):(x,y,z)\longmapsto(Ax,t^2y,t^3z)
+\]
+を取り，次数 $2$ では
+\[
+ \widetilde G_2=\operatorname{GL}_{n+1}\times\mathbb G_m,
+ \qquad
+ (A,b):(x,z)\longmapsto(Ax,bz)
+\]
+を取る．これらは以下の作用で滑らかな係数空間 $U_d$ を保つ．
+
+\begin{proposition}[座標・方程式・Poisson パラメータの同時変換]
+\label{prop:coordinate-action}
+標準形間のすべての次数付き切断環の同型は，基底上局所的に上記の形になる．
+係数と Casimir パラメータへの作用は
+\begin{align}
+ d=1:\quad
+ (A_4,A_6,D)&\longmapsto
+ \bigl(t^4 A_4(A^{-1}x),\ t^6 A_6(A^{-1}x),\ t^{-1}AD\bigr),
+ \label{eq:moduli-action-one}\\
+ d=2:\quad
+ (f_4,P)&\longmapsto
+ \bigl(b^2f_4(A^{-1}x),\ b^{-1}(\wedge^2A)P\bigr)
+ \label{eq:moduli-action-two}
+\end{align}
+である．重み付きスカラー
+\[
+ Z_1=\{(\lambda I_n,\lambda)\},\qquad
+ Z_2=\{(\lambda I_{n+1},\lambda^2)\}
+\]
+は係数と Poisson パラメータの両方に自明に作用する．
+従って作用は滑らかな代数群
+\begin{equation}
+ G_1=\widetilde G_1/Z_1\simeq\operatorname{GL}_n,
+ \qquad
+ G_2=\widetilde G_2/Z_2
+ \label{eq:moduli-groups}
+\end{equation}
+に降下する．
+\end{proposition}
+
+\begin{proof}
+次数 $2$ の次数付き同型は，関係式より低い次数の生成元を比較すると
+$x'=Ax$，$z'=bz+q_2(x)$ と書ける．
+関係式の $z$ に関する一次係数を比較して $2bq_2=0$，従って $q_2=0$ を得る．
+次数 $1$ では一般に
+\[
+ x'=Ax,\qquad y'=ay+q_2(x),\qquad
+ z'=bz+y\ell_1(x)+q_3(x)
+\]
+である．関係式の $z$ の一次係数から $\ell_1=q_3=0$，
+続いて $y^2$ 係数から $q_2=0$ を得る．
+$z^2,y^3$ 係数の比較は $b^2=a^3$ を与え，$t=b/a$ とすれば $a=t^2,b=t^3$ となる．
+ここでは $2,3$ および $a,b$ が可逆であることだけを用いるので，非被約基底でも同じ議論が成り立つ．
+
+座標変換を $\varphi$，変換後の標準方程式を $F'$ と書く．
+$F'\circ\varphi=cF$ なら，縮約の自然性から
+\begin{equation}
+ \varphi_*\bigl(\iota_{\dd F}C\bigr)
+ =\iota_{\dd F'}\bigl(c^{-1}\varphi_*C\bigr)
+ \label{eq:equation-line-covariance}
+\end{equation}
+となる．次数 $1$ では $c=t^6$，
+$\varphi_*(D\wedge\partial_y\wedge\partial_z)
+=t^5(AD)\wedge\partial_{y'}\wedge\partial_{z'}$ である．
+次数 $2$ では $c=b^2$，
+$\varphi_*(P\wedge\partial_z)=b(\wedge^2A)P\wedge\partial_{z'}$ である．
+これで \eqref{eq:moduli-action-one}，\eqref{eq:moduli-action-two} を得る．
+中央部分群の作用は代入で確認できる．
+$G_1$ の同型は $(A,t)\mapsto t^{-1}A$ により与えられる．
+\end{proof}
+
+\begin{remark}[二重被覆の involution]
+\label{rem:deck-action}
+$\tau:z\mapsto-z$ は次数 $1$ では $(A,t)=(I,-1)$，
+次数 $2$ では $(A,b)=(I,-1)$ である．いずれも方程式と $x$ の一次切断を保つが，
+Poisson パラメータには $-1$ で作用する．
+従って二重ベクトルの affine パラメータを，基本線束の一次切断の作用だけから
+同変に復元することはできない．式~\eqref{eq:equation-line-covariance} の
+方程式の変換因子が必要である．
+\end{remark}
+
+\subsection{内在的な線束の捻り}
+
+前項の変換因子を，座標を使わずに記述する．
+線束を指定した族に対し
+\begin{equation}
+ \mathcal E=p_*\mathcal H,\qquad
+ \mathcal L=p_*\bigl(\omega_{\mathcal X/T}^{-1}
+                   \otimes\mathcal H^{-(n-1)}\bigr)
+ \label{eq:moduli-intrinsic-bundles}
+\end{equation}
+とおく．$\mathcal E$ の階数は次数 $1$ で $n$，次数 $2$ で $n+1$ である．
+$\mathcal L$ は線束であり，評価写像は同型
+\[
+ p^*\mathcal L\simeq
+ \omega_{\mathcal X/T}^{-1}\otimes\mathcal H^{-(n-1)}
+\]
+を与える．実際，右辺は各ファイバーで自明，$h^0=1$，$H^1=0$ なので
+cohomology and base change と評価写像のファイバー上の同型性を適用できる．
+
+\begin{proposition}[内在的な二重ベクトル束と Poisson 錐]
+\label{prop:intrinsic-bivector-bundle}
+任意の線束を指定した del Pezzo 族について，自然な同型
+\begin{equation}
+ p_*\wedge^2T_{\mathcal X/T}
+ \simeq\bigwedge^{n-1}\mathcal E\otimes\mathcal L
+ \label{eq:intrinsic-bivector-bundle}
+\end{equation}
+があり，任意の基底変換と両立する．
+次数 $1$ の相対 Poisson スキームはこのベクトル束の全空間である．
+次数 $2$ では，この束の中の分解可能な外積の Pl\"ucker 錐である．
+いずれも $\mathcal H$ を基底の線束で捻る操作に不変であり，
+偏極類のスタック $\mathcal D_{n,d}$ 上へ降下する．
+\end{proposition}
+
+\begin{proof}
+式~\eqref{eq:intrinsic-form} を相対微分で書けば，交代多重線型な写像
+\[
+ \bigwedge^{n-1}\mathcal E
+ \longrightarrow
+ p_*\bigl(\Omega_{\mathcal X/T}^{n-2}\otimes\mathcal H^{n-1}\bigr)
+\]
+を得る．これに $\mathcal L$ をテンソルし，評価同型と
+$\Omega_{\mathcal X/T}^{n-2}\otimes\omega_{\mathcal X/T}^{-1}
+\simeq\wedge^2T_{\mathcal X/T}$ を用いる．
+ファイバー上では，標準座標の外積基底は，補集合の添字を持つ
+$D$ または $P$ の基底に共通の非零因子と符号を除いて対応する．
+従ってこの写像はファイバーごとに同型である．
+命題~\ref{prop:relative-bivectors} と標準形の fppf 局所存在により右辺も局所自由で
+任意の基底変換と両立するため，写像は任意の基底上で同型である．
+
+標準座標上ではこの外積同型は，次数 $2$ の二次 Pl\"ucker 関係を
+$(n-1)$ 次外積の Pl\"ucker 関係に移す．
+定理~\ref{thm:relative-poisson} により，これは閉点だけでなく閉部分スキームの同定である．
+次数 $1$ では階数 $n$ の束の $(n-1)$ 次外積なので Pl\"ucker 関係はない．
+最後に，$\mathcal H\mapsto\mathcal H\otimes p^*M$ に対して
+\[
+ \mathcal E\mapsto\mathcal E\otimes M,
+ \qquad \mathcal L\mapsto\mathcal L\otimes M^{-(n-1)}
+\]
+となり，\eqref{eq:intrinsic-bivector-bundle} の二つの因子は相殺する．
+この同型は評価と微分の自然な写像から作られているので，降下の cocycle 条件も満たす．
+\end{proof}
+
+\subsection{商スタックの構成と幾何学}
+
+\[
+ \mathfrak C_{1,n}=\mathbb A^n,\qquad
+ \mathfrak C_{2,n}=\operatorname{Spec}
+ \C[a_{ij}\mid0\leq i<j\leq n]/(q_{ijk\ell})
+\]
+とおく．以下で用いる $G_d$ の作用は
+\eqref{eq:moduli-action-one}，\eqref{eq:moduli-action-two} の作用である．
+
+\begin{lemma}[無限小自己同型の消滅]
+\label{lemma:no-vector-fields}
+次数 $1,2$ の滑らかな del Pezzo manifold は $H^0(X,T_X)=0$ を満たす．
+従って $G_d$ における標準方程式の幾何学的 stabilizer は有限で被約である．
+\end{lemma}
+
+\begin{proof}
+Euler 列と $H^1(X,\mathcal O_X)=0$ により，大域ベクトル場は
+$V\in(\operatorname{Der}S)_0$ で表される．
+$w_i<m$ なので各係数は $S$ に一意に持ち上がり，
+接条件から $V(F)=cF$ ($c\in\C$) となる．
+$V$ を $V-(c/m)E$ に替えると $V(F)=0$ とできる．
+偏微分列の Koszul 完全性により，この syzygy は係数の次数が
+$w_i+w_j-m$ の Koszul 関係の線型結合である．
+異なる $i,j$ について常に $w_i+w_j<m$ なので，すべての係数は零となる．
+従ってもとの $V$ は Euler 方向だけであり，$X$ 上では零である．
+命題~\ref{prop:coordinate-action} により，$G_d$ の stabilizer は偏極類を保つ
+自己同型群である．その Lie 代数は零で，有限型の代数群だから有限かつ被約である．
+\end{proof}
+
+\begin{theorem}[Poisson 構造付き del Pezzo manifold のモジュライ]
+\label{thm:poisson-moduli}
+$n\geq2$，$d\in\{1,2\}$ とする．次の自然な同型がある．
+\begin{align}
+ \widetilde{\mathcal D}_{n,d}&\simeq[U_d/\widetilde G_d],&
+ \widetilde{\mathcal P}_{n,d}&\simeq[(U_d\times \mathfrak C_{d,n})/\widetilde G_d],
+ \label{eq:unrigidified-moduli}\\
+ \mathcal D_{n,d}&\simeq[U_d/G_d],&
+ \mathcal P_{n,d}&\simeq[(U_d\times \mathfrak C_{d,n})/G_d].
+ \label{eq:poisson-moduli-quotient}
+\end{align}
+$\mathcal D_{n,d}$ と $\mathcal P_{n,d}$ は有限型の既約な
+Deligne--Mumford スタックである．$\mathcal D_{n,d}$ は滑らかであり，
+忘却射
+\begin{equation}
+ \mathcal P_{n,d}\longrightarrow\mathcal D_{n,d}
+ \label{eq:poisson-forgetful}
+\end{equation}
+は affine，有限表示かつ平坦で，零切断を持つ．
+その幾何学的ファイバーは次数 $1$ で $\mathbb A^n$，次数 $2$ で
+$\operatorname{Gr}(2,n+1)$ の Pl\"ucker 錐である．
+すべての構成は非被約基底を含む任意の基底変換と両立する．
+\end{theorem}
+
+\begin{proof}
+補題~\ref{lemma:family-normal-form} が局所的な対象の全射性を，
+命題~\ref{prop:coordinate-action} が任意の基底上の同型の記述を与える．
+従って標準形の同型の fppf 層は $\widetilde G_d$-torsor となり，
+最初の商表示を得る．Poisson 構造については
+定理~\ref{thm:relative-poisson} の相対分類をこの torsor 上で用い，
+命題~\ref{prop:coordinate-action} に従って降下させる．
+中央部分群 $Z_d$ は切断環の重み付きスカラーであり，
+射影化した族上で恒等，偏極線束上でスカラー自己同型となる．
+これを除くことは $\widetilde G_d$ を $G_d$ に置き換えることに一致する．
+
+$U_d$ と $\mathfrak C_{d,n}$ は有限型で，$G_d$ は滑らかな有限型代数群だから，
+商は有限型代数的スタックである \cite[Tag 06FI]{StacksProject}．
+補題~\ref{lemma:no-vector-fields} によりすべての幾何学的 stabilizer は unramified である．
+Poisson 構造付きの stabilizer はその閉部分群なので，同じ結論が成り立つ．
+従って両方の商は Deligne--Mumford である
+\cite[Tags 06N3, 0DSL]{StacksProject}．
+$U_d$ は非空な affine 空間の開集合なので滑らかかつ既約であり，
+$\mathfrak C_{d,n}$ は被約かつ既約である．商の既約性と基底スタックの滑らかさはその atlas から従う．
+非空性は，例えば次数 $1$ では $F=z^2-y^3-\sum x_i^6$，
+次数 $2$ では $F=z^2-\sum x_i^4$ から分かる．
+
+忘却射を atlas $U_d\to\mathcal D_{n,d}$ で引き戻すと
+$U_d\times \mathfrak C_{d,n}\to U_d$ になる．
+affine 性，有限表示性，平坦性および記載したファイバーは，この表示と fppf 降下から従う．
+零点は群作用で保たれるので零切断も降下する．
+任意基底変換との両立は相対分類と torsor の降下から従う．
+\end{proof}
+
+\begin{remark}[固定対象の fiber と自己同型商]
+族 $(X,H)$ を表す $\operatorname{Spec}\C\to\mathcal D_{n,d}$ に沿う
+\eqref{eq:poisson-forgetful} のファイバーは，$X$ との同型を記憶する
+$\Pois_{\mathrm{sch}}(X)$ そのものである．
+一方，$X$ の同型類を固定しつつその自己同型も許すスタックは
+$[\Pois_{\mathrm{sch}}(X)/\operatorname{Aut}(X,[H])]$ である．
+例えば注意~\ref{rem:deck-action} の involution は $\pi$ と $-\pi$ を同型にするが，
+非零 $\pi$ 自身の stabilizer には入らない．
+\end{remark}
+
+\begin{corollary}[次元と滑らかな部分]
+\label{cor:moduli-dimension}
+\begin{align*}
+ b_{n,1}&=\binom{n+3}{4}+\binom{n+5}{6}-n^2,&
+ \dim\mathcal P_{n,1}&=b_{n,1}+n,\\
+ b_{n,2}&=\binom{n+4}{4}-(n+1)^2,&
+ \dim\mathcal P_{n,2}&=b_{n,2}+2n-1
+\end{align*}
+とおくと，$\dim\mathcal D_{n,d}=b_{n,d}$ である．
+$\mathcal P_{n,1}$ は滑らかである．
+$\mathcal P_{2,2}$ も滑らかであり，$n\geq3$ の $\mathcal P_{n,2}$ の
+非滑らか点の集合は零切断に一致する．
+特に，曲面の場合の $\mathcal P_{2,1},\mathcal P_{2,2}$ の次元は $10,9$，
+三次元の場合の $\mathcal P_{3,1},\mathcal P_{3,2}$ の次元は $37,24$ である．
+\end{corollary}
+
+\begin{proof}
+係数空間の次元から $\dim G_1=n^2$，$\dim G_2=(n+1)^2$ を引き，
+Poisson ファイバーの次元を加える．
+滑らかさについては atlas $U_d\times \mathfrak C_{d,n}$ と
+系~\ref{cor:poisson-scheme-dimension} を用いる．
+ここで主張するのはスタックの非滑らか点の集合であり，
+特異点スキームの scheme structure や coarse moduli space の特異点の同定ではない．
+\end{proof}
+
+\begin{corollary}[非零 Poisson 構造の射影化]
+\label{cor:projective-moduli}
+$\mathcal P_{n,d}^{\times}$ を零切断の補集合とする．
+Poisson 構造への独立なスカラー作用による商
+$[\mathcal P_{n,d}^{\times}/\mathbb G_m]$ から $\mathcal D_{n,d}$ への射は，
+representable，滑らかかつ射影的である．
+線束 $\mathcal H$ を選べる任意の基底上で，この射は
+\[
+ \operatorname{Gr}_T(n-1,p_*\mathcal H)\longrightarrow T
+\]
+に同型である．$\mathcal H$ を基底の線束で捻ってもこの Grassmann 族は変わらない．
+\end{corollary}
+
+\begin{proof}
+命題~\ref{prop:intrinsic-bivector-bundle} の捻られた Pl\"ucker 錐を射影化すると
+$\mathcal L$ の因子が消え，上記の Grassmann 族となる．
+式~\eqref{eq:intrinsic-bivector-bundle} のベクトル束は既に $\mathcal D_{n,d}$ 上へ
+降下しているため，この族はその射影束の閉部分スキームとして実現され，射影的である．
+representable 性と滑らかさも atlas 上の Grassmann 族から従う．
+\end{proof}
+
+ここで構成したものは，零 Poisson 構造を含む滑らかな多様体のモジュライスタックである．
+特異 del Pezzo 多様体を加えたコンパクト化，その coarse moduli space の具体的な
+構成，および相対量子化の降下は，この構成の結論には含めない．

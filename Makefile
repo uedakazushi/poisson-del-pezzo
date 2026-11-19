@@ -1,10 +1,12 @@
 .PHONY: pdf verify clean
 
 pdf:
-	latexmk -lualatex -outdir=build papers/dp12_poisson.tex
+	latexmk poisson-del-pezzo.tex
 
 verify:
 	python3 computations/verify_jacobi.py
+	python3 computations/verify_families.py
+	python3 computations/verify_cone.py
 
 clean:
-	latexmk -C -outdir=build papers/dp12_poisson.tex
+	latexmk -C poisson-del-pezzo.tex

@@ -1,0 +1,99 @@
+% !TeX root = ../../poisson-del-pezzo.tex
+\section{del Pezzo manifold の概観}
+\label{sec:del-pezzo-review}
+
+\subsection{基本偏極と次数}
+本稿で del Pezzo manifold とは，滑らかな連結複素射影多様体 $X$ と
+ample 線束 $H$ で
+\[
+ n=\dim X\geq2,\qquad \omega_X^{-1}\simeq H^{\otimes(n-1)}
+\]
+を満たすものをいう．$H$ を基本偏極，$d=\int_Xc_1(H)^n$ を次数と呼ぶ．
+これは Fujita の定義に従うものであり
+\cite[Theorem (1.9), Definition (1.13)]{Fujita1980}，
+$n=2$ では通常の del Pezzo 曲面と $H=\omega_X^{-1}$ に一致する．
+$H$ が原始的なら指数は $n-1$，余指数は $2$ である．
+ここでは原始性を定義に含めないので，例えば
+$(\Pj^3,\mathcal O_{\Pj^3}(2))$ も次数 $8$ の対象に入る．
+Picard 数 $1$ という条件も課さない．
+
+基本線型系には
+\begin{equation}
+ h^0(X,H)=n+d-1
+ \label{eq:fundamental-sections}
+\end{equation}
+が成り立つ．次数 $1$ では $|H|$ の基底スキームは一つの被約点であり，
+次数 $2$ では $|H|$ は分岐因子が滑らかな四次超曲面である
+二重被覆 $X\to\Pj^n$ を定める．次数 $d\geq3$ では $H$ は非常に ample である
+\cite[Lemma (1.10), Theorem (2.5)]{Fujita1980}
+\cite[Proposition 2.2]{KP2023}．
+また一般の基本因子による切断を繰り返すと，同じ次数の del Pezzo 曲面に至る．
+さらに $n-1$ 個の一般の基本因子の完全交叉 $C$ は滑らかな曲線であり，
+随伴公式から
+$\omega_C\simeq(\omega_X\otimes H^{\otimes(n-1)})|_C\simeq\mathcal O_C$
+を得る．この種数 $1$ の切断が，曲面と高次元の場合を結び付ける．
+
+\subsection{標準模型}
+滑らかな場合の分類は Fujita による．
+低次数の超曲面表示については
+\cite[Theorems (2.1), (2.2), (2.5)]{Fujita1980} と
+\cite[Theorems (14.6), (16.7)]{Fujita1984} を，
+高次元の一覧については \cite[Theorem 1.2]{KP2023} を参照する．
+$n\geq3$ の場合の模型は次の通りである．表の線型切断は期待次元を持つ滑らかな切断とし，
+記載した偏極を用いる．
+\begin{center}
+\begin{tabular}{@{}cll@{}}
+\toprule
+$d$ & $X$ と基本偏極 $H$ & 次元の範囲\\
+\midrule
+$1$ & $X_6\subset\Pj(1^n,2,3)$，$\mathcal O_X(1)$ & $n\geq3$\\
+$2$ & $X_4\subset\Pj(1^{n+1},2)$，$\mathcal O_X(1)$ & $n\geq3$\\
+$3$ & $X_3\subset\Pj^{n+1}$，$\mathcal O_X(1)$ & $n\geq3$\\
+$4$ & $X_{2,2}\subset\Pj^{n+2}$，$\mathcal O_X(1)$ & $n\geq3$\\
+$5$ & $\Gr(2,5)\cap\Pj^{n+3}\subset\Pj^9$，$\mathcal O_X(1)$ & $3\leq n\leq6$\\
+$6$ & $(\Pj^2\times\Pj^2)\cap\Pj^{n+4}\subset\Pj^8$，$\mathcal O_X(1,1)$ & $n=3,4$\\
+ & $(\Pj^1)^3$，$\mathcal O(1,1,1)$ & $n=3$\\
+$7$ & $\operatorname{Bl}_{p}\Pj^3$，$2L-E$ & $n=3$\\
+$8$ & $\Pj^3$，$\mathcal O(2)$ & $n=3$\\
+\bottomrule
+\end{tabular}
+\end{center}
+ここで $L$ は超平面束の引き戻し，$E$ は例外因子である．
+最初の二つの模型は ambient の非自明な stabilizer を持つ点を避ける．
+曲面では $1\leq d\leq9$ であり，$\Pj^2$，$\Pj^1\times\Pj^1$，
+および $\Pj^2$ の一般位置にある高々 $8$ 点の blow-up が現れる
+\cite[\S3]{Fujita1980}．
+次数 $1,2$ の曲面にも表と同じ重み付き模型が成り立つ
+\cite[Theorem 2.5(v)--(vii)]{CP2021}．
+
+本稿で用いる基本切断環は
+$R(X,H)=\bigoplus_{r\geq0}H^0(X,H^{\otimes r})$ である．
+次数 $1$ では重み $(1^n,2,3)$ の生成元と重み $6$ の一つの関係，
+次数 $2$ では重み $(1^{n+1},2)$ の生成元と重み $4$ の一つの関係を持つ．
+従って Hilbert 級数はそれぞれ
+\begin{equation}
+ \frac{1-t^6}{(1-t)^n(1-t^2)(1-t^3)},
+ \qquad
+ \frac{1-t^4}{(1-t)^{n+1}(1-t^2)}
+ \label{eq:del-pezzo-hilbert-series}
+\end{equation}
+である．これらは次数付き超曲面の完全列から直接従う．
+族を扱う際には，この切断環の相対版が座標付き方程式と偏極多様体をつなぐ．
+ただし，各ファイバーで基本偏極の同型類が一意であることと，
+族全体で線束および $\omega^{-1}\simeq H^{\otimes(n-1)}$ の同型を選ぶことは異なる．
+この選択に伴う基底上の線束とスカラー自己同型は，モジュライ構成で明示する．
+
+\subsection{Poisson 問題の位置付け}
+曲面では $\bigwedge^2T_X\simeq\omega_X^{-1}$ かつ
+$\bigwedge^3T_X=0$ なので，全ての反標準切断が Poisson 構造を定める．
+従って次数 $1,2$ の固定曲面上では，それぞれ $\A^2,\A^3$ が得られる．
+曲面の Poisson cohomology は Hong--Xu \cite{HongXu2011} により計算されている．
+特に同論文の Theorem 3.9 では，次数 $1,2$ の場合の
+$H^1_\pi(X)=0$，$\dim H^2_\pi(X)=10,9$，$H^i_\pi(X)=0$（$i>2$）が示される．
+これは多様体も動かす無限小変形についての既知の比較対象である．
+三次元での分類は \cite[Theorems 7.1, 9.1]{LPT2013} に，
+cubic threefold の Jacobi 方程式の明示的計算は
+\cite[Theorem 1 and the subsequent Remark]{Mayanskiy2015} にある．
+以下ではこれらを踏まえ，次数 $1,2$ の任意次元での
+スキーム論的分類と，基底変換・座標変更を伴う族への拡張を扱う．
+次数 $3$ 以上の Poisson 構造を同じ模型で分類することは本稿の主張に含めない．

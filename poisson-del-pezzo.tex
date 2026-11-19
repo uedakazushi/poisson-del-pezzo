@@ -23,10 +23,15 @@
 \newcommand{\Gr}{\operatorname{Gr}}
 \newcommand{\Pois}{\operatorname{Pois}}
 \newcommand{\dd}{\mathrm d}
-\newcommand{\Version}{1.0}
-\title{次数1・2の del Pezzo manifold の\texorpdfstring{\\}{ }Poisson スキームと中心的超曲面量子化}
+\newcommand{\Version}{1.2}
+\title{次数1・2の del Pezzo manifold の\texorpdfstring{\\}{ }Poisson 構造とモジュライ}
 \author{}
-\date{2026年11月20日\quad v\Version\quad 研究原稿}
+\date{2026年11月20日\quad v\Version\quad 公表用原稿}
+\hypersetup{
+ pdftitle={次数1・2の del Pezzo manifold の Poisson 構造とモジュライ},
+ pdfauthor={},
+ pdfsubject={Poisson schemes, relative classification, and moduli; v1.1}
+}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -35,13 +40,18 @@ $-K_X=(n-1)H$、$H^n\in\{1,2\}$ の大域 Poisson 構造を扱う。
 重み付き Euler 列と偏微分列の Koszul 完全性から全ての二重ベクトルを記述し、
 Jacobi 方程式の零スキームが次数1では $\mathbb A^n$、次数2では
 $\operatorname{Gr}(2,n+1)$ の Pl\"ucker affine cone に等しいことを証明する。
-次数2ではイデアルそのものの一致を示すので、非被約な基底上の係数族も含まれる。
+この同定を滑らかな del Pezzo manifold の族へ拡張し、
+非被約基底を含む任意の基底変換との両立を証明する。
+座標変換に伴う線束の twist を明示し、Poisson 構造付きの族を分類する
+有限型 Deligne--Mumford スタックを構成する。
+次数2の零切断の blow-up によって滑らかなモジュライスタックを得て、
+Pl\"ucker 錐の特異性を次元別に分類する。
+Poisson 構造を忘れる射は affine かつ平坦であり、
+次数1では階数 $n$ のベクトル束、次数2では相対 Pl\"ucker cone である。
 非零構造の一般階数は2であり、射影化は
 $\operatorname{Gr}(n-1,H^0(X,H))$ に内在的に同定される。
 標準 ambient stack への一意な Poisson lift、葉の記述、曲面での退化因子、
 中心元による次数付き形式量子化を併せて示す。
-3次元の場合の分類は既知であり、高次元およびスキーム論的記述の新規性の包括的確認は未了である。
-量子化の代数化、任意の非形式的特殊化での AS 正則性、全非可換変形の網羅性は主張しない。
 \end{abstract}
 \tableofcontents
 
@@ -51,7 +61,8 @@ $\operatorname{Gr}(n-1,H^0(X,H))$ に内在的に同定される。
 \[
  n=\dim X\geq2,\qquad -K_X\simeq(n-1)H,\qquad d=H^n\in\{1,2\}
 \]
-を満たすものである。$X$ 自体は固定する。
+を満たすものである。固定した $X$ 上の分類から始め、
+$X$ 自体も変化する族とそのモジュライを構成する。
 $V_X=H^0(X,\bigwedge^2T_X)$、$W_X=H^0(X,\bigwedge^3T_X)$ とおき、
 二次写像 $Q_X:V_X\to W_X$、$Q_X(\pi)=\frac12[\pi,\pi]$ の零スキームを
 \[
@@ -92,7 +103,41 @@ $X$ を Poisson 部分多様体とする $\mathcal P$ 上の Poisson 構造に�
 の定数倍の選択を除けば内在的である。
 スキームとしての主張は、任意の可換 $\C$ 代数 $B$ に対し、
 $V_X\otimes B$ 内で Jacobi 恒等式を満たす元が同じ方程式で分類されることを意味する。
-$X$ 自体を動かす変形問題とは区別する。
+動く $X$ に対する主張には、さらに基底変換と座標変換に関する議論が必要となる。
+
+\begin{theorem}[族と Poisson モジュライ]
+\label{thm:relative-main}
+$n\geq2$ と $d\in\{1,2\}$ を固定する。
+滑らかな $n$ 次元・次数 $d$ の del Pezzo manifold の
+モジュライを $\mathcal D_{n,d}$ とする。
+相対 Poisson 二重ベクトルを加えたモジュライ $\mathcal P_{n,d}$ は
+有限型 Deligne--Mumford スタックであり、忘却射
+\[
+ \mathcal P_{n,d}\longrightarrow\mathcal D_{n,d}
+\]
+は affine、有限表示かつ平坦である。
+次数1では階数 $n$ のベクトル束、次数2では局所的に
+$\operatorname{Gr}(2,n+1)$ の Pl\"ucker affine cone の族となり、
+この記述は任意の基底変換と両立する。
+次数1の全体、および次数2の非零 Poisson 構造の部分は滑らかである。
+次数2では $n=2$ のとき全体が滑らかで、$n\geq3$ のとき特異点の集合は零切断に等しい。
+非零構造をスカラー倍で割った相対モジュライは
+基本線束を局所的に選んで得る相対 Grassmann 多様体の降下である。
+\end{theorem}
+
+ここで基本偏極は線束そのものに付随するスカラー自己同型を除いて扱う。
+基本偏極のクラスは族に一意に定まり、追加の標識を必要としない
+（補題~\ref{lemma:fundamental-polarization-class}）。
+具体的な対象、射、および商表示は定理~\ref{thm:poisson-moduli} で定義する。
+特に、$\mathcal D_{n,d}$ 上の大域的な自明直積や基本線束の大域的存在は主張していない。
+族 $p:\mathcal X\to S$ 上で実際の基本線束 $H$ を選んだときの大域二重ベクトル束は
+\[
+ p_*\bigwedge^2T_{\mathcal X/S}
+ \simeq\bigwedge^{n-1}(p_*H)\otimes
+ p_*(\omega_{\mathcal X/S}^{-1}\otimes H^{-(n-1)})
+\]
+である。右辺の最後の線束が、同変性に必要な twist を担う。
+この同型とその降下は命題~\ref{prop:intrinsic-bivector-bundle} で証明する。
 
 \subsection{先行研究との関係と到達範囲}
 標準重み付きモデルは del Pezzo 多様体の既知の分類による。
@@ -110,6 +155,16 @@ Pl\"ucker 関係と Poisson スキームを明示的に計算している。
 従って本稿で比較すべき点は、次数1・2、任意次元での大域計算と、
 次数2における Jacobi イデアル自体の回収である。
 これらの主張の優先権を確定する文献調査は継続中である。
+また曲面について Hong--Xu \cite[Theorem 3.9]{HongXu2011} は
+一般位置の $r$ 点で吹き上げた $\mathbb P^2$、$5\leq r\leq8$ の
+Poisson cohomology を計算している。
+次数1・2の $\dim H^2_\pi=10,9$ および $H^1_\pi=0$ は既知であり、
+本稿の曲面モジュライの次元とも整合する。
+本稿の族に関する結果は、これらの数値の新しい発見ではなく、
+任意次元での Jacobi 零スキーム、非被約基底を含む基底変換、
+線束の twist と具体的商表示を一つの構成として与えるものである。
+有限型商スタックおよび基底変換については
+Stacks Project \cite[Tags 0B91, 06FI, 0DSL]{StacksProject} の一般結果を用いる。
 
 形式量子化の存在には Kontsevich の affine formality \cite{Kontsevich} を用いる。
 曲面での cyclic potential と中心元は
@@ -118,15 +173,20 @@ Etingof--Ginzburg \cite[Lemma 7.4.2, Proposition 8.1.1(i)]{EG2010} に基づく�
 量子化の一意性や非可換 del Pezzo 多様体全体の分類を意味しない。
 
 \subsection{構成}
-まず全ての二重ベクトルを重み付き多項式の Casimir 代表に直し、
-Jacobi イデアルを決定する。続いて内在的な Grassmann 表示、
-symplectic leaf、曲面の反標準零因子を調べる。
-後半では形式量子化と曲面の具体表示を扱い、条件付き AS 正則性を分けて述べる。
+del Pezzo manifold の定義と標準模型を短く整理した後、
+全ての二重ベクトルを Casimir 代表に直して Jacobi イデアルを決定する。
+続いて内在的な Grassmann 表示、symplectic leaf、曲面の反標準零因子を調べる。
+これを相対化して Poisson モジュライを構成し、
+その零切断の blow-up と特異性を調べ、その後に形式量子化と曲面の具体表示を扱う。
+量子化の代数化および条件付き AS 正則性は、可換な Poisson モジュライの構成とは区別する。
 次数3・4の詳細な分類は本稿に含めず、関連する構成と障害を研究ノートに置く。
 
+\input{papers/sections/del-pezzo-review}
 \input{papers/sections/classification}
 \input{papers/sections/geometry}
-\input{papers/sections/quantization}
+\input{papers/sections/families}
+\input{papers/sections/moduli}
+\input{papers/sections/singularities}
 
 \section{零 Poisson 構造の無限小変形}
 \label{sec:infinitesimal}
@@ -159,18 +219,23 @@ $Q\wedge Q=2\partial_{x_0}\wedge\partial_{x_1}\wedge
 実際の次元 $2n-1$ より大きいことを具体化する。
 曲面の場合には $\bigwedge^4\C^3=0$ なのでこの障害はない。
 
+\input{papers/sections/quantization}
+
 \section{今後の数学的課題}
 \label{sec:open}
-主定理は固定した滑らかな $X$ 上の Poisson スキームを決定するが、
-動く $X$ 上の相対分類、$\operatorname{Aut}(X)$ による商、
-全 Poisson 係数空間上の量子化の選択と降下、代数化を決定しない。
-次の段階では、滑らかな重み付き方程式のパラメータ空間上で
-Euler--Koszul の計算と Jacobi イデアルの線型回収を相対化し、
-方程式の変換に伴う行列式の twist を明示する。
+本稿では固定した $X$ の Poisson スキームから動く $X$ の相対分類と
+モジュライスタックまでを構成した。
+coarse moduli space の具体的構成、GIT 安定性、特異な del Pezzo 多様体を含む
+コンパクト化は、ここでの商スタックの構成とは別の課題である。
+また全 Poisson パラメータ空間上の量子化の選択とその降下、代数化、
+全ての非可換変形の網羅性は未解決である。
 曲面の非形式的な量子化では、中心元の補正、Rees algebra、
 genericity と AS 正則性の仮定を独立に検証する必要がある。
 これらを本稿で証明済みの結果と混同しない。
 
+\begingroup
+\small
 \bibliographystyle{alpha}
 \bibliography{references}
+\endgroup
 \end{document}

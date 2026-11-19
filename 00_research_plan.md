@@ -1,8 +1,10 @@
 # 研究方針：del Pezzo manifold の Poisson 構造
 
-**2026-11-20（JST） / v1.0。再開時に最初に読む。**
+**2026-11-20（JST） / v1.2。再開時に最初に読む。**
 
-続いて [研究ノート](research/research_notes.md)、[論文](papers/dp12_poisson.tex)、[検証・再現手順](docs/reproduction.md) を読む。以下の一般原則と、本研究に固有の計画を分けて記載する。
+**現在の反映状態：** v1.2 の現行ソース・検算コード・PDFをこの一式に保持する。GitHub `main` への反映は、操作の成否とリモート HEAD を独立に確認する。更新に失敗した場合は、この一式を正本の復旧資産とし、失敗を明記する。
+
+続いて [研究ノート](research/research_notes.md)、[論文](poisson-del-pezzo.tex)、[検証・再現手順](docs/reproduction.md) を読む。以下の一般原則と、本研究に固有の計画を分けて記載する。
 
 ## A. 研究一般の原則と保存許可
 
@@ -17,50 +19,57 @@
 
 ## B. 中心目標と達成基準
 
-滑らかな複素 del Pezzo manifold の Poisson 構造を、次数による違いを保ちながら幾何学的に説明する。**当面の中心は次数1・2の任意次元での分類とその族としての意味**である。次数3の cubic は `nc-cubic`、次数4の詳細分類は `poisson-22ci`・`nc-22ci` を正本とし、本repoでは共通する構成と相違点を研究する。
+滑らかな複素 del Pezzo manifold の Poisson 構造を、次数による違いを保ちながら幾何学的に説明する。**現在の中心は、次数1・2の任意次元でのスキーム論的分類と、Poisson 構造付き多様体のモジュライである。** 次数3の cubic は `nc-cubic`、次数4の詳細分類は `poisson-22ci`・`nc-22ci` を正本とし、本repoでは共通する構成と相違点を研究する。
 
-現在の論文 `papers/dp12_poisson.tex` は、固定した $X$ の Jacobi 零スキーム、ambient lift、葉、曲面退化、形式量子化を一つの論理的な単位にまとめる。公表の達成基準は、主定理の仮定と証明の完結、先行研究との具体的な差分、再生成可能な原稿・検算である。全ての非可換モジュライの完成をこの論文の前提にはしない。
+公表用原稿はルートの `poisson-del-pezzo.tex`。短い del Pezzo manifold のレビュー、固定対象の分類、葉・曲面退化、相対分類・モジュライ、無限小変形、形式量子化を一つの論理的な単位にまとめる。公表の達成基準は、中心定理の仮定と証明の完結、関連文献との具体的な差分、読者が検証・再生成できる原稿である。量子化の代数化や全非可換変形の網羅性を完成の前提にはしない。
 
-出発点である2026-11-11の次数1・2・4の研究原稿のうち、次数1・2の内容を現行論文に再構成した。新たに、被約分類から **Jacobi イデアル自体の一致**へ主張を強めた。理由は、無限小変形と相対化を扱うためには閉点の分類だけでは足りないからである。もとの固定 $X$ の分類・形式量子化の目標は本文で扱い、相対化・代数化・非可換変形の網羅性は未解決として分離する。
+固定した $X$ の分類を維持しながら、現在は **動く多様体の族と正確な商スタック**へ重点を置く。理由は、Jacobi イデアルの一致が無限小基底上でも有効であり、cohomology and base change と同変な貼り合わせによってモジュライへ進めるからである。座標付き相対分類、基本線束の twist、Deligne–Mumford 性までを本文で証明した。coarse moduli、コンパクト化、相対量子化の降下は別の未解決問題として残る。方針変更の履歴ではなく、以下を現在の計画とする。
 
 ## C. 現在の到達点と状態
 
-記法：$n\geq2$、$-K_X=(n-1)H$、$d=H^n$。`Pois_sch(X)` は固定した $X$ 上の Schouten 二次写像の零スキームであり、被約化・スカラー商・自己同型商と区別する。
+記法：$n\geq2$、$-K_X=(n-1)H$、$d=H^n\in\{1,2\}$。`Pois_sch(X)` は固定した $X$ 上の Schouten 二次写像の零スキーム。$\mathcal D_{n,d}$ は基本偏極のクラスを持つ多様体のスタック、$\mathcal P_{n,d}$ は相対 Poisson 構造を加えたスタックである。基本線束のスカラー自己同型と、Poisson 構造のスカラー倍を区別する。
 
 | 主張 | 仮定・依存・証明の所在 | 現在の状態 |
 | --- | --- | --- |
-| 全大域二重ベクトルの Casimir 表示 | 滑らかな $X$、標準重み付きモデル。論文 `lemma:weighted-vanishing`、`lemma:ambient-restriction`、`prop:casimir-representative` | 本文に完全証明。今回、$n=2$ を含む消滅・補正・Koszul の論理を点検 |
-| 次数1は $\mathbb A^n$、次数2は Plücker cone | `thm:jacobi-scheme`。次数2では $J_{ijk}=2\sum_lq_{ijkl}f_l$、Euler外積と偏微分の線型独立性で各 $q$ を回収 | イデアルそのものの一致を本文で証明し今回点検。任意の可換複素係数環に適用可 |
-| 非零部・零点の変形 | `cor:poisson-scheme-dimension`、`cor:second-order` | 次数2の非零部は滑らか。$n\geq3$ で頂点のみ特異。零点の二次障害を明示 |
-| 階数2・Grassmann 表示・葉 | `sec:geometry`、`sec:surfaces` | 本文に証明。葉の閉包の滑らかさは一般の部分線型系・一般のファイバーについて |
-| 全構造の中心的超曲面形式量子化 | `thm:formal-quantization`。Kontsevich affine formality と twisted map が外部入力 | 適用条件、重み保存、中心元、非零因子性、次数ごとの自由性を今回点検 |
-| 曲面の potential・Rees・AS 中心拡大 | `sec:surface-potential`、`prop:central-as-extension`。EG2010 の明記した定理と、AS命題の追加仮定 | 形式的存在と条件付きAS正則性を区別。全非形式的特殊化への主張なし |
-| 次数4との比較 | `research/dp4_comparison.md` | 旧原稿の有効な知識を比較用に整理。次数4全体を今回全面的に独立監査したとはしない |
+| 全大域二重ベクトルの Casimir 表示 | 標準重み付きモデル。`lemma:weighted-vanishing`、`lemma:ambient-restriction`、`prop:casimir-representative` | 本文に証明。今回の相対化の入力として論理を点検 |
+| 次数1は $\mathbb A^n$、次数2は Plücker cone | `thm:jacobi-scheme`。Jacobi 係数から各 Plücker 二次式を線型回収 | イデアル一致の証明を保持。厳密記号検算を再実行 |
+| 相対二重ベクトル束と任意基底変換 | `lemma:universal-sections-base-change`、`prop:relative-bivectors`。proper perfect base change と明示的な普遍切断 | 非被約基底を含む証明を記載・独立点検 |
+| 相対 Jacobi スキーム | `thm:relative-poisson`。勾配係数行列の最大小行列式で局所左逆を作る | $U_1\times\mathbb A^n$、$U_2\times\operatorname{Cone}\operatorname{Gr}(2,n+1)$。平坦性も証明 |
+| 基本偏極類と無標識の族 | `lemma:fundamental-polarization-class`。Picard 層と $H^1(\mathcal O)=H^2(\mathcal O)=0$ | 任意基底上でクラスが一意。基本線束自体の大域的存在は要求しない |
+| 族の標準形・群作用 | `lemma:family-normal-form`、`prop:coordinate-action` | 任意基底での相対切断環、残余群、方程式の変換因子を証明。符号・重みを記号検算 |
+| 内在的な二重ベクトル束 | `prop:intrinsic-bivector-bundle` | $p_*\wedge^2T\simeq\wedge^{n-1}(p_*H)\otimes p_*(\omega^{-1}\otimes H^{-(n-1)})$。偏極の基底 twist が相殺 |
+| Poisson モジュライ | `thm:poisson-moduli`、`lemma:no-vector-fields` | 有限型・既約の DM スタックを明示的商で構成。忘却射は affine、有限表示、平坦 |
+| 次元・滑らかさ・射影化 | `cor:moduli-dimension`、`cor:projective-moduli` | 次数1は滑らか、次数2の $n\geq3$ は零切断の点で特異。射影化は局所 Grassmann 族の降下 |
+| 多様体を動かした零点の二次障害 | `cor:relative-deformations` | $Q\wedge Q$ は方程式の変形で相殺できない。本文証明と記号検算 |
+| 零切断の解消と特異点型 | `sec:singularities`、`thm:poisson-resolution`、`cor:moduli-singularity-types` | 次数2の零切断の blow-up は滑らかな相対 Grassmann tautological line の全空間。n=3 は超曲面、n≥4 は非 lci。標準単項式理論の既知結果から terminal を導く。新規性未確認 |
+| 階数2・葉・曲面退化・形式量子化 | `sec:geometry`、`sec:surfaces`、`thm:formal-quantization` | 有効な既存の証明を現行論文に保持。量子化部分の全面的な再監査は今回の点検範囲外 |
+| 曲面 potential・Rees・条件付き AS 拡大 | `sec:surface-potential`、`prop:central-as-extension` | 形式的存在と追加仮定下の AS 正則性を区別して保持 |
+| 次数4との比較 | `research/dp4_comparison.md` | 比較用の知識・例を保持。次数4全体の全面的な独立監査はしていない |
 
-**新規性の状態：** 曲面と三次元の集合論的分類は既知。高次元、ambient lift、スキーム論的同定の優先権は包括的には未確認。[文献メモ](research/literature_notes.md) に確認した版・箇所を置く。形式証明器での検証は行っていない。
+**新規性の状態：** 曲面の点分類、三次元の集合論的分類は既知。Hong–Xu の曲面 Poisson cohomology による次数1・2の変形次元10・9も既知。本研究の任意次元・相対 Jacobi スキーム・同変降下の主張は証明を本文に置くが、優先権の包括的な確認は未了。[文献メモ](research/literature_notes.md) に一次資料の版・箇所と未確認点を置く。形式証明器による検証は行っていない。
 
 ## D. 次に着手する課題
 
-### 1. 相対 Jacobi スキームと基底変換
+### 1. 公表に向けた位置付けと中心定理の磨き上げ
 
-標準方程式の係数空間の滑らかな locus $U_d$ 上で普遍族を取る。Euler列の消滅を相対化し、$p_*\bigwedge^2T_{\mathcal X/U_d}$ の局所自由性と基底変換を確認する。次数2では三次式 $f_i$ の係数行列が階数 $n+1$ を持つ開集合を使い、小行列式を可逆化して線型左逆を作る。固定 $X$ の証明の係数回収をそこで行い、開集合間で貼り合うことを示す。
+レビューと Introduction における Fujita、Kuznetsov–Prokhorov、LPT、Mayanskiy、Hong–Xu との比較を基準に、任意次元での分類、スキーム構造、相対化、ambient lift の各主張の既知性を調査する。高次元 foliation と weighted hypersurface の参照先を辿る。現在の証明の価値は、検索で同じ結果を発見しなかったことだけから判断しない。
 
-達成基準は、**座標付きの滑らかな定義方程式の族**について、非被約基底も含む相対 Jacobi スキームの同定を完全に書くこと。点ごとの分類から平坦性や任意基底変換を推測しない。具体的な開始式は研究ノート§3。
+### 2. モジュライの幾何と coarse space
 
-### 2. 定義式・座標の変更と内在的な降下
+次の具体的な入口は、零切断の blow-up の下での安定化群と正規形の群作用 `eq:moduli-action-one/two` における stabilizer の計算である。二重被覆 involution は $\pi\mapsto-\pi$ と作用し、零点・非零点・射影化で役割が変わる。一般の stabilizer、自己同型が増える層、coarse space の局所構造を順に調べる。DM 性だけから separatedness、有限 inertia、coarse space の具体形を結論しない。必要な GIT 安定性や商の存在定理の仮定を個別に確認する。
 
-上の座標付き結果から、定義式の線束、$H^0(H)$、canonical の自明化の変換因子を求める。$z\mapsto-z$ は $H^0(H)$ に自明に作用しても bivector には $-1$ で作用するため、affine 空間の同変性を射影 Grassmann 表示から推測してはいけない。まずこの involution と重み付き対角変換で formula を校正する。自己同型商の問題はその後に扱う。
+達成基準は、対象スタックと coarse space の区別を保った具体的定理を得ること。相対 Grassmann 族が大域的に通常のベクトル束の Grassmann 束になるとは仮定しない。基本線束の大域的存在の障害と、すでに降下した bivector 束を区別する。
 
-### 3. 公表のための文献比較
+### 3. 境界と量子化
 
-LPT2013、Mayanskiy2015 と、そこから参照される高次元 foliation・weighted hypersurface の文献を比較する。「全次元の閉点分類」「スキーム構造」「ambient lift」「形式量子化への適用」の四項目を分けて新規性を判断する。現在の証明の価値を、単に未発見の文献があることから決めない。
+特異な del Pezzo 多様体を含めると、勾配行列の階数落ちと偏微分 Koszul 複体の非完全性が最初の障害となる。まず一つの孤立特異点を持つ標準模型で、どの係数回収が壊れるかを調べる。滑らかな族の定理を境界へ自動的に延長しない。
 
-### 後続課題
-
-相対的な中心的量子化の選択・降下、有限表示の代数化、AS正則性の非形式的な locus、Poisson中心と量子中心の比較を進める。全 `coh(X)` 変形の認識は `nc-dp1-moduli` 等との別問題として扱う。次数4については高階数の存在を踏まえ、全次数を同じ Grassmann cone とする方針は採らない。
+相対量子化では、中心元と formality の選択が群作用・降下と両立するかを検討する。有限表示の代数化、AS 正則性の非形式的 locus、全 `coh(X)` 変形の認識は後続課題である。次数4の高階数構造を踏まえ、全次数を同じ Grassmann cone とする方針は採らない。
 
 ## E. 構成・検証・再開
 
-原稿は `papers/dp12_poisson.tex` と三つの section source、文献は `references.bib`。重複する旧原稿を残さず、比較の具体模型はノートに保持する。生成PDFは `make pdf`、主要検算は `make verify`。依存・実行結果・限界は [docs/reproduction.md](docs/reproduction.md) を参照する。
+主原稿は `poisson-del-pezzo.tex`、本文の七つの section source は `papers/sections/`、文献は `references.bib`。現行の分類・量子化を削除せず、新しいレビュー・族・モジュライを本文の論理順に統合した。旧主原稿の重複は置かない。
 
-一式の正本は `uedakazushi/poisson-del-pezzo` の `main`。通常のコミットで反映し、GitHub Actionsを使わない。更新時はこの文書とREADMEの現在の到達点・次の課題を書き換える。
+生成 PDF は `make pdf` またはルートからの `latexmk` により `build/poisson-del-pezzo.pdf` に出力する。SyncTeX を有効にする。主要な厳密検算は `make verify`。具体的な依存、検証結果、実行環境の制約は [docs/reproduction.md](docs/reproduction.md) を参照する。
+
+一式の正本は `uedakazushi/poisson-del-pezzo` の `main`。通常コミットで反映し、GitHub Actions を使わない。研究継続用bundleは、現行ソース、必要な検算と文献、および組版済みPDFを含む一つの自己完結した一式とし、Git履歴や旧版を含めない。
