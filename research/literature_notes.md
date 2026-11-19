@@ -1,6 +1,6 @@
 # 先行研究と主張の位置づけ
 
-2026-11-20（JST）・v1.3。次数 1・2 の滑らかな複素 del Pezzo 多様体に関する現行の文献確認メモ。
+2026-11-20（JST）・v1.4。次数 1・2 の滑らかな複素 del Pezzo 多様体に関する現行の文献確認メモ。
 書誌情報は [references.bib](../references.bib) に収録する。以下の「確認」は指定した版の定義・定理文・該当する議論を読んだことを指し、引用論文の証明全体を独立に検証したことを意味しない。既存の確認内容も保持しており、文書の更新日は全掲載文献の再確認日を意味しない。
 
 ## 現時点での結論
@@ -25,6 +25,16 @@ F. Loray, J. V. Pereira, F. Touzet, *Foliations with trivial canonical bundle on
 Theorem 7.1 と §7 の表は $\operatorname{Pic}(X)=\mathbb ZH$ の index 2 Fano 三次元多様体を扱い、次数 1・2 では $\operatorname{Rat}(1,1)$ の唯一の成分を与える。§9 の Theorem 9.1 は Poisson 構造の既約成分を分類する。この論文の $\operatorname{Poisson}(X)$ は $\mathbb P H^0(X,\wedge^2T_X)$ の中の空間なので、アフィンな Jacobi 零スキームとの比較ではスカラーと原点を区別する。
 
 arXiv v3 は Theorem 9.1 の訂正を含むため、引用する定理文はこの版に固定する。この文献から任意次元の分類や Jacobi イデアルの一致を引用しない。
+
+## 族全体の成分数と曲面の既知の背景
+
+各固定 $n\ge2$、$d=1,2$ の $\mathcal P_{n,d}$ の既約性は、確立した相対Jacobi錐の商表示と、その既約atlasから従う。次数1・2を許す問題では、反標準体積の局所定数性による開閉分解を証明し、成分数が2であることを得た。これは現行構造定理の帰結であり、成分数1という数値を低次元も含めて新発見とは主張しない。
+
+E. Looijenga, *Artin groups and the fundamental groups of some moduli spaces*, J. Topol. **1** (2008), no.1, 187–216、DOI [10.1112/jtopol/jtm009](https://doi.org/10.1112/jtopol/jtm009)。[著者公開稿](https://webspace.science.uu.nl/~looij101/affartinml2a.pdf)（38頁）の §4、p.21 は、$d\le5$ の標識del Pezzo曲面を $(\mathbb P^2)^{5-d}$ の開集合で表示し、有限Weyl群の商を記述する。曲面では $\wedge^2T_X=\omega_X^{-1}$ なので、この既知の基底の既約性と反標準切断の相対ベクトル束からPoissonモジュライの既約性が従う。同稿 Definition 4.1・Lemma 4.2 のpair/tripleは**特異**反標準曲線を指定する別の問題であり、全非零Poisson構造とは同一視しない。
+
+三次元ではLPTの固定 $X$ 上の射影成分数が既知である。一方、本稿は $X$ を動かす代数スタックを対象とし、任意次元、非被約基底を含む相対Jacobi方程式、基本線束のgerbeを含めた商表示を入力とする。同じ一般性の先行定理は本調査で特定していないが、優先権の包括的確認は未了である。
+
+一般の解析的Poisson族については、C. Kim, *Theorem of existence and completeness for holomorphic Poisson structures*, [arXiv:1407.2026v2](https://arxiv.org/pdf/1407.2026v2) の Definition 2.0.6、Theorems 5.1.1, 6.1.4 に局所的な存在・完全性の結果がある。追加の解析的仮定を持つ局所変形論であり、本稿の有限型代数スタックの大域的成分数の入力には用いない。
 
 ## スキーム構造の比較：Mayanskiy2015
 
@@ -65,7 +75,7 @@ $$
 
 を与える。次数1・2では $r=8,7$ なので変形次元10・9が既知であり、今回の滑らかなモジュライスタックの次元に一致する。曲面の任意の bivector が Poisson であることも既知である。今回の結果の位置付けは、この数値ではなく任意次元の相対 Jacobi スキームと同変な商構成に置く。
 
-書誌年は arXiv v2 の日付2011を用いた。PDF内部の日付と異なるが、未確認の雑誌掲載情報は補っていない。
+掲載書誌は J. Algebra **336** (2011), no.1, 378–390、DOI [10.1016/j.jalgebra.2010.12.017](https://doi.org/10.1016/j.jalgebra.2010.12.017)。[著者所属大学の公式書誌](https://pure.psu.edu/en/publications/poisson-cohomology-of-del-pezzo-surfaces/)で確認した。定理番号と内容の確認版は引き続き arXiv v2 とし、出版本文との番号の照合は未実施である。
 
 ## 族とスタックの外部入力
 
@@ -76,6 +86,10 @@ Stacks Project の以下の一次資料を確認した。
 - [Tag 06N3](https://stacks.math.columbia.edu/tag/06N3), Theorem 101.21.6 と [Tag 0DSL](https://stacks.math.columbia.edu/tag/0DSL), Lemma 101.22.2：DM 性と unramified な幾何学的 stabilizer の判定。本稿では有限自己同型を重みと Koszul 完全性から独立に示す。
 
 - [Tag 0D2C](https://stacks.math.columbia.edu/tag/0D2C), Proposition 99.11.8、[Tag 0DNI](https://stacks.math.columbia.edu/tag/0DNI), Lemma 108.9.3、[Tag 0DME](https://stacks.math.columbia.edu/tag/0DME), Lemma 108.9.1：相対 Picard 層の代数空間性・局所有限表示性・線束の fppf 局所表示。[Tag 0D28](https://stacks.math.columbia.edu/tag/0D28), Lemma 99.11.4 は切断を持つ族で Picard 類を線束で表すことを保証し、平方零拡大上での étale 局所的な持ち上げに用いる。基本偏極類の一意な相対化には、さらに $H^1(\mathcal O)=H^2(\mathcal O)=0$ と torsion-free Picard 群の本文証明を用いる。
+
+- [Tag 0D1G](https://stacks.math.columbia.edu/tag/0D1G), Lemma 99.13.3：proper flat finite-presentationな代数空間の族はfppfスタックをなす。[Tag 0D3D](https://stacks.math.columbia.edu/tag/0D3D), Lemma 74.13.2 と [Tag 0D34](https://stacks.math.columbia.edu/tag/0D34), Lemma 71.14.4：固有な代数空間の族に対する相対ample locusと、相対ample線束からのスキーム表現可能性。反標準線束を使い、無偏極の族の有効下降と基底局所の射影性を得る。
+- [Tag 0B9T](https://stacks.math.columbia.edu/tag/0B9T), Lemma 36.32.2：proper finite-presentation family上の平坦な有限表示層のEuler標数は局所定数。反標準線束の0乗から$n$乗までに適用し、有限差分で反標準体積と次数の局所定数性を得る。大域的な基本線束は不要。
+- [Tag 0DR5](https://stacks.math.columbia.edu/tag/0DR5), Lemma 107.3.1：滑らかな全射atlasの成分からスタックの全既約成分を得る。本稿ではatlasそのものが既約なので成分は1個。群の連結性はこの結論の必要条件ではない。
 
 これらの一般定理自体を本研究の成果として扱わない。相対法線・Euler 列、正規形の相対切断環、座標変換の character、およびその Poisson 方程式への作用が、本稿で具体的に証明する部分である。
 

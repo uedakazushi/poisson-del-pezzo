@@ -7,39 +7,68 @@
 Poisson 構造の族を分類する代数的スタックを構成する．
 偏極線束のスカラー自己同型と Poisson 構造のスカラー倍は，異なる操作として扱う．
 
-\subsection{偏極を持つ族と相対切断環}
+\subsection{内在的なモジュライ関手と基本偏極}
 
-$T$ を $\C$ 上のスキームとする．\emph{線束を指定した del Pezzo 族}とは，
-滑らかで射影的な相対次元 $n$ の射 $p:\mathcal X\to T$ と相対 ample 線束
-$\mathcal H$ の組で，各幾何学的ファイバーが連結であり，
+\begin{definition}[相対 Poisson 構造を持つ del Pezzo 族]
+\label{def:poisson-moduli-stack}
+$n\geq2$，$d\in\{1,2\}$ を固定する．$\C$ 上のスキーム $T$ に対し，
+$\mathcal P_{n,d}(T)$ の対象は次の組 $(p:\mathcal X\to T,\pi)$ とする．
+\begin{enumerate}
+\item $p$ は滑らか，固有かつ有限表示の相対次元 $n$ のスキームの射であり，各幾何学的ファイバーは
+連結な次数 $d$ の del Pezzo manifold である．基本線束の選択は対象のデータに含めない．
+\item $\pi\in\Gamma(\mathcal X,\bigwedge^2T_{\mathcal X/T})$ は相対二重ベクトルであり，
+$[\pi,\pi]=0$ を $\Gamma(\mathcal X,\bigwedge^3T_{\mathcal X/T})$ の等式として満たす．
+\end{enumerate}
+$T$ 上の射は $\pi$ を保つ $T$-同型であり，一般の基底射に対する引き戻しは
+Cartesian な族と相対二重ベクトルの引き戻しで定める．
+Poisson 構造を忘れた群oidを $\mathcal D_{n,d}(T)$ と書く．
+基底の被約性は仮定せず，Jacobi 恒等式を幾何学的ファイバー上だけで課すこともしない．
+\end{definition}
+
+これらを fppf 位相のスタックとして扱う．
+族の反標準線束は標準的に定まり，各幾何学的ファイバーで ample であるため相対 ample である
+\cite[Tag 0D3D]{StacksProject}．従って族は基底上局所的に射影的である．
+任意基底上で一つの $\mathbb P^N_T$ への大域閉埋込みを追加データとして要求しない．
+fppf 降下の有効性は，まず滑らかな固有代数空間として族を降下させ
+\cite[Tag 0D1G]{StacksProject}，
+標準的に降下する反標準線束へ同じ相対 ample 性の判定を適用すればよい．
+相対 ample 線束を持つ代数空間の射はスキームで表現可能である
+\cite[Tag 0D34]{StacksProject} ため，降下後も $T$ 上のスキームとなる．
+相対二重ベクトルと Jacobi 恒等式にも fppf 降下を適用できる．
+以下の商表示は，この内在的な定義に対して代数性と有限型性を与えるものである．
+特に，座標付きの一部の対象だけを分類するスタックを定義するのではない．
+
+同様に，各幾何学的ファイバーの次数が $\{1,2\}$ に属することだけを要求した
+スタックを $\mathcal P_{n,\{1,2\}}$ と書く．
+Poisson 構造を忘れたものを $\mathcal D_{n,\{1,2\}}$ と書く．
+この段階では，基底上で次数が大域的に一定であるとは要求しない．
+次数の局所定数性と，このスタックの開かつ閉な分解は後で証明する．
+
+商表示のための補助的なスタックとして，\emph{線束を指定した del Pezzo 族}
+$(p:\mathcal X\to T,\mathcal H)$ を考える．
+ここで $p$ は上の族，$\mathcal H$ は相対 ample 線束であり，各幾何学的ファイバー上で
 \[
  \omega_{X_t}^{-1}\simeq H_t^{\otimes(n-1)},\qquad H_t^n=d
 \]
-を満たすものをいう．ここでは反標準線束との同型そのものは指定しない．
+を満たす．反標準線束との同型そのものは指定しない．
 射は族の同型と偏極線束の同型の組であり，線束のスカラー自己同型を含む．
-このスタックを $\widetilde{\mathcal D}_{n,d}$ と書く．
-相対 Poisson 二重ベクトル $\pi\in\Gamma(\mathcal X,\wedge^2T_{\mathcal X/T})$
-をさらに指定したスタックを $\widetilde{\mathcal P}_{n,d}$ と書く．
-
-一方，\emph{偏極類を指定した族}のスタック
-$\mathcal D_{n,d}$ は，このスカラー $\mathbb G_m$ を自己同型群から除いた
-fppf スタックとする．より具体的には，線束を局所的に選び，
-基底からの線束による $\mathcal H\mapsto\mathcal H\otimes p^*M$ を許して
-降下させた偏極類を指定する．対応する Poisson スタックを $\mathcal P_{n,d}$ と書く．
-従って $\mathcal D_{n,d}$ 上に基本線束そのものが大域的に存在することは，定義に含めない．
-この区別は，任意の基底上の族と自己同型群を正しく記述するために必要である．
+このスタックを $\widetilde{\mathcal D}_{n,d}$，さらに相対 Poisson 構造を指定したものを
+$\widetilde{\mathcal P}_{n,d}$ と書く．基本線束そのものは一般の基底上で存在するとは限らず，
+その選択を忘れることは，対象ごとの同型類の集合を取る操作ではない．
+次の補題が，これらの補助的なスタックと定義~\ref{def:poisson-moduli-stack} の関係を与える．
 
 \begin{lemma}[基本偏極類の一意性と無標識の族]
 \label{lemma:fundamental-polarization-class}
-$p:\mathcal X\to T$ を滑らかで射影的な族とし，各幾何学的ファイバーが
+$p:\mathcal X\to T$ を滑らか，固有かつ有限表示の族とし，各幾何学的ファイバーが
 $n$ 次元，次数 $d$ の del Pezzo manifold であるとする．
 このとき相対 Picard 層 $\operatorname{Pic}_{\mathcal X/T}$ に
 \[
  (n-1)h=[\omega_{\mathcal X/T}^{-1}]
 \]
 を満たす切断 $h$ がただ一つ存在する．これは fppf 局所的に基本線束で表される．
-従って $\mathcal D_{n,d}$ は，基本偏極を別途指定しない滑らかな del Pezzo 族の
-スタックとも同値である．Poisson 構造を付けても同じ結論が成り立つ．
+従って忘却射 $\widetilde{\mathcal D}_{n,d}\to\mathcal D_{n,d}$ は
+$\mathbb G_m$-gerbe であり，線束のスカラー自己同型を除いて fppf スタック化したものは
+$\mathcal D_{n,d}$ に同値である．Poisson 構造を付けても同じ結論が成り立つ．
 \end{lemma}
 
 \begin{proof}
@@ -84,6 +113,11 @@ $[\omega^{-1}]$ に沿って引き戻した根の空間は，各幾何学的フ�
 \cite[Tag 0DME]{StacksProject} により存在し，ファイバー上で ample であるから相対 ample である．
 一意性により，族のすべての同型はこの偏極類を保つ．
 線束そのものを大域的に選べるとは結論していない．
+二つの局所的な線束表示は，fppf 局所的には基底からの線束による捻りだけ異なる．
+また $p_*\mathcal O_{\mathcal X}=\mathcal O_T$ より，族の恒等射を覆う線束の自己同型は
+$\mathbb G_m(T)$ に等しい．従って忘却射は $\mathbb G_m$-gerbe であり，
+このスカラーを除いて降下させると，偏極類が一意なもとの族のスタックを得る．
+$\pi$ はこの線束のスカラー自己同型では変化しないので，Poisson 族にも同じ議論が適用される．
 \end{proof}
 
 \begin{lemma}[族の標準形]
@@ -341,13 +375,23 @@ $\operatorname{Gr}(2,n+1)$ の Pl\"ucker 錐である．
 \begin{proof}
 補題~\ref{lemma:family-normal-form} が局所的な対象の全射性を，
 命題~\ref{prop:coordinate-action} が任意の基底上の同型の記述を与える．
-従って標準形の同型の fppf 層は $\widetilde G_d$-torsor となり，
-最初の商表示を得る．Poisson 構造については
+ここで用いる torsor を明確にする．線束付きの族 $(\mathcal X,\mathcal H)$ に対し，
+各基底変更上の点 $u\in U_d$ と，その標準模型から $(\mathcal X,\mathcal H)$ への
+線束の同型を含む同型を組にした，\emph{正規化座標表示の層}を取る．
+この層は fppf 局所的に非空であり，二つの表示の間の座標変換は
+命題~\ref{prop:coordinate-action} によって $\widetilde G_d$ の元として一意に定まる．
+従ってこれは $\widetilde G_d$-torsor で，係数を読む写像は $U_d$ への同変射となる．
+逆にこの torsor と同変射から普遍族を降下できるので，最初の商表示を得る．
+固定した二つの標準模型の間の Isom 層そのものを $\widetilde G_d$-torsor と主張しているのではない．Poisson 構造については
 定理~\ref{thm:relative-poisson} の相対分類をこの torsor 上で用い，
 命題~\ref{prop:coordinate-action} に従って降下させる．
 中央部分群 $Z_d$ は切断環の重み付きスカラーであり，
 射影化した族上で恒等，偏極線束上でスカラー自己同型となる．
-これを除くことは $\widetilde G_d$ を $G_d$ に置き換えることに一致する．
+補題~\ref{lemma:fundamental-polarization-class} により，この中央スカラーを除いて
+fppf スタック化することは，内在的な $\mathcal D_{n,d}$，$\mathcal P_{n,d}$ を得ることに等しい．
+商表示では，これは $\widetilde G_d$ を $G_d$ に置き換えることに一致する．
+ここでは $G_d$-torsor が大域的に $\widetilde G_d$-torsor へ持ち上がるとは仮定しない．
+基本線束を大域的に選べない族も，この fppf 降下により含まれる．
 
 $U_d$ と $\mathfrak C_{d,n}$ は有限型で，$G_d$ は滑らかな有限型代数群だから，
 商は有限型代数的スタックである \cite[Tag 06FI]{StacksProject}．
@@ -422,6 +466,155 @@ $\mathcal L$ の因子が消え，上記の Grassmann 族となる．
 降下しているため，この族はその射影束の閉部分スキームとして実現され，射影的である．
 representable 性と滑らかさも atlas 上の Grassmann 族から従う．
 \end{proof}
+
+\subsection{非零構造，射影化，既約成分の個数}
+
+\begin{remark}[族における非零性と射影化]
+\label{rem:familywise-nonzero-poisson}
+$\mathcal P_{n,d}^{\times}$ の $T$-点は，各幾何学的点 $t\to T$ において
+$\pi_t\in H^0(X_t,\bigwedge^2T_{X_t})$ が非零である族である．
+これは，$X_t$ のすべての点で二重ベクトルが消えないという条件ではない．
+命題~\ref{prop:relative-bivectors} による局所自由層
+$\mathcal V=p_*\bigwedge^2T_{\mathcal X/T}$ を用いると，条件は
+対応する切断 $v:\mathcal O_T\to\mathcal V$ が局所的に分裂単射となることと同値である．
+実際，零切断の逆像を定めるイデアルは
+$\operatorname{im}(\mathcal V^\vee\xrightarrow{v^\vee}\mathcal O_T)$ であり，
+これが単位イデアルとなることが，すべての幾何学的点での非零性と同値である．
+従ってこの条件は任意の基底変換に安定である．
+
+単に大域切断として $\pi\ne0$ を要求するのでは不十分である．
+例えば $T=\mathbb A^1$ 上の一定族に $\pi=t\pi_0$（$\pi_0\ne0$）を取ると，
+大域切断は非零だが $t=0$ のファイバーでは零になる．
+また零切断 $\mathcal P_{n,d}^{0}$ は，切断として $\pi=0$ という条件を表す．
+非被約基底では，すべての幾何学的ファイバーで零という条件と区別する必要がある．
+実際，$\operatorname{Spec}\C[\varepsilon]/(\varepsilon^2)$ 上の $\pi=\varepsilon\pi_0$
+は後者を満たすが，前者を満たさない．
+
+$\mathcal P_{n,d}^{\mathrm{proj}}:=[\mathcal P_{n,d}^{\times}/\mathbb G_m]$
+の $T$-点は，内在的には族 $p:\mathcal X\to T$ と線部分束
+$\ell\hookrightarrow\mathcal V$ の組であり，$\ell$ の各局所生成元が
+Jacobi 恒等式を満たすものである．線部分束とは，階数 $1$ の局所直和因子をいう．
+Jacobi 条件は斉次なので局所生成元の選択によらない．
+従って射影化では $\ell$ の大域生成元を選ばず，非自明な線束も許す．
+\end{remark}
+
+\begin{theorem}[固定した次元・次数での既約成分]
+\label{thm:poisson-moduli-components}
+各 $n\ge2$ と $d\in\{1,2\}$ に対し，
+$\mathcal D_{n,d}$，$\mathcal P_{n,d}$，$\mathcal P_{n,d}^{\times}$，
+$\mathcal P_{n,d}^{\mathrm{proj}}$ はいずれも幾何学的に整な有限型
+Deligne--Mumford スタックであり，既約成分はちょうど一つである．
+ここで整とは，被約かつ位相的に既約であることをいう．
+$\mathcal P_{n,d}$ は正規かつ Cohen--Macaulay であり，
+$\mathcal P_{n,d}^{\times}$ と $\mathcal P_{n,d}^{\mathrm{proj}}$ は滑らかである．
+
+$\mathcal P_{n,d}^{\times}$ は $\mathcal P_{n,d}$ の稠密開部分であり，
+そのスキーム論的閉包も $\mathcal P_{n,d}$ 全体である．
+零切断 $\mathcal P_{n,d}^{0}\simeq\mathcal D_{n,d}$ は新たな既約成分を与えない．
+系~\ref{cor:moduli-dimension} の $b_{n,d}$ と
+\[
+ c_{n,1}=n,\qquad c_{n,2}=2n-1
+\]
+を用いると，次元はそれぞれ
+\[
+\begin{array}{c|c|c|c}
+ \text{スタック}&\mathcal P_{n,d}^{0}&
+ \mathcal P_{n,d},\ \mathcal P_{n,d}^{\times}&\mathcal P_{n,d}^{\mathrm{proj}}\\ \hline
+ \text{次元}&b_{n,d}&b_{n,d}+c_{n,d}&b_{n,d}+c_{n,d}-1
+\end{array}
+\]
+である．特に零切断の余次元は $c_{n,d}>0$ である．
+$\mathcal P_{n,1}$ および $\mathcal P_{2,2}$ は全体が滑らかであり，
+$n\ge3$ の次数 $2$ では零切断が非滑らか点の集合となるが，成分数は変わらない．
+\end{theorem}
+
+\begin{proof}
+定理~\ref{thm:poisson-moduli} の商表示の atlas は
+$U_d\times\mathfrak C_{d,n}$ である．$U_d$ は affine 空間の非空な開部分であり，
+$\mathfrak C_{1,n}=\mathbb A^n$ と $\mathfrak C_{2,n}$ は幾何学的に整である．
+従って積も幾何学的に整であり，商スタックは被約かつ既約である
+\cite[Tag 0DR5]{StacksProject}．
+これは任意の体拡大後にも成り立つ．
+錐の正規性と Cohen--Macaulay 性は，第~\ref{sec:singularities}節で用いた
+Pl\"ucker 座標環の性質である．$U_d$ との積および滑らかな降下によって，
+$\mathcal P_{n,d}$ も同じ性質を持つ．
+
+錐の頂点を除いた部分は非空な稠密開集合であり，
+$\mathcal O(-1)$ の零切断を除いた全空間として滑らかである．
+ここで底は，次数 $1$ では $\mathbb P^{n-1}$，次数 $2$ では
+$\operatorname{Gr}(2,n+1)$ である．従って非零部分は滑らかかつ幾何学的に整である．
+整な atlas では稠密開部分への関数の制限は単射なので，その閉包は
+スキーム論的にも全体である．この性質は滑らかな atlas で検査できる．
+射影化については，系~\ref{cor:projective-moduli} または同じ商表示の
+錐をこれらの射影多様体に置き換えた表示を用いればよい．
+次元と残る滑らかさの主張は，系~\ref{cor:moduli-dimension} と
+系~\ref{cor:projective-moduli} から従う．
+\end{proof}
+
+\begin{proposition}[次数の局所定数性と二つの成分]
+\label{prop:poisson-degree-components}
+定義~\ref{def:poisson-moduli-stack} に続いて定めた
+$\mathcal P_{n,\{1,2\}}$ には，開かつ閉な部分スタックへの分解
+\[
+ \mathcal P_{n,\{1,2\}}\simeq
+ \mathcal P_{n,1}\amalg\mathcal P_{n,2}
+\]
+がある．従ってその既約成分はちょうど二つである．
+非零構造だけを取った場合，射影化した場合，Poisson 構造を忘れた場合にも，
+それぞれ既約成分はちょうど二つである．
+\end{proposition}
+
+\begin{proof}
+族 $p:\mathcal X\to T$ に対して $L=\omega_{\mathcal X/T}^{-1}$ とおく．
+各整数 $j\ge0$ について，$L^j$ は有限表示かつ $T$ 上平坦なので，
+\[
+ t\longmapsto\chi(X_t,L_t^j)
+\]
+は局所定数である \cite[Tag 0B9T]{StacksProject}．
+Riemann--Roch により $\chi(X_t,L_t^j)$ は $j$ の $n$ 次多項式であり，
+最高次係数は $L_t^n/n!$ である．従って $n$ 次有限差分は
+\[
+ \sum_{j=0}^n(-1)^{n-j}\binom nj\chi(X_t,L_t^j)
+ =L_t^n=(n-1)^n d(t)
+\]
+となる．左辺は有限個の局所定数関数の線型結合なので，$d(t)$ も局所定数である．
+この議論では基本線束を族全体で選んでいない．
+Euler 標数とファイバー上の交点数は体拡大に不変であるから，
+この次数関数は任意の基底変換と両立する．
+
+従って $T_i=\{t\in T\mid d(t)=i\}$ は開かつ閉であり，
+$T=T_1\amalg T_2$ となる．この分解は族の同型と引き戻しに関して自然なので，
+スタックの所定の分解を与える．両部分は非空であり，
+定理~\ref{thm:poisson-moduli-components} によって各々が既約成分一つを持つ．
+非零性や射影化は Poisson 構造のデータだけに関わり，
+次数による同じ分解と可換なので，残る主張も従う．
+\end{proof}
+
+\begin{remark}[剛性化，安定化群，結果の範囲]
+\label{rem:components-rigidification}
+線束を指定したスタックから $\mathcal P_{n,d}$ への
+$\mathbb G_m$-gerbe は台の位相空間を変えず，従って成分数を変えない．
+ただしスタックの次元は $\dim\widetilde{\mathcal P}_{n,d}
+=\dim\mathcal P_{n,d}-1$ となる．
+被覆対合 $\tau$ は非零二重ベクトルには $-1$ で作用するので，
+$\mathcal P_{n,d}$ 全体の inertia の部分群として剛性化することはできない．
+一方，射影化では $\tau$ はすべての直線を保ち，中央部分群 $\mu_2$ での剛性化ができる．
+その表示は
+\[
+ [U_d\times Y_{d,n}/(G_d/\langle\tau\rangle)],\qquad
+ Y_{1,n}=\mathbb P^{n-1},\quad Y_{2,n}=\operatorname{Gr}(2,n+1)
+\]
+であり，やはり既約成分は一つである．この有限 gerbe は次元も変えない．
+命題~\ref{prop:generic-deck-stabilizer} により，
+全モジュライの一般点の安定化群は，非零 Poisson 構造では自明，射影化では $\mu_2$ である．
+特殊な多様体で安定化群が増大しても，新たな既約成分が生じるわけではない．
+
+ここでの成分数の決定は，定理~\ref{thm:relative-poisson} と
+定理~\ref{thm:poisson-moduli} の相対分類・商表示からの帰結である．
+固定した多様体の Poisson 錐の既約性だけから，モジュライ全体の既約性を推測したものではない．
+対象は $n\ge2$，次数 $1,2$ の滑らかな del Pezzo manifold に限る．
+他の次数または特異多様体を含む境界についての成分数は，この結論に含まれない．
+\end{remark}
 
 ここで構成したものは，零 Poisson 構造を含む滑らかな多様体のモジュライスタックである．
 次節で全滑らか領域の粗モジュライ空間を構成し，自己同型がその幾何へ及ぼす影響を調べる．

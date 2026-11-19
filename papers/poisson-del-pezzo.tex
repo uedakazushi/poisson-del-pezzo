@@ -23,14 +23,14 @@
 \newcommand{\Gr}{\operatorname{Gr}}
 \newcommand{\Pois}{\operatorname{Pois}}
 \newcommand{\dd}{\mathrm d}
-\newcommand{\Version}{1.3}
+\newcommand{\Version}{1.4}
 \title{次数1・2の del Pezzo manifold の\texorpdfstring{\\}{ }Poisson 構造とモジュライ}
 \author{}
 \date{2026年11月20日\quad v\Version\quad 公表用原稿}
 \hypersetup{
  pdftitle={次数1・2の del Pezzo manifold の Poisson 構造とモジュライ},
  pdfauthor={},
- pdfsubject={Poisson schemes, relative classification, and moduli and coarse spaces; v1.3}
+ pdfsubject={Poisson schemes, relative classification, and moduli and coarse spaces; v1.4}
 }
 \begin{document}
 \maketitle
@@ -44,6 +44,9 @@ $\operatorname{Gr}(2,n+1)$ の Pl\"ucker affine cone に等しいことを証明
 非被約基底を含む任意の基底変換との両立を証明する。
 座標変換に伴う線束の twist を明示し、Poisson 構造付きの族を分類する
 有限対角を持つ分離的 Deligne--Mumford スタックと、その affine 粗モジュライ空間を構成する。
+各次元・各次数についてこのスタックは幾何学的に整であり、既約成分は一つである。
+次数1と2を許すスタックは、次数の局所定数性によってちょうど二つの成分に分かれる。
+非零構造だけを取る場合とスカラー倍による射影化でも同じ成分数となり、零切断は余分な成分を与えない。
 被覆の対合だけを持つ稠密開部分では、粗空間の相対局所模型は
 Poisson 錐の第二 Veronese 錐となる。
 零切断の blow-up と対合による商を二乗根スタックで比較し、
@@ -68,6 +71,9 @@ $\operatorname{Gr}(n-1,H^0(X,H))$ に内在的に同定される。
 \]
 を満たすものである。固定した $X$ 上の分類から始め、
 $X$ 自体も変化する族とそのモジュライを構成する。
+中心問題は、相対 Poisson 構造を持つ族を内在的に分類する代数スタックを定義し、
+固定した次元と次数に対してその既約成分の個数を決めることである。
+以下の構造定理を非被約基底にも相対化することが、このモジュライ問題への入力となる。
 $V_X=H^0(X,\bigwedge^2T_X)$、$W_X=H^0(X,\bigwedge^3T_X)$ とおき、
 二次写像 $Q_X:V_X\to W_X$、$Q_X(\pi)=\frac12[\pi,\pi]$ の零スキームを
 \[
@@ -110,13 +116,14 @@ $X$ を Poisson 部分多様体とする $\mathcal P$ 上の Poisson 構造に�
 $V_X\otimes B$ 内で Jacobi 恒等式を満たす元が同じ方程式で分類されることを意味する。
 動く $X$ に対する主張には、さらに基底変換と座標変換に関する議論が必要となる。
 
-\begin{theorem}[族と Poisson モジュライ]
+\begin{theorem}[族，モジュライスタック，既約成分]
 \label{thm:relative-main}
 $n\geq2$ と $d\in\{1,2\}$ を固定する。
 滑らかな $n$ 次元・次数 $d$ の del Pezzo manifold の
 モジュライを $\mathcal D_{n,d}$ とする。
 相対 Poisson 二重ベクトルを加えたモジュライ $\mathcal P_{n,d}$ は
-有限型 Deligne--Mumford スタックであり、忘却射
+幾何学的に整かつ正規な有限型 Deligne--Mumford スタックであり、
+各次数で既約成分はちょうど一つである。忘却射
 \[
  \mathcal P_{n,d}\longrightarrow\mathcal D_{n,d}
 \]
@@ -128,12 +135,22 @@ $\operatorname{Gr}(2,n+1)$ の Pl\"ucker affine cone の族となり、
 次数2では $n=2$ のとき全体が滑らかで、$n\geq3$ のとき特異点の集合は零切断に等しい。
 非零構造をスカラー倍で割った相対モジュライは
 基本線束を局所的に選んで得る相対 Grassmann 多様体の降下である。
+この非零部分と射影化もそれぞれ既約であり、非零部分のスキーム論的閉包は
+$\mathcal P_{n,d}$ 全体となる。従って零切断は別の既約成分を与えない。
+
+各ファイバーの次数が1または2となる族をすべて許したスタックには、開かつ閉な分解
+\[
+ \mathcal P_{n,\{1,2\}}\simeq\mathcal P_{n,1}\amalg\mathcal P_{n,2}
+\]
+があり、その既約成分はちょうど二つである。これは非零部分と射影化でも同様である。
 \end{theorem}
 
 ここで基本偏極は線束そのものに付随するスカラー自己同型を除いて扱う。
 基本偏極のクラスは族に一意に定まり、追加の標識を必要としない
 （補題~\ref{lemma:fundamental-polarization-class}）。
-具体的な対象、射、および商表示は定理~\ref{thm:poisson-moduli} で定義する。
+対象と射は定義~\ref{def:poisson-moduli-stack}、商表示は定理~\ref{thm:poisson-moduli}、
+成分数と次数の局所定数性は定理~\ref{thm:poisson-moduli-components} と
+命題~\ref{prop:poisson-degree-components} で扱う。
 特に、$\mathcal D_{n,d}$ 上の大域的な自明直積や基本線束の大域的存在は主張していない。
 族 $p:\mathcal X\to S$ 上で実際の基本線束 $H$ を選んだときの大域二重ベクトル束は
 \[
@@ -195,7 +212,9 @@ $n\geq3$ では Kuznetsov--Prokhorov \cite[Theorem 1.2(i),(ii)]{KP2023}、
 \cite[Theorems 7.1, 9.1]{LPT2013} により研究されている。
 次数1・2の del Pezzo threefold に現れる成分は基本線束 $H$ の pencil に由来し、
 本稿の射影パラメータ空間はそれぞれ $\mathbb P^2$、$\Gr(2,4)$ である。
-この3次元の集合論的分類を本稿の新しい結果として扱わない。
+この3次元の集合論的分類と、固定した $X$ の射影 Poisson 空間の成分数1を、
+本稿の新しい結果として扱わない。LPT の定理は固定対象を扱うものであり、
+本稿の動く $X$ の族のスタックとはモジュライ問題を区別する。
 Mayanskiy \cite[Introduction, Theorem 1]{Mayanskiy2015} は cubic threefold について
 Pl\"ucker 関係と Poisson スキームを明示的に計算している。
 従って本稿で比較すべき点は、次数1・2、任意次元での大域計算と、
@@ -209,6 +228,12 @@ Poisson cohomology を計算している。
 本稿の族に関する結果は、これらの数値の新しい発見ではなく、
 任意次元での Jacobi 零スキーム、非被約基底を含む基底変換、
 線束の twist と具体的商表示を一つの構成として与えるものである。
+曲面の基底モジュライの既約性も古典的である。
+例えば Looijenga \cite[\S4, p.~21 of the author's manuscript]{Looijenga2008} は
+次数 $d\le5$ の標識 del Pezzo 曲面を $(\mathbb P^2)^{5-d}$ の開集合で表示する。
+曲面の Poisson モジュライの既約性は、これと反標準切断の相対ベクトル束から既に従う。
+本稿では任意次元に統一した相対 Jacobi 錐と全族の商表示を示し、その帰結として成分数を決定する。
+成分数という数値と、その入力となるスキーム論的・相対的な構成の優先権は分けて扱う。
 有限型商スタックおよび基底変換については
 Stacks Project \cite[Tags 0B91, 06FI, 0DSL]{StacksProject} の一般結果を用いる。
 
@@ -286,7 +311,10 @@ $Q\wedge Q=2\partial_{x_0}\wedge\partial_{x_1}\wedge
 \section{今後の数学的課題}
 \label{sec:open}
 本稿では固定した $X$ の Poisson スキームから動く $X$ の相対分類と
-モジュライスタックまでを構成した。
+モジュライスタックまでを構成し、各次元・各次数の成分数が1であることを確定した。
+次数1・2を許す場合の開閉分解と成分数2も示した。
+この範囲では成分数の決定は未解決課題として残らず、次には各成分の一般点の幾何と
+量子化との対応を深める必要がある。
 滑らかな全領域の affine 粗空間も構成したが、余分な自己同型を持つ層での
 局所商特異性の全分類は残る。粗忘却射の平坦性は粗基底の滑らかさへ還元されたので、
 次には安定化群の変形表現からその滑らかな領域と各特殊ファイバーの構造を具体化することが課題である。
