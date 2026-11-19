@@ -23,14 +23,14 @@
 \newcommand{\Gr}{\operatorname{Gr}}
 \newcommand{\Pois}{\operatorname{Pois}}
 \newcommand{\dd}{\mathrm d}
-\newcommand{\Version}{1.2}
+\newcommand{\Version}{1.3}
 \title{次数1・2の del Pezzo manifold の\texorpdfstring{\\}{ }Poisson 構造とモジュライ}
 \author{}
 \date{2026年11月20日\quad v\Version\quad 公表用原稿}
 \hypersetup{
  pdftitle={次数1・2の del Pezzo manifold の Poisson 構造とモジュライ},
  pdfauthor={},
- pdfsubject={Poisson schemes, relative classification, and moduli; v1.1}
+ pdfsubject={Poisson schemes, relative classification, and moduli and coarse spaces; v1.3}
 }
 \begin{document}
 \maketitle
@@ -43,11 +43,16 @@ $\operatorname{Gr}(2,n+1)$ の Pl\"ucker affine cone に等しいことを証明
 この同定を滑らかな del Pezzo manifold の族へ拡張し、
 非被約基底を含む任意の基底変換との両立を証明する。
 座標変換に伴う線束の twist を明示し、Poisson 構造付きの族を分類する
-有限型 Deligne--Mumford スタックを構成する。
-次数2の零切断の blow-up によって滑らかなモジュライスタックを得て、
-Pl\"ucker 錐の特異性を次元別に分類する。
-Poisson 構造を忘れる射は affine かつ平坦であり、
+有限対角を持つ分離的 Deligne--Mumford スタックと、その affine 粗モジュライ空間を構成する。
+被覆の対合だけを持つ稠密開部分では、粗空間の相対局所模型は
+Poisson 錐の第二 Veronese 錐となる。
+零切断の blow-up と対合による商を二乗根スタックで比較し、
+商の標準指数と discrepancy を計算する。
+スタックの忘却射 $\mathcal P_{n,d}\to\mathcal D_{n,d}$ は affine かつ平坦であり、
 次数1では階数 $n$ のベクトル束、次数2では相対 Pl\"ucker cone である。
+一方、次数1の $\mu_6$ 自己同型を持つ模型では、粗空間の忘却射は非平坦であり、
+その特殊ファイバーの三乗で消える冪零構造を明示する。
+一般に粗忘却射の平坦領域は、粗基底の滑らかな部分の逆像に正確に一致する。
 非零構造の一般階数は2であり、射影化は
 $\operatorname{Gr}(n-1,H^0(X,H))$ に内在的に同定される。
 標準 ambient stack への一意な Poisson lift、葉の記述、曲面での退化因子、
@@ -139,6 +144,47 @@ $\operatorname{Gr}(2,n+1)$ の Pl\"ucker affine cone の族となり、
 である。右辺の最後の線束が、同変性に必要な twist を担う。
 この同型とその降下は命題~\ref{prop:intrinsic-bivector-bundle} で証明する。
 
+\begin{theorem}[粗モジュライと自己同型の影響]
+\label{thm:coarse-main}
+定理~\ref{thm:relative-main} のスタックは有限対角を持ち、
+その粗モジュライ空間 $M_{n,d}$、$N_{n,d}$ は有限型の既約な affine scheme として存在する。
+忘却射は affine な射 $N_{n,d}\to M_{n,d}$ を誘導し、次が成り立つ。
+\begin{enumerate}
+\item $N_{n,d}$ は Cohen--Macaulay であり、粗忘却射 $f$ の平坦領域は
+\[
+ \operatorname{Flat}(f)=f^{-1}(M_{n,d}^{\mathrm{sm}})
+\]
+に等しい。任意の $X$ の上のファイバーの被約化は
+$\Pois_{\mathrm{sch}}(X)/\operatorname{Aut}(X)$ である。
+\item 多様体の自己同型群が被覆の対合 $\mu_2$ だけとなる稠密開部分
+$M_{n,d}^{\circ}$ がある。この上の粗忘却射は \'{e}tale 局所的に
+\[
+ S\times\operatorname{Cone}(Y_{d,n},\mathcal O(2))\longrightarrow S,
+ \qquad
+ Y_{1,n}=\mathbb P^{n-1},\quad Y_{2,n}=\Gr(2,n+1)
+\]
+という平坦な族である。$S$ は滑らかであり、錐の偏極は
+もとの Poisson 錐の偏極の二乗である。
+\item 任意の固定した $X$ に対し、一般の非零 Poisson 構造は
+$\operatorname{Aut}(X,\pi)=1$ を満たす。
+射影化された構造の一般の自己同型群は、次数2では $\mu_2$、
+次数1では $A_4\ne0$ のとき $\mu_2$、$A_4=0$ のとき $\mu_6$ である。
+\item 任意の $n\geq2$ で、次数1の滑らかな模型
+$z^2-y^3-f_6(x)=0$ で自己同型群が $\mu_6$ となるものが存在し、
+その $X$ 上の全ての点で粗忘却射は平坦でない。
+粗ファイバー $f^{-1}([X])$ は $(X,0)$ の像で非被約であり、
+その点の完成局所環には $c\ne0$、$c^2\ne0$、$c^3=0$ を満たす元がある。
+\end{enumerate}
+\end{theorem}
+
+存在と分離性は定理~\ref{thm:affine-coarse-moduli}、平坦領域は
+定理~\ref{thm:coarse-flat-locus}、一般自己同型群と局所模型は
+命題~\ref{prop:generic-deck-stabilizer}、\ref{prop:generic-poisson-stabilizer} と
+系~\ref{cor:deck-only-coarse-model}、非平坦性と冪零構造は
+定理~\ref{thm:coarse-nonflat-degree-one} と系~\ref{cor:coarse-nonflat-entire-fiber} で証明する。
+この結果により、固定した $X$ の自己同型商と、動く多様体の粗モジュライ上の
+スキーム論的ファイバーを区別する必要がある。
+
 \subsection{先行研究との関係と到達範囲}
 標準重み付きモデルは del Pezzo 多様体の既知の分類による。
 $n\geq3$ では Kuznetsov--Prokhorov \cite[Theorem 1.2(i),(ii)]{KP2023}、
@@ -166,6 +212,19 @@ Poisson cohomology を計算している。
 有限型商スタックおよび基底変換については
 Stacks Project \cite[Tags 0B91, 06FI, 0DSL]{StacksProject} の一般結果を用いる。
 
+粗モジュライの存在には、正規形の滑らかな係数空間が principal affine open であることを示した後、
+Luna \cite[I, \S4, p.~90; III, \S1, p.~97]{Luna1973} の
+有限 stabilizer を持つ affine 作用の固有性と slice 定理を適用する。
+四次・六次超曲面の自己同型に関する入力は
+Poonen \cite[Theorems 1.5, 1.6]{Poonen2005} の線型自己同型の結果である。
+有限群の粗空間と基底変換には Abramovich--Olsson--Vistoli
+\cite[Theorem 3.2, Corollary 3.3]{AbramovichOlssonVistoli2008} を、
+解消の比較には Cadman \cite[\S\S2.2--2.3]{Cadman2007} の二乗根構成を用いる。
+これらの一般理論や Veronese 錐の幾何を新しい結果とは扱わない。
+本稿では、その Poisson パラメータへの作用を決定し、粗忘却射の正確な平坦領域と
+ファイバーの冪零構造を、この滑らかな del Pezzo 族について明示する。
+これらの研究固有の主張についても優先権の包括的確認は未了である。
+
 形式量子化の存在には Kontsevich の affine formality \cite{Kontsevich} を用いる。
 曲面での cyclic potential と中心元は
 Etingof--Ginzburg \cite[Lemma 7.4.2, Proposition 8.1.1(i)]{EG2010} に基づく。
@@ -176,17 +235,20 @@ Etingof--Ginzburg \cite[Lemma 7.4.2, Proposition 8.1.1(i)]{EG2010} に基づく�
 del Pezzo manifold の定義と標準模型を短く整理した後、
 全ての二重ベクトルを Casimir 代表に直して Jacobi イデアルを決定する。
 続いて内在的な Grassmann 表示、symplectic leaf、曲面の反標準零因子を調べる。
-これを相対化して Poisson モジュライを構成し、
-その零切断の blow-up と特異性を調べ、その後に形式量子化と曲面の具体表示を扱う。
+これを相対化して Poisson モジュライと粗空間を構成し、
+自己同型と非平坦ファイバーを調べる。
+続いて零切断の blow-up、符号商の特異性、二乗根スタックによる比較を行い、
+その後に形式量子化と曲面の具体表示を扱う。
 量子化の代数化および条件付き AS 正則性は、可換な Poisson モジュライの構成とは区別する。
 次数3・4の詳細な分類は本稿に含めず、関連する構成と障害を研究ノートに置く。
 
-\input{papers/sections/del-pezzo-review}
-\input{papers/sections/classification}
-\input{papers/sections/geometry}
-\input{papers/sections/families}
-\input{papers/sections/moduli}
-\input{papers/sections/singularities}
+\input{sections/del-pezzo-review}
+\input{sections/classification}
+\input{sections/geometry}
+\input{sections/families}
+\input{sections/moduli}
+\input{sections/coarse}
+\input{sections/singularities}
 
 \section{零 Poisson 構造の無限小変形}
 \label{sec:infinitesimal}
@@ -219,14 +281,16 @@ $Q\wedge Q=2\partial_{x_0}\wedge\partial_{x_1}\wedge
 実際の次元 $2n-1$ より大きいことを具体化する。
 曲面の場合には $\bigwedge^4\C^3=0$ なのでこの障害はない。
 
-\input{papers/sections/quantization}
+\input{sections/quantization}
 
 \section{今後の数学的課題}
 \label{sec:open}
 本稿では固定した $X$ の Poisson スキームから動く $X$ の相対分類と
 モジュライスタックまでを構成した。
-coarse moduli space の具体的構成、GIT 安定性、特異な del Pezzo 多様体を含む
-コンパクト化は、ここでの商スタックの構成とは別の課題である。
+滑らかな全領域の affine 粗空間も構成したが、余分な自己同型を持つ層での
+局所商特異性の全分類は残る。粗忘却射の平坦性は粗基底の滑らかさへ還元されたので、
+次には安定化群の変形表現からその滑らかな領域と各特殊ファイバーの構造を具体化することが課題である。
+特異な del Pezzo 多様体を含むコンパクト化も別の課題である。
 また全 Poisson パラメータ空間上の量子化の選択とその降下、代数化、
 全ての非可換変形の網羅性は未解決である。
 曲面の非形式的な量子化では、中心元の補正、Rees algebra、
@@ -236,6 +300,6 @@ genericity と AS 正則性の仮定を独立に検証する必要がある。
 \begingroup
 \small
 \bibliographystyle{alpha}
-\bibliography{references}
+\bibliography{../references}
 \endgroup
 \end{document}

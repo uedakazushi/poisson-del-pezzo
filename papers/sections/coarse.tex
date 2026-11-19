@@ -1,0 +1,613 @@
+% !TeX root = ../poisson-del-pezzo.tex
+\section{自己同型と粗モジュライ空間}
+\label{sec:coarse}
+
+前節の相対 Jacobi 錐を自己同型で割る際の幾何を調べる．
+まず全滑らか領域の粗モジュライ空間を構成し，忘却射の平坦領域を決定する．
+次に被覆の対合と残りの自己同型を区別する．以下 $C_{d,n}=\mathfrak C_{d,n}$ と略記する．
+
+\subsection{有限対角とアフィン粗モジュライ空間}
+
+DM 性だけから分離性は従わない．本節では正規形の滑らかな係数空間が
+アフィンであることを示し，還元群の作用に関する既知の結果を適用する．
+この議論は次数 $1,2$ の滑らかな全領域に適用できる．
+
+\begin{lemma}[正規形の判別式開集合]
+\label{lemma:affine-parameter-open}
+正規形の係数空間を
+\[
+ W_1=\operatorname{Sym}^4(\C^n)^*\oplus
+       \operatorname{Sym}^6(\C^n)^*,\qquad
+ W_2=\operatorname{Sym}^4(\C^{n+1})^*
+\]
+とする．それぞれに非零多項式 $\Delta_d$ が存在し，滑らかな模型の
+係数空間は $U_d=D(\Delta_d)\subset W_d$ となる．特に $U_d$ はアフィンである．
+\end{lemma}
+
+\begin{proof}
+次数 $2$ では通常の四次形式 $f_4$ の判別式を用いればよい．
+実際，$z^2-f_4=0$ の affine cone の非零特異点は，$z=0$ かつ
+$\partial_i f_4=0$ を満たす点と同じである．
+
+次数 $1$ の標準方程式を
+\[
+ F=z^2-y^3-A_4(x)y-A_6(x)
+\]
+とし，通常次数 $1$ の補助変数 $u$ を一つ導入する．
+$n+1$ 変数 $x_0,\ldots,x_{n-1},u$ に関する $n+1$ 個の斉次多項式
+\[
+ B_i=u^2\partial_i A_4+\partial_i A_6\quad(0\leq i<n),\qquad
+ B_n=3u^4+A_4
+\]
+の通常の多変数 resultant を $\Delta_1$ とする．
+各次数は $5,\ldots,5,4$ である．resultant の零点条件は，これらが
+共通非零根を持つことである．$F_z=2z$ と $y=u^2$ を用いると，
+この条件は $F$ の全偏微分が同時に消える非零点の存在に一致する．
+平方根は代数閉体上で常に選べる．また重み付き Euler 等式から，
+全偏微分が零なら $F=0$ も従う．
+
+標準模型は ambient の特異点を避ける．次数 $1$ の ambient の特異点は
+$x=0$ の上の $y$ 軸点と $z$ 軸点だけであり，いずれも $F$ の零点ではない．
+次数 $2$ でも重み $2$ の唯一の座標点を避ける．従ってここでは
+quasismooth 性と $X$ の滑らかさが同値であり，$U_1=D(\Delta_1)$ を得る．
+最後に $A_4=0$，$A_6=\sum_i x_i^6$ では $B_i=6x_i^5$，$B_n=3u^4$ なので
+共通非零根はなく，$\Delta_1$ は零多項式ではない．
+$\Delta_2$ についても Fermat 四次式で同じことを確認できる．
+ここでは resultant の因子分解や最小の被約判別式の同定は必要ない．
+\end{proof}
+
+\begin{theorem}[全滑らか領域の粗モジュライ空間]
+\label{thm:affine-coarse-moduli}
+$n\geq2$，$d\in\{1,2\}$ とする．
+$A_d=\Gamma(U_d,\mathcal O_{U_d})$，
+$R_{d,n}=\Gamma(\mathfrak C_{d,n},\mathcal O_{\mathfrak C_{d,n}})$ とおくと，
+$\mathcal D_{n,d}$ と $\mathcal P_{n,d}$ は有限対角を持つ分離的 DM スタックである．
+その粗モジュライ空間は，有限型の既約なアフィンスキーム
+\begin{align}
+ M_{n,d}&=\operatorname{Spec}(A_d^{G_d}),
+ \label{eq:coarse-base-invariants}\\
+ N_{n,d}&=\operatorname{Spec}\bigl((A_d\otimes_\C R_{d,n})^{G_d}\bigr)
+ \label{eq:coarse-poisson-invariants}
+\end{align}
+として存在する．忘却射は粗空間のアフィン射
+$N_{n,d}\to M_{n,d}$ を誘導し，零切断はその閉切断を誘導する．
+\end{theorem}
+
+\begin{proof}
+$G_1\simeq\operatorname{GL}_n$ は還元群であり，
+$G_2=(\operatorname{GL}_{n+1}\times\mathbb G_m)/Z_2$ も還元群である．
+補題~\ref{lemma:affine-parameter-open} により，これらはアフィン有限型スキーム
+$U_d$ および $U_d\times\mathfrak C_{d,n}$ に作用する．
+補題~\ref{lemma:no-vector-fields} により幾何学的 stabilizer はすべて有限である．
+各 orbit の次元は $\dim G_d$ なので，その閉包に真に低次元の orbit は存在できず，
+すべての orbit は閉じている．
+
+還元群がアフィン多様体に有限 stabilizer で作用するとき，その作用射
+\[
+ G\times Y\longrightarrow Y\times Y,\qquad(g,y)\longmapsto(gy,y)
+\]
+は proper，実際には finite である
+\cite[I, \S4, Corollaire, p.~90]{Luna1973}．
+商スタックの対角を atlas へ引き戻すとこの作用射になるため，
+両スタックの対角は有限である．
+
+還元群の不変式環の有限生成性と閉 orbit を分離する性質により，
+式~\eqref{eq:coarse-base-invariants}，\eqref{eq:coarse-poisson-invariants} は
+幾何学的な orbit 商である．代数空間を値とする普遍性も確認しておく．
+任意の閉 orbit に Luna の slice 定理
+\cite[III, \S1, Th\'eor\`eme du slice \'etale, p.~97]{Luna1973}
+を適用すると，不変式商の \'etale 近傍上で商スタックは
+$[S/H]\to\operatorname{Spec}\Gamma(S,\mathcal O_S)^H$ と表示される．
+ここで $S$ はアフィン，$H$ はその orbit の有限 stabilizer であり，
+slice 定理の Cartesian 性を用いている．有限群のこの商は粗モジュライ空間であり，
+その普遍性は \'etale 降下する．従って上のアフィン商が粗モジュライ空間である．
+
+不変式環への包含は忘却射を与える．さらに cone の頂点での評価から得られる
+$G_d$-同変な split 全射
+$A_d\otimes R_{d,n}\to A_d$ は不変式環にも split 全射を誘導するので，
+零切断の像は閉切断である．既約性は元の係数空間と cone の既約性から従う．
+\end{proof}
+
+\begin{remark}[粗空間上のファイバーとの区別]
+\label{rem:coarse-fiber-warning}
+上の定理は $N_{n,d}\to M_{n,d}$ の平坦性を主張しない．
+また，任意の $[X]\in M_{n,d}$ 上のスキーム論的ファイバーを
+$\mathfrak C_{d,n}/\operatorname{Aut}(X)$ と同定するものでもない．
+自己同型が基底の変形方向にも作用すると，粗空間を取る操作によって
+ファイバーに冪零方向が生じ得る．例えば $\mu_2$ が $(t,c)$ の両方を符号反転すると，
+\[
+ \C[t,c]^{\mu_2}
+ =\C[a,b,e]/(b^2-ae),\qquad a=t^2,\ b=tc,\ e=c^2,
+\]
+であり，$a=0$ のファイバーは $\C[b,e]/(b^2)$ となる．
+この例は一般の商の注意点を示す．定理~\ref{thm:coarse-nonflat-degree-one} では，
+本研究の滑らかな次数1の対象上にも非平坦性と非被約ファイバーが生じることを示す．
+\end{remark}
+
+\subsection{一般対象の自己同型群}
+
+\begin{proposition}[被覆の対合だけを持つ稠密開集合]
+\label{prop:generic-deck-stabilizer}
+$n\geq2$，$d\in\{1,2\}$ とする．$U_d$ には，対応する多様体の自己同型群が
+$\langle\tau\rangle\simeq\mu_2$ に等しい非空な $G_d$-不変開集合
+$U_d^{\circ}$ がある．ここで $\tau$ は $z\mapsto-z$ の対合である．
+従って同じ条件は $\mathcal D_{n,d}$ と $M_{n,d}$ の稠密開集合を定める．
+\end{proposition}
+
+\begin{proof}
+まず次数 $1$ で一つの対象を構成する．
+$A_4=\sum_{i=0}^{n-1}x_i^4$ を固定し，その形式そのものを保つ群
+\[
+ H=\{g\in\operatorname{GL}_n\mid A_4(gx)=A_4(x)\}
+\]
+を考える．$B=(b_{ij})\in\operatorname{Lie}(H)$ に対して
+$\sum_{i,j}b_{ij}x_i^3x_j=0$ となる．これらの単項式は相異なるので
+$B=0$ である．従って $H$ は有限群である．
+
+$\operatorname{Sym}^6(\C^n)^*$ への $\operatorname{GL}_n$ の作用の核は
+$\mu_6$ である．実際，この作用が恒等なら六次 Veronese 埋め込みの各点を固定するので，
+もとの射影空間の各点も固定し，元の線型変換はスカラーである．
+六次作用が恒等という条件はその六乗が $1$ であることに等しい．
+$H$ に含まれるスカラーは $\mu_4$ だから，$H$ の六次形式への作用の核は
+$\mu_4\cap\mu_6=\mu_2$ である．
+従って $H\setminus\mu_2$ の各元の固定部分空間を避ける $A_6$ は，
+$H$ における stabilizer がちょうど $\mu_2$ となる非空開集合をなす．
+
+この開集合と滑らかな模型の集合との共通部分は非空である．
+後者が非空な開集合であることを，$A_6=\sum_i x_i^6$ で直接確かめる．
+affine cone の特異点があるとすれば $z=0$ であり，
+\[
+ x_i^3(2y+3x_i^2)=0,\qquad 3y^2+\sum_i x_i^4=0
+\]
+を満たす．$y=0$ なら $x=0$ なので原点である．$y\ne0$ なら，
+非零の $x_i$ の個数を $k\geq1$ として
+$x_i^2=-2y/3$ および
+$(3+4k/9)y^2=0$ を得るが，これは標数 $0$ では不可能である．
+係数空間は既約なので，二つの非空開集合は交わる．
+正規形の座標変換の記述から，このように選んだ $(A_4,A_6)$ の
+自己同型群は $H$ における $A_6$ の stabilizer，すなわち $\mu_2$ である．
+
+次数 $2$ では，射影線型自己同型群が自明な滑らかな四次超曲面
+$B\subset\mathbb P^n$ を選ぶことができる
+\cite[Theorem~1.6]{Poonen2005}．この定理における超曲面次元は $n-1\geq1$ であり，
+除外される三次曲線の場合ではない．$n=3$ の四次 K3 曲面の場合にも，
+必要なのは線型自己同型群の自明性なので同じ定理を適用できる．
+$X\to\mathbb P^n$ の自己同型は正規形の変換により $B$ を保つ射影変換へ降下し，
+その核は $z\mapsto\pm z$ だけである．従ってこの $X$ の自己同型群は $\mu_2$ である．
+
+最後に開性を示す．定理~\ref{thm:affine-coarse-moduli} により stabilizer scheme
+$I_d\to U_d$ は有限かつ unramified である．恒等元と $\tau$ は相異なる二つの切断であり，
+それぞれ開かつ閉な部分スキームを定める．その補集合は $U_d$ 上有限なので，像は閉じている．
+この像の補集合が求める $U_d^{\circ}$ である．
+上で非空性を示しており，$U_d$ は既約なので稠密でもある．
+条件は同型で不変であり，アフィン不変式商は不変閉集合を閉集合へ移すから，
+粗空間でも稠密開集合を定める．
+\end{proof}
+
+\subsection{Poisson 構造が除く自己同型と射影化の慣性}
+
+\begin{proposition}[固定した多様体上の一般 Poisson 構造]
+\label{prop:generic-poisson-stabilizer}
+$n\geq2$, $d=1,2$ とし，$X$ を固定した滑らかな del Pezzo manifold とする．
+$A_X=\operatorname{Aut}(X)$ は有限であり，次が成り立つ．
+\begin{enumerate}
+\item $\operatorname{Pois}_{\mathrm{sch}}(X)\setminus\{0\}$ には，
+各 $\pi$ が $\operatorname{Aut}(X,\pi)=1$ を満たす稠密開部分がある．
+これは $X$ 自身が余分な自己同型を持つ場合にも成り立つ．
+\item $d=2$ では，一般の Poisson 直線 $[\pi]$ の安定化群は
+被覆の対合 $\langle\tau\rangle\simeq\mu_2$ に等しい．
+\item $d=1$ では，一般の Poisson 直線の安定化群は，標準形の
+$A_4\ne0$ の場合は $\mu_2$，$A_4=0$ の場合は $\mu_6$ である．
+後者は $G_1\simeq\operatorname{GL}_n$ のスカラー部分群として作用する．
+\end{enumerate}
+任意の非零 $\pi$ に対しては，完全列
+\[
+ 1\longrightarrow\operatorname{Aut}(X,\pi)
+ \longrightarrow\operatorname{Aut}(X,[\pi])
+ \xrightarrow{\ \chi_\pi\ }\operatorname{im}\chi_\pi
+ \longrightarrow1,
+ \qquad g_*\pi=\chi_\pi(g)\pi
+\]
+があり，$\operatorname{im}\chi_\pi\subset\mathbb G_m$ は $-1$ を含む有限巡回群である．
+\end{proposition}
+\begin{proof}
+基本偏極類の一意性と補題~\ref{lemma:no-vector-fields} によって $A_X$ は有限である．
+次数1の Poisson パラメータへの $G_1\simeq\operatorname{GL}_n$ の作用は忠実な標準表現である．
+次数2の表現
+\[
+ G_2\longrightarrow\operatorname{GL}(\bigwedge^2\mathbb C^{n+1}),
+ \qquad[A,b]\longmapsto b^{-1}\bigwedge^2A
+\]
+も忠実である．実際，$\bigwedge^2A$ がスカラーなら $A$ はすべての二次元部分空間を保つ．
+$n+1\geq3$ なので，二次元部分空間の交わりによりすべての直線を保ち，
+$A=\lambda I$ となる．表現が恒等ならさらに $b=\lambda^2$ であり，$[A,b]=1$ である．
+次数2の分解可能なテンソルは外積空間を張るため，非恒等な $g\in A_X$ が
+Poisson 錐の全点を固定することはない．次数1でも同じことは明らかである．
+従って有限個の非恒等元の固定部分の和は，既約な Poisson 錐の真の閉部分集合となる．
+その補集合が第一の主張を与える．
+
+射影化でも，同じ議論を射影作用の核で割って適用する．
+次数2で全 Poisson 直線を保つ $[A,b]$ に対しては，上の二次元部分空間の議論から
+$A=\lambda I$ であり，$c=b/\lambda^2$ と書けば $[A,b]=[I,c]$ となる．
+非零の $f_4$ を保つ条件は $c^2=1$ なので，核はちょうど被覆の対合からなる．
+次数1の核はスカラー行列 $\lambda I$ であり，標準形を保つ条件は
+\[
+ \lambda^4A_4=A_4,\qquad\lambda^6A_6=A_6.
+\]
+滑らかさから $A_6\ne0$ である．実際，$A_6=0$ なら $n\geq2$ より
+$A_4(x)=0$ を満たす非零の $x$ が存在し，$(x,y,z)=(x,0,0)$ は超曲面の特異点になる．
+従って核は $A_4\ne0$ なら $\mu_{\gcd(4,6)}=\mu_2$，
+$A_4=0$ なら $\mu_6$ である．
+最後の完全列は $\chi_\pi$ の定義から従い，$\chi_\pi(\tau)=-1$ である．
+\end{proof}
+
+\subsection{粗忘却射の平坦領域}
+
+\begin{theorem}[粗忘却射の平坦領域]
+\label{thm:coarse-flat-locus}
+$n\geq2$，$d\in\{1,2\}$ とし，$M_{n,d}$ と $N_{n,d}$ をそれぞれ
+$\mathcal D_{n,d}$ と $\mathcal P_{n,d}$ の coarse moduli space とする．
+忘却射 $f:N_{n,d}\to M_{n,d}$ に対して
+\[
+ \operatorname{Flat}(f)=f^{-1}\bigl(M_{n,d}^{\mathrm{sm}}\bigr)
+\]
+が成り立つ．従って，基底の coarse moduli の特異点の上では，
+零 Poisson 構造を含むファイバーのどの点においても $f$ は平坦でない．
+
+さらに，$N_{n,d}$ は Cohen--Macaulay であり，
+滑らかな多様体 $X$ に対応する任意の幾何学的点 $x$ について
+\[
+ \bigl(f^{-1}(x)\bigr)_{\mathrm{red}}
+ \simeq C_{d,n}/\operatorname{Aut}(X).
+\]
+特に各幾何学的ファイバーは位相的に既約であり，その次元は
+$c_{n,1}=n$，$c_{n,2}=2n-1$ である．
+この被約化の同定は，ファイバー自体が被約であることを意味しない．
+\end{theorem}
+\begin{proof}
+まず閉点 $x\in M_{n,d}$ を取り，対応する標準方程式を $u\in U_d$，
+有限群 $H=\operatorname{Stab}_{G_d}(u)=\operatorname{Aut}(X)$ とする．
+Luna の strong \'{e}tale slice
+\cite[III, \S1]{Luna1973} により，$x$ の \'{e}tale 近傍 $S/H$ 上で
+基底スタックは $[S/H]$ と表示される．
+$S$ は $u$ を含む滑らかな $H$-不変 slice で，$u$ は $H$-固定点である．
+Poisson スタックの引き戻しは $[S\times C_{d,n}/H]$ であり，
+coarse 忘却射の引き戻しは
+\begin{equation}
+ (S\times C_{d,n})/H\longrightarrow S/H
+ \label{eq:coarse-forgetful-slice}
+\end{equation}
+となる．ここで strong \'{e}tale 性により基底の商との正方形は Cartesian であり，
+coarse space の任意基底変換との両立
+\cite[Corollary~3.3]{AbramovichOlssonVistoli2008} を用いている．
+
+$C_{d,n}$ は Cohen--Macaulay である（次数1では affine space，次数2では
+第\ref{sec:singularities}節冒頭の標準単項式理論による）．
+従って $S\times C_{d,n}$ も Cohen--Macaulay である．
+有限群によるこの商も Cohen--Macaulay であることを確認する．
+不変環の局所環で系パラメータを選ぶと，有限拡大である元の環の半局所化でも系パラメータとなり，
+Cohen--Macaulay 性から正則列である．
+Reynolds 射影は，不変元で生成したイデアルで割った後も不変環を直和因子にする．
+従ってその列は不変環上でも正則列となる．
+これで~\eqref{eq:coarse-forgetful-slice} の始域は Cohen--Macaulay であり，
+\'{e}tale 降下によって $N_{n,d}$ が Cohen--Macaulay となる．
+ここで使ったのは有限群の不変環であり，一般の reductive 群による
+Cohen--Macaulay 環の不変環についての無条件な主張ではない．
+
+次に $R=\mathcal O(S)$，$B=\mathcal O(C_{d,n})$ とし，
+$\mathfrak m\subset R^H$ を $x$ の極大イデアルとする．
+$R$ は $R^H$ 上有限であり，$u$ は固定点なので
+$A_x=R/\mathfrak m R$ は剰余体 $\mathbb C$ を持つ局所 Artin 環である．
+不変部分を取る完全性から，ファイバーの環は
+\[
+ ((R\otimes B)^H)/\mathfrak m(R\otimes B)^H
+ \simeq(A_x\otimes B)^H
+\]
+となる．$A_x$ の極大イデアルは冪零であり，$B$ は被約なので，
+右辺の被約化は $B^H$ に等しい．
+これが固定対象の商との記載した同定である．
+任意の幾何学的点については代数閉体への基底変換後に同じ議論を適用する．
+$C_{d,n}$ は既約で次元 $c_{n,d}$，有限群商は次元を保つため，
+ファイバーの位相的既約性と次元も従う．
+
+いま $x$ が滑らかな閉点で，$y\in f^{-1}(x)$ が閉点なら
+\[
+ \dim\mathcal O_{N_{n,d},y}=b_{n,d}+c_{n,d},\qquad
+ \dim\mathcal O_{M_{n,d},x}=b_{n,d},\qquad
+ \dim\mathcal O_{f^{-1}(x),y}=c_{n,d}.
+\]
+従って miracle flatness
+\cite[Tag 00R4]{StacksProject} により $f$ は $y$ で平坦である．
+
+逆に $x$ を特異な閉点とする．
+命題~\ref{prop:generic-poisson-stabilizer} により，固定した $X$ の
+Poisson 錐には，非零かつ自己同型群が自明な構造の稠密開部分がある．
+その有限群商の像も $f^{-1}(x)$ の稠密開部分となる．
+この部分の点では $\mathcal P_{n,d}$ は滑らかで慣性が自明なので，
+coarse space $N_{n,d}$ も滑らかである．
+もしその点で $f$ が平坦なら，正則性の忠実平坦降下
+\cite[Tag 07NG]{StacksProject} により $\mathcal O_{M_{n,d},x}$ が正則になり，矛盾する．
+従ってこの稠密開部分には平坦点がない．
+
+$f$ は有限型の Noetherian スキームの間の射なので有限表示であり，
+$\mathcal O_{N_{n,d}}$ は局所有限表示である．
+従って平坦 locus は始域で開である
+\cite[Tag 0399]{StacksProject}．
+もし $f^{-1}(x)$ に平坦点が一つでもあれば，その平坦開近傍と
+既約なファイバーの上記の稠密開部分は交わり，矛盾する．
+ゆえに特異な閉点の上の全ファイバーで非平坦である．
+
+以上で二つの開集合 $\operatorname{Flat}(f)$ と
+$f^{-1}(M_{n,d}^{\mathrm{sm}})$ は同じ閉点を持つ．
+$N_{n,d}$ は $\mathbb C$ 上有限型で Jacobson なので，
+二つの開集合の差が非空ならその局所閉集合に閉点が存在する．
+従ってこれらの開集合は等しい．
+\end{proof}
+
+\begin{remark}[標準的な局所理論と本研究への適用]
+この定理の入力は，有限群による slice，Cohen--Macaulay 性，miracle flatness，
+正則性の平坦降下，平坦 locus の開性という既知の一般論である．
+Poisson モジュライへの適用では，任意次元の相対 Poisson 錐の同定に加えて，
+各固定対象の錐の既約性と，一般の非零 Poisson 構造が全ての自己同型を消すことが必要になる．
+特に，この結論を有限慣性を持つ任意のモジュライの忘却射にそのまま一般化しない．
+本適用の優先権は未確認である．
+\end{remark}
+
+\subsection{被覆の対合に関する相対 coarse 空間}
+
+$H=\langle\tau\rangle\simeq\mu_2\subset G_d$ は中央部分群であり，$U_d$ 上自明に作用する．
+\[
+ \overline G_d=G_d/H,\qquad
+ \mathcal B_{n,d}=[U_d/\overline G_d]
+\]
+とおく．$\mathcal D_{n,d}\to\mathcal B_{n,d}$ は $H$ による rigidification であり，
+$H$-gerbe である．ここで $H$ は Poisson 構造の独立なスカラー倍を取る群とは異なる．
+また，$H$ は非零 $\pi$ の慣性に含まれないので，$\mathcal P_{n,d}$ 全体を
+$H$ で rigidify すると表現するのは正しくない．
+
+Poisson 錐 $C_{d,n}=\mathfrak C_{d,n}$ の標準次数付き座標環を $R_{d,n}$ とし，
+\[
+ R_{d,n}^{(2)}=\bigoplus_{k\geq0}(R_{d,n})_{2k},\qquad
+ C_{d,n}^{(2)}=\operatorname{Spec}R_{d,n}^{(2)}
+\]
+とおく．右辺では $R_{2k}$ を新しい次数 $k$ とする．
+$H$ が錐に符号反転で作用するので $R_{d,n}^{H}=R_{d,n}^{(2)}$ である．
+\[
+ Y_{d,n}=\begin{cases}\mathbb P^{n-1}&d=1,\\
+ \operatorname{Gr}(2,n+1)&d=2
+ \end{cases}
+\]
+とすれば，$C_{d,n}^{(2)}$ は $Y_{d,n}$ の $\mathcal O(2)$ による affine 錐である．
+作用~\eqref{eq:moduli-action-one}, \eqref{eq:moduli-action-two} は
+$C_{d,n}^{(2)}$ 上の $\overline G_d$-作用を与える．
+
+\begin{theorem}[対合を除いた相対 coarse モジュライ]
+\label{thm:relative-deck-coarse}
+自然な射
+\[
+ q:\mathcal P_{n,d}\longrightarrow
+ \mathcal Q_{n,d}:=[(U_d\times C_{d,n}^{(2)})/\overline G_d]
+ \longrightarrow\mathcal B_{n,d}
+\]
+は次の性質を持つ．
+\begin{enumerate}
+\item $\mathcal Q_{n,d}\to\mathcal B_{n,d}$ は representable，affine，有限表示かつ平坦である．
+任意のスキーム $T\to\mathcal B_{n,d}$ に対して，$q_T$ は
+$\mathcal P_{n,d}\times_{\mathcal B_{n,d}}T$ の coarse moduli space を与える．
+この形成は非被約基底を含む任意の基底変換と両立する．
+\item $q$ は零切断の補集合では同型である．始域の零切断への制限は
+$\mathcal D_{n,d}\to\mathcal B_{n,d}$ であり，そこでのみ相対慣性 $\mu_2$ が残る．
+\item $\mathcal Q_{n,d}$ は $\mathcal B_{n,d}$ が持つ残りの慣性を除いていない．
+従って一般には $\mathcal P_{n,d}$ の絶対的な coarse space ではない．
+$\mathcal B_{n,d}$ の慣性が自明な任意の開部分上では，$q$ が絶対的な coarse space を与える．
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+$U_d\to\mathcal B_{n,d}$ に沿う引き戻しは
+\[
+ [U_d\times C_{d,n}/H]\longrightarrow U_d\times C_{d,n}^{(2)}
+\]
+である．有限群による affine 商が coarse space を与えることを適用する．
+標数0なので $H$ は linearly reductive であり，この主張は任意の基底変換後にも成立する
+\cite[Theorem~3.2, Corollary~3.3]{AbramovichOlssonVistoli2008}．
+本例の不変部分への射影は明示的に $a\mapsto(a+\tau a)/2$ であり，
+偶数次数部分の選択は任意の係数環と可換である．
+局所表示を任意の $T\to\mathcal B_{n,d}$ 上に fppf 降下させれば第一の主張を得る．
+affine 性，有限表示性，平坦性は atlas 上の積表示から従う．
+
+$H$ の固定点スキームは，標準一次座標を $a_i$ として $a_i=-a_i$ で切り出されるので，
+ちょうど零点である．$C_{d,n}\setminus\{0\}$ 上の作用は自由であり，
+その商は $C_{d,n}^{(2)}\setminus\{0\}$ である．
+従ってこの開部分では quotient stack が既に商スキームであり，$q$ は同型となる．
+零点では $H$ 全体が慣性に残る．第三の主張も同じ局所表示から従う．
+\end{proof}
+
+\begin{remark}[零切断への制限とその逆像]
+定理~\ref{thm:relative-deck-coarse} の零切断への制限は，
+その零切断が Cartesian な逆像であることを意味しない．
+実際，商の頂点のイデアルを元の錐へ引き戻すと，
+偶数正次数部分が生成するイデアル，すなわち頂点の極大イデアルの二乗となる．
+従って零切断のスキーム論的逆像には厚みがある．
+\end{remark}
+
+\begin{corollary}[被覆の対合だけを持つ開部分の局所模型]
+\label{cor:deck-only-coarse-model}
+$\mathcal B_{n,d}^{\circ}$ を慣性が自明な開部分とし，その逆像を上付き $\circ$ で表す．
+この開部分の点は，もとの多様体の自己同型群がちょうど $\langle\tau\rangle$ である点に対応する．
+$\mathcal B_{n,d}^{\circ}$ は命題~\ref{prop:generic-deck-stabilizer} により非空で，
+粗基底の稠密開部分 $M_{n,d}^{\circ}$ と自然に同型な滑らかなスキームである．また，
+$\mathcal Q_{n,d}^{\circ}$ は $\mathcal P_{n,d}^{\circ}$ の絶対的 coarse space である．
+任意の点は，滑らかなスキーム $S$ による \'{e}tale 近傍を持ち，その上で
+\[
+ \mathcal P_{n,d}^{\circ}\times_{\mathcal B_{n,d}^{\circ}}S
+ \simeq[S\times C_{d,n}/\mu_2],\qquad
+ \mathcal Q_{n,d}^{\circ}\times_{\mathcal B_{n,d}^{\circ}}S
+ \simeq S\times C_{d,n}^{(2)}
+\]
+となる．従ってこの開部分上の coarse 忘却射は平坦であり，
+その零点の局所特異性は，符号商 $C_{d,n}^{(2)}$ と滑らかな因子の積である．
+\end{corollary}
+\begin{proof}
+定理~\ref{thm:affine-coarse-moduli} と同じ議論を還元群 $\overline G_d$ に適用すれば，
+$\mathcal B_{n,d}$ も有限対角を持つ．慣性の恒等切断の補集合は有限射で基底に写るため，
+自明慣性の部分は開である．自明慣性を持つ DM スタックは代数空間であり，
+$\mathcal B_{n,d}$ の滑らかさは atlas $U_d$ から従う．
+$\mu_2$ は $U_d$ 上自明なので基底の不変式環は変わらず，
+この部分の粗空間は $M_{n,d}^{\circ}$ そのものである．
+$U_d^{\circ}\to\mathcal B_{n,d}^{\circ}$ は滑らかな群 $\overline G_d$ の torsor なので，
+\'{e}tale 局所的に切断を持つ．この切断上で前定理の局所表示を用いる．
+\end{proof}
+
+\subsection{次数1の coarse 忘却射は一般には平坦でない}
+
+スタックの忘却射 $\mathcal P_{n,1}\to\mathcal D_{n,1}$ はベクトル束であるが，
+その coarse space の間の射は一般に平坦でない．
+次の定理は，余分な自己同型を持つ滑らかな多様体上で起こるこの差を，
+すべての $n\geq2$ について明示する．
+以下では，定理~\ref{thm:affine-coarse-moduli} の粗空間の間の忘却射を
+$\overline f:N_{n,1}\to M_{n,1}$ と書く．
+
+\begin{lemma}[自己同型群がちょうど $\mu_6$ の次数1の模型]
+\label{lemma:mu-six-model}
+すべての $n\geq2$ について，$n$ 変数の六次形式 $f_6$ であって，
+$(f_6=0)\subset\mathbb P^{n-1}$ が滑らかで，その射影線型安定化群が自明なものが存在する．
+このとき
+\[
+ X:\quad z^2-y^3-f_6(x_0,\ldots,x_{n-1})=0
+\]
+は滑らかな次数1の del Pezzo manifold で，$\operatorname{Aut}(X)=\mu_6$ である．
+\end{lemma}
+\begin{proof}
+$n\geq3$ のとき，六次超曲面の一般の射影線型自己同型群が自明であることは
+\cite[Theorems~1.5 and~1.6]{Poonen2005} による．
+そこでの超曲面の次元は，本稿の記号では $n-2\geq1$ である．
+$n=2$ では，$\mathbb P^1$ の相異なる六点を一般に取ればよい．
+その射影自己同型群は六点上の置換群に忠実に作用するので有限である．
+非恒等な有限位数 $\sigma\in\operatorname{PGL}_2$ の位数を $m$ とすると，
+固定点以外の軌道はすべて長さ $m$ であり，固定点は二つである．
+六点を保つには $6=km+e$，$k\geq1$，$0\leq e\leq2$ でなければならず，
+従って $2\leq m\leq6$，$k\leq3$ である．
+固定した $m$ の共役類は有限個で，各共役類の次元は $2$，
+$\sigma$ を固定した不変六点配置の次元は高々 $k\leq3$ である．
+よって非恒等な射影自己同型を持つ配置の閉包は，六次元の六点配置空間の中で
+次元高々 $5$ の有限個の部分集合の和に含まれる．その補集合の六点を取る．
+
+この $f_6$ に対し，$X$ の偏微分が同時に零なら $y=z=0$ と $\dd f_6=0$ となるので，
+六次超曲面の滑らかさから affine cone の原点以外には解がない．
+従って $X$ は滑らかである．命題~\ref{prop:coordinate-action} と $G_1\simeq\operatorname{GL}_n$ によって，
+$\operatorname{Aut}(X)$ は $f_6$ を固定する $\operatorname{GL}_n$ の部分群に一致する．
+その射影化は仮定から自明なので，これはスカラー行列 $\lambda I$ で $\lambda^6=1$ を満たすもの，
+すなわち $\mu_6$ に等しい．
+\end{proof}
+
+\begin{theorem}[coarse 忘却射の非平坦性と非被約ファイバー]
+\label{thm:coarse-nonflat-degree-one}
+$X$ を補題~\ref{lemma:mu-six-model} の模型とし，
+\[
+ a=\binom{n+3}{4},\qquad b=\binom{n+5}{6}-n^2
+\]
+とおく．$\overline f$ は $(X,0)$ の像で平坦でない．
+より具体的に，この点と $X$ の像における完成局所環の射は
+\begin{equation}
+ A=\mathbb C[[s_1,\ldots,s_b,u_1,\ldots,u_a]]^{\mu_3}
+ \longrightarrow
+ B=\mathbb C[[s_1,\ldots,s_b,u_1,\ldots,u_a,v_1,\ldots,v_n]]^{\mu_6}
+ \label{eq:coarse-nonflat-local}
+\end{equation}
+に同型である．左辺の $\mu_3$ は $u_i$ を同時スカラー倍し，$s_i$ には自明に作用する．
+右辺では，原始六乗根 $\zeta$ は点の座標に
+\[
+ (s,u,v)\longmapsto(s,\zeta^2u,\zeta v)
+\]
+と作用する．従って不変単項式の条件は
+$2\deg_u+\deg_v\equiv0\pmod6$ である．
+この点での coarse ファイバーの完成局所環は
+\begin{equation}
+ B/\mathfrak m_A B
+ \simeq\left(
+ \mathbb C[[u_1,\ldots,u_a,v_1,\ldots,v_n]]/(u_1,\ldots,u_a)^3
+ \right)^{\mu_6}.
+ \label{eq:coarse-nilpotent-fiber}
+\end{equation}
+これは非被約であり，その被約化は $\mathbb C[[v_1,\ldots,v_n]]^{\mu_6}$ である．
+\end{theorem}
+\begin{proof}
+係数空間を $V_4\oplus V_6$ と書き，$x=(0,f_6)$ とする．
+$G_1$ の軌道の接空間は $V_6$ の中にあり，その次元は $n^2$ である．
+有限群 $H=\operatorname{Stab}_{G_1}(x)=\mu_6$ は $V_6$ 全体に自明に作用し，
+$V_4$ には $\zeta^{-4}=\zeta^2$ で作用する．
+$V_6$ の中で軌道接空間の補空間 $N_6$ を選ぶと，
+横断方向は $V_4\oplus N_6$ であり，$\dim N_6=b$ である．
+Luna の \'{e}tale slice 定理と滑らかな点での normal representation の記述
+\cite[III, \S1, Th\'eor\`eme and Remarque~1]{Luna1973} により，
+基底の完成局所商はこの横断方向を $H$ で割ったものになる．
+本例では $x+(V_4\oplus N_6)$ が $H$-不変な線型横断切断なので，
+形式座標における $H$-作用を上記の線型作用として選べる．
+
+次数1の Poisson スタックをこの切断に引き戻すと
+$[S\times\mathbb A^n/H]$ となり，$H$ は Poisson パラメータに標準スカラー $\zeta$ で作用する．
+従って $(X,0)$ の完成局所商は右辺 $B$ であり，忘却射は変数 $v$ の追加である．
+$H$ の部分群 $\mu_2$ は基底には自明に作用するので，左辺の不変部分は
+記載した $\mu_3$-不変部分に等しい．これで~\eqref{eq:coarse-nonflat-local} を得る．
+
+ここで
+\[
+ M=\left\{h\in\mathbb C[[s,u]]\ \middle|\ %
+ \text{現れる各単項式の }u\text{ 次数が }2\pmod3\right\}
+\]
+とおく．$B$ の $v$ 次数 $2$ の成分は $M^{\oplus\binom{n+1}{2}}$ であり，
+$v$ 次数 $2$ の係数を取る写像は $A$-線型な射影である．
+従ってこの成分，さらに $M$ 自身は $B$ の $A$-加群としての直和因子である．
+
+$M$ は $u$ 次数 $2$ の単項式で有限生成される．
+任意の $u$ 次数 $3k+2$ の単項式から次数 $2$ の因子を抜けば，残りは $A$ に入るからである．
+また $M$ の $A$ 上の階数は $1$ である．実際，任意の $h\in M$ に対して
+$h/u_1^2=(hu_1)/(u_1^3)\in\operatorname{Frac}(A)$ である．
+一方，$\mathfrak m_A$ は $s_i$ と $u$ 次数 $3$ の全単項式で生成されるので
+\[
+ \dim_{\mathbb C} M/\mathfrak m_A M=\binom{a+1}{2}>1.
+\]
+従って有限 $A$-加群 $M$ は階数1の自由加群でなく，局所環 $A$ 上平坦でもない．
+もし $B$ が $A$ 上平坦ならその直和因子 $M$ も平坦になるため矛盾する．
+局所 Noetherian 環の射の平坦性は完成後の平坦性と同値である
+\cite[Tag 0C4G]{StacksProject} から，元の coarse 忘却射もこの点で平坦でない．
+
+最後に $\mathfrak m_A$ の上記の生成元を用いる．
+有限群の不変部分を取る関手は完全であり，イデアルの生成元は不変なので
+\eqref{eq:coarse-nilpotent-fiber} を得る．
+右辺の $u$ 正次数部分は三乗で零になり，その商は
+$\mathbb C[[v]]^{\mu_6}$ であるから，これが被約化である．
+さらに $c=u_1v_1^4$ は不変元であり，その像は零でなく，
+$c^2=u_1^2v_1^8\ne0$，$c^3=0$ である．
+従ってファイバーは実際に非被約であり，冪零の厚みは省略できない．
+\end{proof}
+
+\begin{corollary}[同じファイバー全体での非平坦性]
+\label{cor:coarse-nonflat-entire-fiber}
+定理~\ref{thm:coarse-nonflat-degree-one} の $X$ に対し，
+$N_{n,1}\to M_{n,1}$ は $[X]$ 上のすべての幾何学的点で平坦でない．
+\end{corollary}
+\begin{proof}
+零 Poisson 構造では前定理を用いる．非零 $\pi$ では，$\mu_6$ は
+Poisson パラメータに忠実なスカラー作用をするので
+$\operatorname{Aut}(X,\pi)=1$ である．自明慣性の開部分では粗空間への射は同型であり，
+$\mathcal P_{n,1}$ は滑らかだから $N_{n,1}$ のこの点の局所環は正則である．
+一方，基底の完成局所環 $A$ は
+\[
+ \dim A=a+b,\qquad
+ \operatorname{edim}A=b+\binom{a+2}{3}>a+b
+\]
+を満たし，正則でない．ここでは $u$ の三次単項式が不変環の極大イデアルの
+$s$ 以外の最小生成元を与えることを用いた．
+局所環の平坦な射は忠実平坦であり，正則性は忠実平坦射によって下降する
+\cite[Tag 07NG]{StacksProject}．従ってこの局所環の射が平坦であることはない．
+\end{proof}
+
+\begin{remark}[曲面での大きさ]
+$n=2$ では $a=5$，$b=3$ である．
+非平坦性を検出する $M$ は階数1であるのに最小生成元を $15$ 個必要とする．
+この障害は，多様体の特異化や Poisson 錐自体の特異性によるものではない．
+$X$ は滑らかで，次数1の Poisson スキームは全ての $X$ で $\mathbb A^n$ である．
+障害は，$A_4=0$ 上で現れる余分な $\mu_3$ が多様体の変形方向と
+Poisson パラメータの両方に作用することから生じる．
+\end{remark}

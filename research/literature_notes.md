@@ -1,11 +1,11 @@
 # 先行研究と主張の位置づけ
 
-2026-11-20（JST）・v1.2。次数 1・2 の滑らかな複素 del Pezzo 多様体に関する現行の文献確認メモ。
-書誌情報は [references.bib](../references.bib) に収録する。以下の「確認」は指定した版の定義・定理文・該当する議論を読んだことを指し、引用論文の証明全体を独立に検証したことを意味しない。
+2026-11-20（JST）・v1.3。次数 1・2 の滑らかな複素 del Pezzo 多様体に関する現行の文献確認メモ。
+書誌情報は [references.bib](../references.bib) に収録する。以下の「確認」は指定した版の定義・定理文・該当する議論を読んだことを指し、引用論文の証明全体を独立に検証したことを意味しない。既存の確認内容も保持しており、文書の更新日は全掲載文献の再確認日を意味しない。
 
 ## 現時点での結論
 
-本研究では、$n\geq 2$、$-K_X=(n-1)H$、$H^n\in\{1,2\}$ を満たす滑らかな複素射影多様体 $X$ を扱う。固定した $X$ に対する分類、ambient lift、Jacobi 零スキームの同定、相対化とモジュライの構成を区別する。証明とその仮定は [現行原稿](../poisson-del-pezzo.tex) を参照する。
+本研究では、$n\geq 2$、$-K_X=(n-1)H$、$H^n\in\{1,2\}$ を満たす滑らかな複素射影多様体 $X$ を扱う。固定した $X$ に対する分類、ambient lift、Jacobi 零スキームの同定、相対化とモジュライの構成を区別する。証明とその仮定は [現行原稿](../papers/poisson-del-pezzo.tex) を参照する。
 
 | 範囲 | 既存文献との関係 | 本研究での扱い |
 | --- | --- | --- |
@@ -88,9 +88,27 @@ Stacks Project の以下の一次資料を確認した。
 
 現段階の原稿は、以上の確認範囲で数学的主張と証明を整理する研究稿である。公表用の新規性確認を完了したものとは扱わない。
 
-## Plücker 錐の標準性と特異点（v1.2 の使用箇所）
+## Plücker 錐の標準性と特異点
 
 - Svanes, *Arithmetic Normality for Projective Embeddings of Flag Manifolds*, Math. Scand. **33** (1973), 55–68, https://www.mscand.dk/article/download/11471/9488. Grassmann の Plücker 埋め込みの射影正規性に関する一次資料と，ACM 性についての既知結果の文献案内。
 - De Concini–Procesi, *Hodge algebras: a survey*, Astérisque **87–88** (1981), 79–83, https://www.numdam.org/item/AST_1981__87-88__79_0/. 標準単項式基底、Grassmann の arithmetically Cohen–Macaulay 性（解説・引用先）を確認。
 - Kollár–Mori, *Birational Geometry of Algebraic Varieties*, CUP (1998), DOI:10.1017/CBO9780511662560, Chapter 5. terminal/klt/rational の一般理論。
 - 頂点 blow-up が tautological line の全空間である事実、canonical line と discrepancy の計算は現行論文 `lemma:cone-blowup`・`prop:plucker-terminal` で示す。これらの一般的代数幾何の既知結果を本研究の新規成果とは主張しない。降下の優先権は未確認。
+
+
+## 粗空間・自己同型・平坦性の一次資料
+
+- **Luna1973**, *Slices étales*, Mémoire de la SMF **33** (1973), 81–105、DOI: [10.24033/msmf.110](https://doi.org/10.24033/msmf.110)。[原著](https://www.numdam.org/item/10.24033/msmf.110.pdf) のI§1 pp.83–84はaffine不変式商、I§4 Corollaire p.90は有限stabilizerを持つ還元群のaffine作用がproper（作用射がfinite）となることを述べる。III§1 p.97のslice定理は粗商側のétale性とCartesian性、Remarque 1 pp.97–98は滑らかな点のnormal representationとの比較を与える。本稿では明示的resultantにより係数空間のaffine性を先に証明し、これらを適用する。
+- **Poonen2005**, *Varieties without extra automorphisms III: hypersurfaces*, Finite Fields Appl. **11** (2005), 230–268。[著者本文](https://math.mit.edu/~poonen/papers/projaut.pdf) Theorems 1.5, 1.6。超曲面次元 $m\ge1$、次数 $e\ge3$、$(m,e)\ne(1,3)$ について、線型自己同型が自明な滑らかな例を与える。本稿の次数2では $(m,e)=(n-1,4)$、次数1の六次形式では $(n-2,6)$（$n\ge3$）に適用。四次K3でも必要なのは線型自己同型であり適用できる。binary sexticは本文の初等次元論で補い、次数1の一般 $\mu_2$ はFermat四次式と一般六次式から直接証明する。
+- **AbramovichOlssonVistoli2008**, *Tame stacks in positive characteristic*, Ann. Inst. Fourier **58** (2008), 1057–1091、DOI: [10.5802/aif.2378](https://doi.org/10.5802/aif.2378)。[原著](https://www.numdam.org/item/10.5802/aif.2378.pdf) Theorem 3.2、Corollary 3.3でtameな有限慣性スタックの局所有限群表示、粗空間の任意基底変換との両立を確認。Appendix Aはrigidification。これらは粗忘却射自身の平坦性を意味せず、本稿の非平坦例と矛盾しない。
+- **Cadman2007**, *Using stacks to impose tangency conditions on curves*, Amer. J. Math. **129** (2007), 405–427。[著者本文](https://www.charlescadman.com/raw/pdf/stacks.pdf) §§2.2–2.3、特にDefinition 2.2.1、Lemma 2.3.1、Example 2.4.1。局所模型 $[\operatorname{Spec}A[v]/(v^2-w)/\mu_2]$ を用い、相対粗解消とroot stackを比較する。root構成自体の新規性は主張しない。
+- **Stacks Project** [Tag 0399](https://stacks.math.columbia.edu/tag/0399)：有限表示の射・層について平坦locusが始域で開。[Tag 00R4](https://stacks.math.columbia.edu/tag/00R4)：正則基底、CM全空間、局所次元等式によるmiracle flatness。[Tag 07NG](https://stacks.math.columbia.edu/tag/07NG)：正則性の忠実平坦降下。[Tag 0C4G](https://stacks.math.columbia.edu/tag/0C4G)：局所Noetherian環の射が平坦であることと完成の平坦性の同値。これらの定理文と本稿の適用条件を確認した。
+- **Braun2019**, *Hilbert series of the Grassmannian and $k$-Narayana numbers*, Communications in Mathematics **27** (2019), 27–41、DOI: [10.2478/cm-2019-0003](https://doi.org/10.2478/cm-2019-0003)。[原著](https://dml.cz/handle/10338.dmlcz/147766) Proposition 1、Theorem 1。Grassmann切断環のHilbert関数から第二Veronese錐の独立二次関係数を評価する。半標準tableauの有限列挙を別途検算したが、標準単項式理論全体の形式化ではない。
+
+### 未採用の一般化と別ルート
+
+Javanpeykar–Loughran–Mathur, *Good reduction and cyclic covers*, [arXiv:2009.01831v3](https://arxiv.org/pdf/2009.01831v3) Theorem 3.21、Example 3.25と、Benoist, *Séparation et propriété de Deligne–Mumford des champs de modules d'intersections complètes lisses*, [arXiv:1111.1582v2](https://arxiv.org/pdf/1111.1582v2) Theorems 1.6, 1.7は、次数2の分岐四次超曲面を経由する別の分離性証明に使える。現行本文では次数1・2を統一して扱えるLunaのaffine作用の定理を採用する。
+
+Esser, *Automorphisms of weighted projective hypersurfaces*, [arXiv:2301.07872v3](https://arxiv.org/html/2301.07872v3) Theorem 4.1は次数が最大重みの5倍以上という条件を要求する。この一般自己同型定理を、本稿の重み付き六次・四次模型へ条件なしに適用しない。
+
+**新規性の状態：** 平坦領域の判定は既知の局所環論と、相対Poisson錐の既約性・一般構造の自己同型消滅を組み合わせた適用である。次数1の $\mu_6$ 模型の局所環・非平坦性・三段の冪零構造を含め、研究固有の優先権の包括的確認は未了。

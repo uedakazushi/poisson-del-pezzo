@@ -1,4 +1,4 @@
-% !TeX root = ../../poisson-del-pezzo.tex
+% !TeX root = ../poisson-del-pezzo.tex
 \section{零 Poisson 構造の特異性と標準的な解消}
 \label{sec:singularities}
 
@@ -177,4 +177,272 @@ $n\geq3$ の零点における相対 Zariski 接空間の次元超過は
 スキーム論的同定を経由し，零 Poisson 切断とその解消を
 $G_2$-同変に具体化して，Poisson del Pezzo のモジュライスタックに
 降下させた点にある．この降下による新規性の優先権は未確認である．
+\end{remark}
+
+\subsection{被覆対合による符号商の局所環}
+\label{subsec:sign-quotient-singularities}
+
+注意~\ref{rem:deck-action} の対合が与える商の特異性を記述する．
+以下の主張はすべての $X$ に対する\emph{符号商}の主張である．
+$X$ の全自己同型群による coarse space と同一視する場合には，
+$\operatorname{Aut}(X)=\langle\tau\rangle$ を仮定する必要がある．
+
+\[
+ (Y_{d,n},r_{d,n})=
+ \begin{cases}
+ (\mathbb P^{n-1},n)&d=1,\\
+ (\Gr(2,n+1),n+1)&d=2,
+ \end{cases}
+ \qquad H=\mathcal O_{Y_{d,n}}(1)
+\]
+とおく．どちらの場合も $\omega_Y\simeq H^{-r}$ である．
+$R=\bigoplus_{j\geq0}H^0(Y,H^j)$ とすると
+$\mathfrak C_{d,n}=\operatorname{Spec}R$ であり，
+次数 $1$ の生成元への作用 $v\mapsto-v$ が $R_j$ に $(-1)^j$ で作用する．
+
+\begin{proposition}[符号商と第二 Veronese 錐]
+\label{prop:sign-veronese-cone}
+$n\geq2$ とし，
+\[
+ \overline{\mathfrak C}_{d,n}
+ =\mathfrak C_{d,n}/\langle\tau\rangle
+\]
+を有限群による affine quotient とする．このとき
+\[
+ \overline{\mathfrak C}_{d,n}
+ \simeq\operatorname{Spec}R^{(2)},\qquad
+ R^{(2)}=\bigoplus_{j\geq0}R_{2j},
+\]
+であり，$R_{2j}$ を次数 $j$ とする．この環は次数 $1$ で生成される
+normal Cohen--Macaulay domain である．頂点を $\bar0$ とすると
+\[
+ \rho:\operatorname{Bl}_{\bar0}\overline{\mathfrak C}_{d,n}
+ \simeq\operatorname{Tot}_Y(H^{-2})
+ \longrightarrow\overline{\mathfrak C}_{d,n}
+\]
+であり，例外因子 $E\simeq Y$ の法線束は $H^{-2}$ である．
+商は頂点の外で滑らかである．
+\end{proposition}
+\begin{proof}
+不変部分は各次数の偶奇分解から正確に $R^{(2)}$ である．
+$R$ は $R_1$ で生成されるので，偶数個の次数 $1$ の因子を二つずつまとめれば
+$R^{(2)}$ は $R_2$ で生成される．$R$ の normal 性から不変環も normal である．
+Cohen--Macaulay 性については，$R$ がその性質を持つことを用いる．
+$R_1$ の基底の平方による \v{C}ech 複体の偶数次数部分は
+$R^{(2)}$ の irrelevant ideal に関する \v{C}ech 複体である．
+従って $R$ の低次局所コホモロジーの消滅が $R^{(2)}$ にも移る．
+頂点以外では以下の議論により滑らかなので，環は Cohen--Macaulay である．
+
+$\operatorname{Proj}R^{(2)}=Y$ であり，その次数 $1$ の線束は $H^2$ である．
+補題~\ref{lemma:cone-blowup} と同じグラフ閉包の議論を，
+$H^2$ による埋め込みに適用すれば blow-up と法線束の記述を得る．
+また $\mathfrak C_{d,n}\setminus\{0\}$ は滑らかであり，
+その上の符号作用は自由なので，商への射は有限 \'{e}tale である．
+これから商の頂点外の滑らかさが従う．
+\end{proof}
+
+\begin{theorem}[符号商の標準指数と discrepancy]
+\label{thm:sign-quotient-index}
+命題~\ref{prop:sign-veronese-cone} の商は $\mathbb Q$-Gorenstein である．
+頂点での標準指数と blow-up の discrepancy はそれぞれ
+\[
+ \operatorname{ind}_{\bar0}K
+ =\frac{2}{\gcd(2,r)},\qquad
+ K_{\operatorname{Tot}_Y(H^{-2})}
+ =\rho^*K_{\overline{\mathfrak C}_{d,n}}
+   +\left(\frac r2-1\right)E.
+\]
+特に次が成り立つ．
+\begin{enumerate}
+\item $d=1,n=2$ の商は $A_1$ 曲面特異点であり，canonical だが terminal でない．
+$d=1,n\geq3$ の商は terminal であり，Gorenstein となる必要十分条件は
+$n$ が偶数であることである．
+\item $d=2$ の商はすべての $n\geq2$ で terminal であり，
+Gorenstein となる必要十分条件は $n$ が奇数であることである．
+とくに $n=2$ では $\mathbb A^3/\{\pm1\}$ となり，
+標準指数は $2$，discrepancy は $1/2$ である．
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+多項式環の場合と命題~\ref{prop:plucker-terminal} の canonical module の計算から，
+どちらの場合も次数付き同型 $\omega_R\simeq R(-r)$ を持つ．
+従って $\mathfrak C_{d,n}$ の滑らかな部分の非消滅 top form $\eta$ を，
+スカラー $c$ に対して $c^*\eta=c^r\eta$ となるように取れる．
+特に $\tau^*\eta=(-1)^r\eta$ である．
+頂点外では符号商への射が有限 \'{e}tale なので，
+$\eta^{\otimes2}$ は商の標準線束の二乗の非消滅切断へ降下する．
+頂点の余次元は $\dim\mathfrak C_{d,n}\geq2$ であり，商は normal なので，
+reflexive extension により $2K_{\overline{\mathfrak C}_{d,n}}$ は自明である．
+$r$ が偶数なら $\eta$ 自体が降下し，$K$ は自明となる．
+Cohen--Macaulay 性と合わせて Gorenstein である．
+
+$r$ が奇数のとき，$K$ が頂点のある開近傍で Cartier であると仮定する．
+その近傍を小さくして標準線束の生成元 $s$ を取り，元の錐へ引き戻すと，
+頂点外では $g\eta$ と書け，$g$ は単元である．
+normal な錐の余次元 $2$ 以上の点を除いただけなので，$g$ と $g^{-1}$ は
+ともに頂点まで延長する．従って $g(0)\ne0$ である．
+一方 $s$ の不変性と $\eta$ の反不変性から $\tau^*g=-g$ であり，
+固定点 $0$ で $g(0)=0$ となる．矛盾である．これで標準指数が正確に $2$ と分かる．
+
+線束の全空間の標準束の公式により
+\[
+ \omega_{\operatorname{Tot}_Y(H^{-2})}=p^*(\omega_Y\otimes H^2)
+ =p^*H^{2-r},\qquad
+ \mathcal O(E)=p^*H^{-2}.
+\]
+$\rho$ は $E$ の外で同型なので，標準因子の差は $aE$ と書ける．
+上で $2K$ の自明性を示したので，この等式を $E$ に制限して
+$2-r=-2a$，すなわち $a=r/2-1$ を得る．
+この blow-up は滑らかで例外因子も滑らかな単一因子だから log resolution である．
+$r=2$ のとき discrepancy は $0$，$r>2$ では正であり，
+canonical および terminal の判定を得る．
+次数 $1$ で $n=2$ の場合の具体式は次の命題の証明に与える．
+\end{proof}
+
+\begin{remark}[標準指数を一にする被覆]
+\label{rem:sign-index-one-cover}
+$r$ が奇数のとき，有限射
+$\mathfrak C_{d,n}\to\overline{\mathfrak C}_{d,n}$ は標準指数を一にする
+二重被覆（index-one cover）である．実際，前定理の $\eta^{\otimes2}$ を用いて
+$\omega_{\overline{\mathfrak C}_{d,n}}^{[2]}$ を自明化すると，
+標準被覆の反不変部分は，$\eta$ を掛けることにより $R$ の奇数次数部分と同定される．
+従って標準被覆の代数は，reflexive product を用いて
+\[
+ R^{(2)}\oplus R_{\mathrm{odd}}\simeq R
+\]
+となる．この同定は頂点外の有限 \'{e}tale 被覆上で成り立ち，
+normal 性によって頂点まで延長する．$r$ が偶数のときは商が既に Gorenstein なので，
+同じ二重被覆を index-one cover とは呼ばない．
+\end{remark}
+
+\begin{proposition}[符号商の局所完全交叉性]
+\label{prop:sign-quotient-nonlci}
+$d=1$ の符号商は $n=2$ のとき hypersurface であり，
+$n\geq3$ のとき頂点で局所完全交叉でない．
+$d=2$ の符号商は，すべての $n\geq2$ で頂点で局所完全交叉でない．
+\end{proposition}
+\begin{proof}
+$T=R^{(2)}$，$N=\dim T_1$ とする．$T$ は $T_1$ で生成され，
+$S=\operatorname{Sym}(T_1)\to T$ の核 $I$ は一次式を含まない．
+従って頂点の埋め込み次元は $N$ であり，
+\[
+ Q:=\dim I_2=\binom{N+1}{2}-\dim T_2
+\]
+本の一次独立な二次関係はすべて最小生成元である．
+ここでは $I$ 全体が二次式で生成されることを仮定しない．
+$Q>N-\dim T$ なら，完全交叉の必要条件に反する．
+
+$d=1$ では $N=\binom{n+1}{2}$，$\dim T_2=\binom{n+3}{4}$ なので
+\[
+ Q-\left(N-n\right)
+ =\frac{n(n-1)(n-2)(n+3)}{12}.
+\]
+これは $n\geq3$ で正である．$n=2$ の場合には
+\[
+ \C[u,v]^{\{\pm1\}}
+ =\C[u^2,uv,v^2]\simeq\C[a,b,c]/(ac-b^2),
+\]
+であり，$A_1$ 曲面特異点である．
+
+$d=2$ では $m=n+1\geq3$ とおく．Grassmann 多様体の切断空間の標準的な
+次元公式
+\[
+ h^0(\Gr(2,m),\mathcal O(k))
+ =\frac{(m+k-1)!(m+k-2)!}
+ {(m-1)!(m-2)!\,k!\,(k+1)!}
+\]
+を使う．この公式は長方形 $(k,k)$ の標準単項式基底の次元公式であり，
+\cite[Proposition 1 and Theorem 1]{Braun2019} にも記載された Grassmann
+Hilbert 関数の $\Gr(2,m)$ の場合である．これより
+\[
+ N=\frac{m^2(m^2-1)}{12},\qquad
+ \dim T_2=\frac{(m-1)m^2(m+1)^2(m+2)^2(m+3)}{2880}.
+\]
+代入して整理すると
+\[
+ Q-N=\frac{N(m-3)(m+2)(9m^2+m+22)}{240}\geq0.
+\]
+一方，$\dim T=2m-3>0$ なので
+$Q\geq N>N-(2m-3)$ であり，すべての $m\geq3$ で非完全交叉性を得る．
+\end{proof}
+
+\begin{remark}
+ここで使った Veronese 錐，線束の全空間による解消，標準指数の計算は
+既知の錐の幾何の適用である．新しい Grassmann 特異点の発見とは主張しない．
+Poisson スキームと符号作用の同定を経由して，$X$ を固定した自己同型商，
+および適切な局所モジュライ表示の特異性を具体化している．
+追加の自己同型がある点では，さらにその有限群による商を取る必要があり，
+本定理だけから全 coarse moduli space の terminal 性を結論しない．
+\end{remark}
+
+\subsection{解消の相対 coarse 空間と二乗根スタック}
+
+$L=\mathcal O_{Y_{d,n}}(-1)$ に，もとの Poisson パラメータの表現から誘導される
+$G_d$-線型化を入れる．特に $d=2$ では $b^{-1}\wedge^2A$ の因子を保持する．
+$H$ は $Y_{d,n}$ 上自明，$L$ のファイバー上は符号反転として作用する．
+従って $L$ 自体を $\overline G_d$-同変線束として扱うことはできないが，
+$L^{\otimes2}$ は $\overline G_d$-同変線束になる．
+\[
+ \overline{\mathcal Y}_{n,d}=[(U_d\times Y_{d,n})/\overline G_d]
+\]
+上に降下したこの線束を $\mathcal N$ と書く．atlas 上では $\mathcal O(-2)$ であるが，
+方程式の変換指標を含む降下データを備えている．
+
+\begin{theorem}[blow-up と二乗根スタック]
+\label{thm:resolution-root-stack}
+$\mathcal R_{n,d}=\operatorname{Bl}_{\mathcal D_{n,d}}\mathcal P_{n,d}$，
+$\overline{\mathcal R}_{n,d}=\operatorname{Bl}_{\mathcal B_{n,d}}\mathcal Q_{n,d}$ とおく．
+このとき
+\[
+ \mathcal R_{n,d}\simeq[(U_d\times\operatorname{Tot}L)/G_d],\qquad
+ \overline{\mathcal R}_{n,d}\simeq
+ \operatorname{Tot}_{\overline{\mathcal Y}_{n,d}}\mathcal N
+\]
+であり，両者は滑らかな DM スタックである．
+自然な射 $r:\mathcal R_{n,d}\to\overline{\mathcal R}_{n,d}$ は
+$\mathcal B_{n,d}$ 上の相対 coarse 空間である．
+例外因子をそれぞれ $E$，$\overline E$ とすると
+\[
+ r^*\overline E=2E,\qquad
+ N_{\overline E/\overline{\mathcal R}_{n,d}}\simeq\mathcal N,
+ \qquad
+ \mathcal R_{n,d}\simeq
+ \sqrt[2]{(\overline{\mathcal R}_{n,d},\overline E)}.
+\]
+ここで最後の式は有効 Cartier 因子に沿う二乗根スタックを表す．
+\end{theorem}
+\begin{proof}
+標準次数1で生成される錐の頂点の blow-up は，その射影化の
+tautological line bundle の全空間である．
+$C_{d,n}$ には $L=\mathcal O(-1)$，二次 Veronese の錐 $C_{d,n}^{(2)}$ には
+$L^{\otimes2}=\mathcal O(-2)$ を適用する．
+$R_{d,n}$ が次数1で生成されるため $R_{d,n}^{(2)}$ も新しい次数1で生成され，
+後者の射影化は $Y_{d,n}$，対応する偏極は $\mathcal O(2)$ である．
+従って補題~\ref{lemma:cone-blowup} と同じグラフ閉包の証明が両方に適用できる．
+これを座標作用に関して降下させると，記載した全空間の表示を得る．
+
+atlas $U_d$ 上で $r$ は
+\[
+ [\operatorname{Tot}(L)/\mu_2]\longrightarrow\operatorname{Tot}(L^{\otimes2}),
+ \qquad v\longmapsto v^{\otimes2}
+\]
+であり，前定理と同じ有限群商の議論から相対 coarse 性を得る．
+線束を自明化してファイバー座標を $v$，$w$ とすれば $w=v^2$ である．
+従って $r^*\overline E=2E$ となり，$(\mathcal O(E),s_E)$ とこの同型は
+二乗根スタックへの自然な射を定める．
+二乗根スタックの局所商表示
+\[
+ \sqrt[2]{(\operatorname{Spec}A,(w=0))}
+ \simeq[\operatorname{Spec}A[v]/(v^2-w)\,/\mu_2]
+\]
+\cite[\S2.2, \S2.3]{Cadman2007} によれば，この射は上記の atlas 上で同型である．
+よって大域的にも同型である．法線束の主張は全空間の零切断から従う．
+\end{proof}
+
+\begin{remark}[慣性の所在]
+非零 $\pi$ の Poisson 対の安定化群は $\operatorname{Aut}(X,\pi)$，
+blow-up の例外点 $(X,[\pi])$ の安定化群は $\operatorname{Aut}(X,[\pi])$ である．
+相対 coarse 例外点では後者を $\langle\tau\rangle$ で割った群が残る．
+従って対合は非零部分では消えるが，例外因子上では再び現れ，
+その法線方向に符号反転で作用する．二乗根スタックの記述は，この相対慣性を正確に表している．
 \end{remark}

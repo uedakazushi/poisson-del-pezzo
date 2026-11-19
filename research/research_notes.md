@@ -1,8 +1,8 @@
 # 研究ノート：次数1・2と del Pezzo Poisson 構造
 
-2026-11-20（JST） / v1.2
+2026-11-20（JST） / v1.3
 
-このノートは現行の数学的知識と次の着手方法をまとめる。完全な証明は [論文](../poisson-del-pezzo.tex) に置き、ここでは依存関係と論文外の課題を補う。[研究方針](../00_research_plan.md) を先に読む。
+このノートは現行の数学的知識と次の着手方法をまとめる。完全な証明は [論文](../papers/poisson-del-pezzo.tex) に置き、ここでは依存関係と論文外の課題を補う。[研究方針](../00_research_plan.md) を先に読む。
 
 ## 1. 記法と現在の証明の構造
 
@@ -90,15 +90,72 @@ $H^0(T_X)=0$ は、重み0の接ベクトル場を Euler 方向で補正し、�
 
 スタックへの幾何学的点 $[X]\to\mathcal D_{n,d}$ に沿うファイバーは $\operatorname{Pois}_{\mathrm{sch}}(X)$ 自身である。$X$ の同型類だけを固定して自己同型も残すスタック $[\operatorname{Pois}_{\mathrm{sch}}(X)/\operatorname{Aut}(X,[H])]$ とは異なる。二重被覆 involution は $\pi$ と $-\pi$ を同型にするが、非零 $\pi$ を固定しない。射影化後はこの差が消える。
 
-次数2、$n\geq3$ で非滑らかな点の集合が零切断に等しいという結果は **スタック**についてである。$n=2$ では全体が滑らかである。特異部分スキームが被約であることや coarse space の特異点を同定したことを意味しない。有限 stabilizer から separatedness や具体的 coarse space を無条件に推測しない。
+次数2、$n\geq3$ で非滑らかな点の集合が零切断に等しいという結果は **スタック**についてである。$n=2$ では全体が滑らかである。特異部分スキームが被約であることや coarse space の特異点を同定したことを意味しない。有限stabilizerだけから一般のDMスタックの分離性を推測してはいけない。本稿では `lemma:affine-parameter-open` で係数空間のaffine性を示し、Lunaの定理によって有限対角と粗空間を得る。
 
-## 4. 零 Poisson 切断の blow-up とその後の研究
+## 4. 粗忘却射、自己同型、解消
 
-次数2の $\mathcal P_{n,2}$ は、零点で Plücker 錐の特異性を持つ。$m=n+1$ とすると、頂点の埋め込み次元 $\binom m2$、錐次元 $2m-3$、余次元 $(m-2)(m-3)/2$。Plücker 二次関係の最小本数 $\binom m4$ と余次元の比較により、$n=3$ では通常の二次超曲面特異点、$n\ge4$ では非 lci が従う。
+### 全滑らか領域の粗空間と平坦性
 
-零切断 blow-up は相対 $\Gr(2,m)$ 上の $\mathcal O(-1)$ の全空間であり、$G_2$ の作用と同変なので商スタックへ降下する。例外因子は相対 Grassmann、法線束は $\mathcal O(-1)$。$K_{\Gr(2,m)}=\mathcal O(-m)$ と Plücker 環の既知の normal/ACM 性を用いると canonical module は $R(-m)$。零点の discrepancy は $m-1=n$ で、錐は Gorenstein terminal。証明は論文 `sec:singularities` にあり、このノートには重複させない。
+次数1の判別式開集合は、補助変数 $t$ を用いた $n+1$ 個の通常斉次式
 
-研究上の残る焦点：この標準的解消を使った coarse moduli の局所商、自己同型群が増える層と例外因子の関係、特異 del Pezzo の境界上での吹き上げの比較。terminal の主張はアトラスの錐についてであり、有限群商の coarse space に自動的には移らない。
+$$t^2\partial_iA_4+\partial_iA_6\ (0\le i<n),\qquad 3t^4+A_4$$
+
+のresultantの非消滅領域である。次数2は四次形式の通常の判別式を用いる。どちらもaffineなので、有限stabilizerを持つ還元群の作用についてのLuna I§4 p.90の定理を適用できる。これにより有限対角、分離性、affine粗空間を構成する。$A_d=\mathcal O(U_d)$、$R_{d,n}=\mathcal O(C_{d,n})$ として
+
+$$M_{n,d}=\operatorname{Spec} A_d^{G_d},\qquad
+N_{n,d}=\operatorname{Spec}(A_d\otimes R_{d,n})^{G_d}.$$
+
+**平坦性の正確な判定**は `thm:coarse-flat-locus`：
+
+$$\operatorname{Flat}(N_{n,d}\to M_{n,d})=f^{-1}(M_{n,d}^{\mathrm{sm}}).$$
+
+証明の要点は、基底のLuna slice上で $(S\times C_{d,n})/H\to S/H$ とすること、有限群不変環のCohen–Macaulay性、ファイバーの定次元性、各固定 $X$ の一般非零Poisson構造が自己同型を消すことである。滑らかな基底上ではmiracle flatness、特異基底上では一般Poisson対の粗空間が正則であることと正則性の平坦降下を使う。平坦locusの開性により、特異基底の上ではファイバー内の全ての点が非平坦となる。一般の還元群による任意のCM環の不変環をCMと仮定する議論ではない。
+
+粗ファイバーの**被約化**は常に $C_{d,n}/\operatorname{Aut}(X)$ で、ファイバーは位相的に既約、次元は次数1で $n$、次数2で $2n-1$。スキーム構造には基底sliceの有限Artin環の冪零部分が残り得る。
+
+### 自己同型を消す構造と射影化
+
+Poissonパラメータの表現は $G_1\simeq\mathrm{GL}_n$ では標準表現、$G_2$ では $b^{-1}\wedge^2A$ であり、どちらも忠実である。従って**任意の固定した $X$** に対して一般非零 $\pi$ は $\operatorname{Aut}(X,\pi)=1$ を満たす。全ての $X$ が一般的であることを仮定しない。
+
+射影化の一般安定化群は、次数2で $\mu_2$。次数1では $A_4\ne0$ で $\mu_2$、$A_4=0$ で $\mu_6$。後者を単なるdeck対合と混同しない。一般多様体自体の自己同型群は両次数とも $\mu_2$ であり、その非空稠密開部分では粗基底が滑らかで、粗Poisson空間はétale局所的に $S\times C_{d,n}^{(2)}$ となる。
+
+### 次数1の明示的な非平坦・非被約ファイバー
+
+$X:z^2-y^3-f_6(x)=0$ で一般の $f_6$ を取ると、全 $n\ge2$ で $\operatorname{Aut}(X)=\mu_6$ とできる。$a=\binom{n+3}{4}$、$b=\binom{n+5}{6}-n^2$ とすれば、零Poisson構造での粗忘却射の完成局所環は
+
+$$A=\mathbb C[[s_1,\ldots,s_b,u_1,\ldots,u_a]]^{\mu_3}
+\longrightarrow B=\mathbb C[[s,u,v_1,\ldots,v_n]]^{\mu_6},$$
+
+であり、点の座標の重みは $(s,u,v)\mapsto(s,\zeta^2u,\zeta v)$。$u$ は四次係数の変形、$s$ は六次係数の変形を軌道方向で割ったもの、$v$ はPoissonパラメータである。
+
+$v$ 次数2の直和因子には、$u$ 次数 $2\pmod3$ の共変加群が現れる。この加群は階数1だが最小生成元を $\binom{a+1}{2}>1$ 個必要とするので非平坦。これは一般の平坦領域定理とは独立な局所計算にもなる。$(X,0)$ の像における粗ファイバーの完成局所環は
+
+$$B/\mathfrak m_AB\simeq(\mathbb C[[u,v]]/(u)^3)^{\mu_6}.$$
+
+$c=u_1v_1^4$ は $c^2\ne0$、$c^3=0$ を満たす。被約化 $\mathbb C[[v]]^{\mu_6}$ だけではこのファイバーを記述できない。非零 $\pi$ では自己同型が自明で全粗空間は滑らかだが、基底の粗空間は特異なので、そのファイバー内の全ての点で非平坦となる。完全証明は `thm:coarse-nonflat-degree-one` とその直後の系。
+
+曲面での再現可能な具体例は
+
+$$f_6=x_0x_1(x_0-x_1)(x_0-3x_1)(x_0-7x_1)(x_0-11x_1).$$
+
+6個の根は相異なる。`computations/verify_coarse.py` は最初の3点の像を全て選ぶ120個の射影変換を有理数体上で列挙し、この6点を保つ変換が恒等元だけであることを厳密に確認する。これは明示的曲面の有限計算による証明書であり、任意次元の存在定理の代用ではない。ここでは $a=5,b=3$、上の階数1加群の最小生成元数は15。
+
+### 対合商と解消の関係
+
+被覆対合だけを除いた基底 $\mathcal B=[U_d/(G_d/\mu_2)]$ 上では、相対粗Poisson錐は偶数Veronese $C_{d,n}^{(2)}=\operatorname{Spec}R_{d,n}^{(2)}$ である。これは任意基底変換と可換で、相対粗忘却射は平坦。追加自己同型を除く全粗空間と区別する。もとの零切断への制限は $\mathcal D\to\mathcal B$ だが、粗側零切断のスキーム論的逆像は頂点イデアルの二乗で厚くなる。
+
+$Y=\mathbb P^{n-1}$ または $\operatorname{Gr}(2,n+1)$ とする。もとの錐の零点blow-upは $\operatorname{Tot}\mathcal O_Y(-1)$、符号商では $\operatorname{Tot}\mathcal O_Y(-2)$。族では元のPoisson表現の線型化を保持して降下する。相対粗解消を $\overline{\mathcal R}$、例外因子を $\overline E$ とすると
+
+$$\mathcal R\simeq\sqrt[2]{(\overline{\mathcal R},\overline E)},\qquad
+r^*\overline E=2E.$$
+
+この比較は追加自己同型の存在にかかわらず相対粗空間として成立する。全粗空間の解消と自動同一視しない。
+
+### 符号商の特異点
+
+$-K_Y=rH$ とすると、$r=n$（次数1）、$r=n+1$（次数2）。符号商の標準指数は $2/\gcd(2,r)$、頂点blow-upのdiscrepancyは $r/2-1$。次数1曲面は $A_1$、canonicalだが非terminal、それ以外はterminal。Gorensteinとなるのは次数1で $n$ 偶数、次数2で $n$ 奇数。$r$ 奇数のときもとの錐がindex-one coverとなる。
+
+符号商は次数1曲面だけがhypersurfaceであり、その他は非lci。次数2で元の錐が滑らかである $n=2$ でも、符号商は指数2の三次元非lci特異点である。証明は `sec:singularities`。標準単項式・Veronese錐・標準指数の一般論は既知であり、Poissonモジュライへの同変な適用の新規性は未確認。
 
 ## 5. 形式量子化の保証範囲
 
