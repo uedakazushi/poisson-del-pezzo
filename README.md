@@ -156,7 +156,7 @@ GitHub `main` を正本とし、通常コミット・pushと research-hub の該
 ## 関連リポジトリとの分担
 
 - **次数1・2の分類・族・モジュライ**：本リポジトリ。
-- **次数3の一般次元 cubic hypersurface**：[nc-cubic](https://github.com/uedakazushi/nc-cubic)。既存の分類・量子化原稿を正本とする。
+- **次数3の一般次元 cubic hypersurface**：[poisson-cubic](https://github.com/uedakazushi/poisson-cubic)。既存の分類・量子化原稿を正本とする。
 - **次数4の二次完全交叉**：[poisson-22ci](https://github.com/uedakazushi/poisson-22ci)、[nc-22ci](https://github.com/uedakazushi/nc-22ci)。本repoの比較ノートは詳細分類の代わりではない。
 - **次数1の非可換圏の認識・モジュライ**：[nc-dp1-moduli](https://github.com/uedakazushi/nc-dp1-moduli)。Poisson 構造の量子化と、圏から ambient を認識する問題を区別する。
 - **研究全体の入口**：[research-hub](https://github.com/uedakazushi/research-hub)。

@@ -186,7 +186,7 @@ $-K_Y=rH$ とすると、$r=n$（次数1）、$r=n+1$（次数2）。符号商�
 
 ## 6. 次数3・4との関係
 
-重み付き模型が次数1・2の自由度を強く制限する。次数3では通常の cubic hypersurface となり、定数テンソルの許される形が変わる。詳細は [nc-cubic の研究方針](https://github.com/uedakazushi/nc-cubic/blob/main/00_research_plan.md) を参照し、本稿の rank2結論を次数3の全構造へ一般化しない。
+重み付き模型が次数1・2の自由度を強く制限する。次数3では通常の cubic hypersurface となり、定数テンソルの許される形が変わる。詳細は [poisson-cubic の研究方針](https://github.com/uedakazushi/poisson-cubic/blob/main/00_research_plan.md) を参照し、本稿の rank2結論を次数3の全構造へ一般化しない。
 
 次数4では二つの quadratic Casimir による $\bigwedge^4V$ 表示を用いる。$n\geq5$ には階数4の構造があり、全てを Grassmann 型にすることはできない。比較に必要な式、非一意lift、曲面の明示模型は [dp4_comparison.md](dp4_comparison.md) に置く。既存 [poisson-22ci](https://github.com/uedakazushi/poisson-22ci) と [nc-22ci](https://github.com/uedakazushi/nc-22ci) の最新の一般構造・例外層の解析全体をここへ複製しない。
 
